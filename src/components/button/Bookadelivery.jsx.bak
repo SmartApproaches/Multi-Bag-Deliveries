@@ -1,0 +1,342 @@
+import React, { useState } from "react";
+import logo from "../../assets/images/delivery-logo.png"
+import "./Bookadelivery.css";
+
+const Bookadelivery = () => {
+  const [currentStep, setCurrentStep] = useState(1);
+  const [formData, setFormData] = useState({
+    senderName: "",
+    senderEmail: "",
+    senderPhone: "",
+    pickupAddress: "",
+    recipientName: "",
+    recipientPhone: "",
+    deliveryAddress: "",
+    packageType: "",
+    packageSize: "",
+    instructions: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const validateStep = (step) => {
+    if (step === 1) {
+      return (
+        formData.senderName.trim() &&
+        formData.senderEmail.trim() &&
+        formData.senderPhone.trim() &&
+        formData.pickupAddress.trim()
+      );
+    }
+    if (step === 2) {
+      return (
+        formData.recipientName.trim() &&
+        formData.recipientPhone.trim() &&
+        formData.deliveryAddress.trim()
+      );
+    }
+    if (step === 3) {
+      return formData.packageType.trim() && formData.packageSize.trim();
+    }
+    return true;
+  };
+
+  const handleNext = (e) => {
+    e.preventDefault();
+    if (validateStep(currentStep)) {
+      setCurrentStep((s) => Math.min(4, s + 1));
+    } else {
+      alert("Please fill in all required fields for this step.");
+    }
+  };
+
+  const handleBack = () => setCurrentStep((s) => Math.max(1, s - 1));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateStep(3)) {
+      console.log("Booking submitted:", formData);
+      alert("Booking submitted (check console). Thanks!");
+    } else {
+      alert("Please complete the package details before submitting.");
+    }
+  };
+
+  return (
+    <div className="book-delivery-page">
+      {/* ===== HEADER ===== */}
+      <header className="header">
+        <div className="header-logo">
+          <img src={logo} alt="MultiBag Deliveries" />
+        </div>
+
+        <nav className="header-nav">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Services</a>
+          <a href="#">Contact</a>
+        </nav>
+
+        <div className="header-buttons">
+          <button className="login-btn">Login</button>
+          <button className="signup-btn">Sign Up</button>
+        </div>
+      </header>
+
+      {/* ===== MAIN FORM ===== */}
+      <div className="form-wrapper">
+        <div className="form-card">
+          <h1 className="form-title">Book a Delivery</h1>
+          <p className="form-subtitle">
+            Fill in the details below to book your parcel delivery.
+          </p>
+
+          {/* Progress Bar */}
+          <div className="progress-container" aria-hidden>
+            <div className={`step ${currentStep >= 1 ? "active" : ""}`}>
+              <div className="step-circle">1</div>
+              <div className="step-label">Delivery details</div>
+            </div>
+
+            <div className={`step ${currentStep >= 2 ? "active" : ""}`}>
+              <div className="step-circle">2</div>
+              <div className="step-label">Delivery class</div>
+            </div>
+
+            <div className={`step ${currentStep >= 3 ? "active" : ""}`}>
+              <div className="step-circle">3</div>
+              <div className="step-label">Review and Confirm</div>
+            </div>
+
+            <div className={`step ${currentStep >= 4 ? "active" : ""}`}>
+              <div className="step-circle">4</div>
+              <div className="step-label">Payment</div>
+            </div>
+          </div>
+
+          <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
+            {/* ==== Step 1: Delivery Details - All Form Fields ==== */}
+            {currentStep === 1 && (
+              <div className="form-section">
+                <h2 className="section-title">Sender Information</h2>
+
+                <label htmlFor="senderName">
+                  Full name
+                </label>
+                <input
+                  id="senderName"
+                  name="senderName"
+                  value={formData.senderName}
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Enter your full name"
+                  required
+                />
+
+                <label htmlFor="senderEmail">
+                  Email address
+                </label>
+                <input
+                  id="senderEmail"
+                  name="senderEmail"
+                  value={formData.senderEmail}
+                  onChange={handleChange}
+                  type="email"
+                  placeholder="Enter your email address"
+                  required
+                />
+
+                <label htmlFor="senderPhone">
+                  Phone number
+                </label>
+                <input
+                  id="senderPhone"
+                  name="senderPhone"
+                  value={formData.senderPhone}
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Enter your phone number"
+                  required
+                />
+
+                <label htmlFor="pickupAddress">
+                  Pickup address
+                </label>
+                <input
+                  id="pickupAddress"
+                  name="pickupAddress"
+                  value={formData.pickupAddress}
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Enter your pickup address"
+                  required
+                />
+
+                <h2 className="section-title" style={{ marginTop: "24px" }}>Recipient's Information</h2>
+
+                <label htmlFor="recipientName">
+                  Full name
+                </label>
+                <input
+                  id="recipientName"
+                  name="recipientName"
+                  value={formData.recipientName}
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Enter your full name"
+                  required
+                />
+
+                <label htmlFor="recipientPhone">
+                  Phone number
+                </label>
+                <input
+                  id="recipientPhone"
+                  name="recipientPhone"
+                  value={formData.recipientPhone}
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Enter your phone number"
+                  required
+                />
+
+                <label htmlFor="deliveryAddress">
+                  Delivery address
+                </label>
+                <input
+                  id="deliveryAddress"
+                  name="deliveryAddress"
+                  value={formData.deliveryAddress}
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Enter the drop-off address"
+                  required
+                />
+
+                <h2 className="section-title" style={{ marginTop: "24px" }}>Package Details</h2>
+
+                <label htmlFor="packageType">
+                  Package type
+                </label>
+                <input
+                  id="packageType"
+                  name="packageType"
+                  value={formData.packageType}
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="What type of package is it. Ex Food, Clothes, Gadgets, etc."
+                  required
+                >
+                  
+                </input>
+
+                <label htmlFor="packageSize">
+                  Package size
+                </label>
+                <select
+                  id="packageSize"
+                  name="packageSize"
+                  value={formData.packageSize}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select package size</option>
+                  <option value="small">Small</option>
+                  <option value="medium">Medium</option>
+                  <option value="large">Large</option>
+                </select>
+
+                <label htmlFor="instructions">
+                  Special instructions
+                </label>
+                <textarea
+                  id="instructions"
+                  name="instructions"
+                  value={formData.instructions}
+                  onChange={handleChange}
+                  placeholder="Special instructions (optional)"
+                />
+              </div>
+            )}
+
+            {/* ==== Step 2: Empty for now ==== */}
+            {currentStep === 2 && (
+              <div className="form-section">
+              </div>
+            )}
+
+            {/* ==== Step 3: Empty for now ==== */}
+            {currentStep === 3 && (
+              <div className="form-section">
+              </div>
+            )}
+
+            {/* ==== Step 4: Empty for now ==== */}
+            {currentStep === 4 && (
+              <div className="form-section">
+              </div>
+            )}
+
+            <div className="form-actions">
+              {currentStep > 1 && (
+                <button type="button" className="btn-back" onClick={handleBack}>
+                  Back
+                </button>
+              )}
+
+              <button type="submit" className="proceed-btn">
+                {currentStep === 4 ? "Confirm & Book" : "Proceed"}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {/* ===== FOOTER ===== */}
+      <footer className="footer">
+        <div className="footer-main">
+          <div className="footer-brand-container">
+            <div className="footer-logo-row">
+              <img src={logo} alt="MultiBag Deliveries" className="footer-logo" />
+              <div className="footer-logo-texts">
+                <span className="footer-logo-main">Multi<span className="footer-logo-accent">Bag</span></span><br />
+                <span className="footer-logo-desc">Deliveries...</span>
+              </div>
+            </div>
+            <p className="footer-desc">
+              Jorem ipsum dolor sit amet, consectet ur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
+            </p>
+          </div>
+          <div className="footer-links">
+            <div>
+              <h4>Company</h4>
+              <a href="#">Services</a>
+              <a href="#">About Us</a>
+              <a href="#">FAQs</a>
+              <a href="#">Track my parcel</a>
+            </div>
+            <div>
+              <h4>Contact Us</h4>
+              <div className="footer-contact-row"><span className="footer-contact-icon">📍</span> Ghana</div>
+              <div className="footer-contact-row"><span className="footer-contact-icon">✉️</span> help@multibag.com</div>
+              <div className="footer-contact-row"><span className="footer-contact-icon">⏰</span> Mon - Fri 8:00am - 6:00pm</div>
+              <div className="footer-socials">
+                <a href="#" aria-label="Facebook" className="footer-social-icon">&#xf09a;</a>
+                <a href="#" aria-label="Instagram" className="footer-social-icon">&#xf16d;</a>
+                <a href="#" aria-label="X" className="footer-social-icon">&#xf099;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          © MultiBag 2024, All Right Reserved.
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Bookadelivery;
