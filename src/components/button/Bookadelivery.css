@@ -1,6 +1,6 @@
 /* ===== PAGE LAYOUT ===== */
 .book-delivery-page {
-  background: #EFF5F1 url("../../assets/images/path50.png");
+  background: #eff5f1 url("../../assets/images/path50.png");
   min-height: 100vh;
   font-family: "Inter", sans-serif;
   padding-bottom: 100px;
@@ -35,6 +35,10 @@
   color: #333;
 }
 
+.header-nav a:hover {
+  color: #f9a826;
+  text-decoration: underline;
+}
 .header-buttons button {
   padding: 8px 18px;
   border-radius: 6px;
@@ -49,10 +53,16 @@
   color: #0a4d26;
   margin-right: 10px;
 }
+.login-btn:hover {
+  background: #f0f0f0;
+}
 
 .signup-btn {
   background: #0a4d26;
   color: white;
+}
+.signup-btn:hover {
+  background: #073d20;
 }
 
 /* ===== FORM WRAPPER ===== */
@@ -68,7 +78,7 @@
   background: white;
   padding: 40px;
   border-radius: 16px;
-  box-shadow: 0px 10px 30px rgba(0,0,0,0.08);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
 }
 
@@ -136,7 +146,7 @@
 .step.active .step-circle {
   background: #f9a826;
   color: #fff;
-  box-shadow: 0 6px 16px rgba(249,168,38,0.18);
+  box-shadow: 0 6px 16px rgba(249, 168, 38, 0.18);
 }
 
 .step.active .step-label {
@@ -214,14 +224,13 @@ textarea {
   padding: 18px 0 12px 0;
   color: #ddd;
   font-size: 15px;
-  background: #001A0A;
+  background: #001a0a;
   width: 100%;
   margin-top: 28px;
-  
 }
 
 .footer {
-  background: #001A0A;
+  background: #001a0a;
   color: white;
   margin-top: 50px;
   padding: 50px;
@@ -265,16 +274,18 @@ textarea {
   padding: 18px;
   margin-left: 60px;
   box-sizing: border-box;
-  min-width: 160px;
+  width: 300px;
+  height: 190px;
 }
 
 .footer-logo-row {
-  display: flex;
+  display: fit-content;
   align-items: center;
   gap: 16px;
 }
 
 .footer-logo {
+  margin-top:-40px;
   width: 120px;
   height: 120px;
   object-fit: contain;
@@ -282,14 +293,14 @@ textarea {
 
 .footer-desc {
   color: #e6e6e6;
-  margin-top: 10px;
+  margin-top: -10px;
   font-size: 14px;
 }
 
 .footer-links {
   display: flex;
   flex: 1 1 auto;
-  gap: -80px;
+  
   align-items: flex-start;
 }
 
@@ -305,6 +316,12 @@ textarea {
   margin-bottom: 10px;
   font-size: 17px;
   color: #fff;
+}.footer-links2 h4 {
+  margin-bottom: 10px;
+  margin-left: -150px;
+  font-size: 17px;
+  color: #fff;
+
 }
 
 .footer-links a {
@@ -327,7 +344,10 @@ textarea {
   color: #ddd;
   font-size: 15px;
 }
+.footer-contact-row:hover {
+  color: #f9a826;
 
+}
 .footer-contact-icon {
   font-size: 16px;
   color: #f9a826;
@@ -340,8 +360,8 @@ textarea {
 }
 
 .footer-social-icon {
-  font-family: 'FontAwesome', Arial, sans-serif;
-  font-size: 18px;
+  font-family: "FontAwesome", Arial, sans-serif;
+  font-size: 188px;
   color: #ddd;
   text-decoration: none;
   transition: color 0.2s;
@@ -354,77 +374,172 @@ textarea {
 a {
   color: inherit;
 }
+/* ===== BASE ===== */
+.hamburger {
+  display: none; /* hidden by default */
+}
 
 /* ===== RESPONSIVE ===== */
+
+/* Tablet screens (≤ 900px) */
 @media (max-width: 900px) {
+  /* Header stacks vertically */
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px;
+  }
+  .header-nav {
+    margin-top: 10px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .header-buttons {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  /* Footer */
   .footer-main {
     flex-direction: column;
     gap: 24px;
   }
-
   .footer-brand-container {
-    flex: 0 0 auto;
     width: 100%;
     background: rgba(0, 64, 26, 0.12);
     padding: 18px;
+    margin-left: 0;
   }
-
-  .footer-links {
-    justify-content: flex-start;
-  }
-
-  .book-delivery-page {
-    padding-bottom: 140px;
-  }
-
   .footer-logo {
     width: 64px;
     height: 64px;
   }
+  
+
+  /* Page */
+  .book-delivery-page {
+    padding-bottom: 140px;
+  }
 }
 
+/* Small tablets & large phones (≤ 600px) */
 @media (max-width: 600px) {
+  /* Form */
+  .form-card {
+    padding: 20px;
+  }
+  .form-title {
+    font-size: 24px;
+  }
+  .form-subtitle {
+    font-size: 14px;
+  }
+
+  /* Footer */
   .footer {
     flex-direction: column;
     padding: 30px 20px;
   }
-
   .footer-links {
-    display: flex;
-    gap: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
     margin-top: 20px;
   }
-
-  .book-delivery-page {
-    padding-bottom: 140px;
+  .footer-links > div:last-child {
+    margin-left: 0;
   }
-
   .footer-logo {
     width: 56px;
     height: 56px;
   }
 }
 
+/* Small phones (≤ 480px) */
 @media (max-width: 480px) {
+  /* Progress steps */
+  .progress-container {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+  .step {
+    min-width: 80px;
+    font-size: 12px;
+  }
   .step-circle {
     width: 36px;
     height: 36px;
   }
-
   .step:not(:last-child)::after {
     top: 18px;
   }
-
   .step-label {
     font-size: 12px;
   }
 
-  .step {
-    width: 90px;
-    font-size: 12px;
+  /* Header stays one line */
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
   }
 
-  .step.active {
-    padding: 6px 4px;
+  /* Hide nav + buttons initially */
+  .header-nav,
+  .header-buttons {
+    display: none;
+  }
+
+  /* Show nav when toggled */
+  .header-nav.open {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  /* Show buttons when toggled */
+  .header-buttons.open {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  /* Hamburger menu */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .hamburger span {
+    width: 100%;
+    height: 3px;
+    background: #004016;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  /* Animate hamburger into "X" when active */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
   }
 }

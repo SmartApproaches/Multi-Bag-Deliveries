@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import logo from "../../assets/images/delivery-logo.png"
-import footerlogo from "../../assets/images/footer-logo.png"
-import destinationIcon from "../../assets/images/destination.png"
-import emailIcon from "../../assets/images/email.png"
-import clockIcon from "../../assets/images/clock.png"
-import facebookIcon from "../../assets/images/facebook.png"
-import instagramIcon from "../../assets/images/instagram.png"
-import xIcon from "../../assets/images/x.png"
+import logo from "../../assets/images/delivery-logo.png";
+import footerlogo from "../../assets/images/footer-logo.png";
+import destinationIcon from "../../assets/images/destination.png";
+import emailIcon from "../../assets/images/email.png";
+import clockIcon from "../../assets/images/clock.png";
+import facebookIcon from "../../assets/images/facebook.png";
+import instagramIcon from "../../assets/images/instagram.png";
+import xIcon from "../../assets/images/x.png";
+import vector from "../../assets/images/vector.png";
 import "./Bookadelivery.css";
 
 const Bookadelivery = () => {
@@ -23,6 +24,9 @@ const Bookadelivery = () => {
     packageSize: "",
     instructions: "",
   });
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -79,8 +83,8 @@ const Bookadelivery = () => {
         <div className="header-logo">
           <img src={logo} alt="MultiBag Deliveries" />
         </div>
-
-        <nav className="header-nav">
+       
+        <nav  className={`header-nav ${menuOpen ? "open" : ""}`}>
           <a href="#">Home</a>
           <a href="#">About</a>
           <a href="#">Services</a>
@@ -91,6 +95,11 @@ const Bookadelivery = () => {
           <button className="login-btn">Login</button>
           <button className="signup-btn">Sign Up</button>
         </div>
+
+         <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          <img src={vector} alt="" />
+        </button>
+
       </header>
 
       {/* ===== MAIN FORM ===== */}
@@ -130,9 +139,7 @@ const Bookadelivery = () => {
               <div className="form-section">
                 <h2 className="section-title">Sender Information</h2>
 
-                <label htmlFor="senderName">
-                  Full name
-                </label>
+                <label htmlFor="senderName">Full name</label>
                 <input
                   id="senderName"
                   name="senderName"
@@ -143,9 +150,7 @@ const Bookadelivery = () => {
                   required
                 />
 
-                <label htmlFor="senderEmail">
-                  Email address
-                </label>
+                <label htmlFor="senderEmail">Email address</label>
                 <input
                   id="senderEmail"
                   name="senderEmail"
@@ -156,9 +161,7 @@ const Bookadelivery = () => {
                   required
                 />
 
-                <label htmlFor="senderPhone">
-                  Phone number
-                </label>
+                <label htmlFor="senderPhone">Phone number</label>
                 <input
                   id="senderPhone"
                   name="senderPhone"
@@ -169,9 +172,7 @@ const Bookadelivery = () => {
                   required
                 />
 
-                <label htmlFor="pickupAddress">
-                  Pickup address
-                </label>
+                <label htmlFor="pickupAddress">Pickup address</label>
                 <input
                   id="pickupAddress"
                   name="pickupAddress"
@@ -182,11 +183,11 @@ const Bookadelivery = () => {
                   required
                 />
 
-                <h2 className="section-title" style={{ marginTop: "24px" }}>Recipient's Information</h2>
+                <h2 className="section-title" style={{ marginTop: "24px" }}>
+                  Recipient's Information
+                </h2>
 
-                <label htmlFor="recipientName">
-                  Full name
-                </label>
+                <label htmlFor="recipientName">Full name</label>
                 <input
                   id="recipientName"
                   name="recipientName"
@@ -197,9 +198,7 @@ const Bookadelivery = () => {
                   required
                 />
 
-                <label htmlFor="recipientPhone">
-                  Phone number
-                </label>
+                <label htmlFor="recipientPhone">Phone number</label>
                 <input
                   id="recipientPhone"
                   name="recipientPhone"
@@ -210,9 +209,7 @@ const Bookadelivery = () => {
                   required
                 />
 
-                <label htmlFor="deliveryAddress">
-                  Delivery address
-                </label>
+                <label htmlFor="deliveryAddress">Delivery address</label>
                 <input
                   id="deliveryAddress"
                   name="deliveryAddress"
@@ -223,11 +220,11 @@ const Bookadelivery = () => {
                   required
                 />
 
-                <h2 className="section-title" style={{ marginTop: "24px" }}>Package Details</h2>
+                <h2 className="section-title" style={{ marginTop: "24px" }}>
+                  Package Details
+                </h2>
 
-                <label htmlFor="packageType">
-                  Package type
-                </label>
+                <label htmlFor="packageType">Package type</label>
                 <input
                   id="packageType"
                   name="packageType"
@@ -236,13 +233,9 @@ const Bookadelivery = () => {
                   type="text"
                   placeholder="What type of package is it. Ex Food, Clothes, Gadgets, etc."
                   required
-                >
-                  
-                </input>
+                ></input>
 
-                <label htmlFor="packageSize">
-                  Package size
-                </label>
+                <label htmlFor="packageSize">Package size</label>
                 <select
                   id="packageSize"
                   name="packageSize"
@@ -256,9 +249,7 @@ const Bookadelivery = () => {
                   <option value="large">Large</option>
                 </select>
 
-                <label htmlFor="instructions">
-                  Special instructions
-                </label>
+                <label htmlFor="instructions">Special instructions</label>
                 <textarea
                   id="instructions"
                   name="instructions"
@@ -270,22 +261,13 @@ const Bookadelivery = () => {
             )}
 
             {/* ==== Step 2: Empty for now ==== */}
-            {currentStep === 2 && (
-              <div className="form-section">
-              </div>
-            )}
+            {currentStep === 2 && <div className="form-section"></div>}
 
             {/* ==== Step 3: Empty for now ==== */}
-            {currentStep === 3 && (
-              <div className="form-section">
-              </div>
-            )}
+            {currentStep === 3 && <div className="form-section"></div>}
 
             {/* ==== Step 4: Empty for now ==== */}
-            {currentStep === 4 && (
-              <div className="form-section">
-              </div>
-            )}
+            {currentStep === 4 && <div className="form-section"></div>}
 
             <div className="form-actions">
               {currentStep > 1 && (
@@ -307,10 +289,15 @@ const Bookadelivery = () => {
         <div className="footer-main">
           <div className="footer-brand-container">
             <div className="footer-logo-row">
-              <img src={footerlogo} alt="MultiBag Deliveries" className="footer-logo" />
+              <img
+                src={footerlogo}
+                alt="MultiBag Deliveries"
+                className="footer-logo"
+              />
             </div>
             <p className="footer-desc">
-              Jorem ipsum dolor sit amet, consectet ur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
+              Jorem ipsum dolor sit amet, consectet ur adipiscing elit. Nunc
+              vulputate libero et velit interdum, ac aliquet odio mattis.
             </p>
           </div>
           <div className="footer-links">
@@ -321,15 +308,50 @@ const Bookadelivery = () => {
               <a href="#">FAQs</a>
               <a href="#">Track my parcel</a>
             </div>
-            <div>
+            <div className="footer-links2">
               <h4>Contact Us</h4>
-              <div className="footer-contact-row"><img src={destinationIcon} alt="Location" className="footer-contact-icon" /> Ghana</div>
-              <div className="footer-contact-row"><img src={emailIcon} alt="Email" className="footer-contact-icon" /> help@multibag.com</div>
-              <div className="footer-contact-row"><img src={clockIcon} alt="Hours" className="footer-contact-icon" /> Mon - Fri 8:00am - 6:00pm</div>
+              <div className="footer-contact-row">
+                <img
+                  src={destinationIcon}
+                  alt="Location"
+                  className="footer-contact-icon"
+                />{" "}
+                Ghana
+              </div>
+              <div className="footer-contact-row">
+                <img
+                  src={emailIcon}
+                  alt="Email"
+                  className="footer-contact-icon"
+                />{" "}
+                help@multibag.com
+              </div>
+              <div className="footer-contact-row">
+                <img
+                  src={clockIcon}
+                  alt="Hours"
+                  className="footer-contact-icon"
+                />{" "}
+                Mon - Fri 8:00am - 6:00pm
+              </div>
               <div className="footer-socials">
-                <a href="#" aria-label="Facebook" className="footer-social-icon"><img src={facebookIcon} alt="Facebook" /></a>
-                <a href="#" aria-label="Instagram" className="footer-social-icon"><img src={instagramIcon} alt="Instagram" /></a>
-                <a href="#" aria-label="X" className="footer-social-icon"><img src={xIcon} alt="X" /></a>
+                <a
+                  href="#"
+                  aria-label="Facebook"
+                  className="footer-social-icon"
+                >
+                  <img src={facebookIcon} alt="Facebook" />
+                </a>
+                <a
+                  href="#"
+                  aria-label="Instagram"
+                  className="footer-social-icon"
+                >
+                  <img src={instagramIcon} alt="Instagram" />
+                </a>
+                <a href="#" aria-label="X" className="footer-social-icon">
+                  <img src={xIcon} alt="X" />
+                </a>
               </div>
             </div>
           </div>
