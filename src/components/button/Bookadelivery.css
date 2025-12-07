@@ -376,7 +376,7 @@ a {
 }
 /* ===== BASE ===== */
 .hamburger {
-  display: none; /* hidden by default */
+  display: none; 
 }
 
 /* ===== RESPONSIVE ===== */
