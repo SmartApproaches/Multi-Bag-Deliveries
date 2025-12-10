@@ -6,6 +6,8 @@ import emailIcon from "../../assets/images/email.png";
 import clockIcon from "../../assets/images/clock.png";
 import facebookIcon from "../../assets/images/facebook.png";
 import instagramIcon from "../../assets/images/instagram.png";
+import Premium from "../../assets/images/premium.png";
+import Standard from "../../assets/images/standard.png";
 import xIcon from "../../assets/images/x.png";
 import vector from "../../assets/images/vector.png";
 import "./Bookadelivery.css";
@@ -26,7 +28,6 @@ const Bookadelivery = () => {
   });
 
   const [menuOpen, setMenuOpen] = useState(false);
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -76,8 +77,6 @@ const Bookadelivery = () => {
     }
   };
 
-  
-
   return (
     <div className="book-delivery-page">
       {/* ===== HEADER ===== */}
@@ -85,8 +84,8 @@ const Bookadelivery = () => {
         <div className="header-logo">
           <img src={logo} alt="MultiBag Deliveries" />
         </div>
-       
-        <nav  className={`header-nav ${menuOpen ? "open" : ""}`}>
+
+        <nav className={`header-nav ${menuOpen ? "open" : ""}`}>
           <a href="#">Home</a>
           <a href="#">About</a>
           <a href="#">Services</a>
@@ -98,10 +97,9 @@ const Bookadelivery = () => {
           <button className="signup-btn">Sign Up</button>
         </div>
 
-         <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
           <img src={vector} alt="" />
         </button>
-
       </header>
 
       {/* ===== MAIN FORM ===== */}
@@ -263,12 +261,165 @@ const Bookadelivery = () => {
             )}
 
             {/* ==== Step 2: Empty for now ==== */}
-            {currentStep === 2 && <div className="form-section"></div>}
+            {currentStep === 2 && (
+              <div className="form-section delivery-class-section">
+                <h2 className="section-title">Select a Delivery Class</h2>
 
-            {/* ==== Step 3: Empty for now ==== */}
-            {currentStep === 3 && <div className="form-section"></div>}
+                <div className="delivery-class-grid">
+                  {/* Premium Class */}
+                  <label
+                    className={`delivery-class-card ${
+                      formData.deliveryClass === "premium" ? "selected" : ""
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="deliveryClass"
+                      value="premium"
+                      checked={formData.deliveryClass === "premium"}
+                      onChange={handleChange}
+                    />
 
-            {/* ==== Step 4: Empty for now ==== */}
+                    {/*  icon image */}
+                    <div className="icon-area">
+                      <img src={Premium} alt="" className="icon-img" />
+                    </div>
+
+                    <div className="text-area">
+                      <h3 className="delivery-class-title">Premium Class</h3>
+                      <p className="delivery-class-sub">Same-Day Delivery</p>
+                    </div>
+
+                    {/* Custom radio */}
+                    <span className="custom-radio"></span>
+                  </label>
+
+                  {/* Standard Class */}
+                  <label
+                    className={`delivery-class-card ${
+                      formData.deliveryClass === "standard" ? "selected" : ""
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="deliveryClass"
+                      value="standard"
+                      checked={formData.deliveryClass === "standard"}
+                      onChange={handleChange}
+                    />
+
+                    {/* icon image */}
+                    <div className="icon-area">
+                      <img src={Standard} alt="" className="icon-img" />
+                    </div>
+
+                    <div className="text-area">
+                      <h3 className="delivery-class-title">Standard Class</h3>
+                      <p className="delivery-class-sub">
+                        Up to 7 Days Delivery
+                      </p>
+                    </div>
+
+                    {/* Custom radio */}
+                    <span className="custom-radio"></span>
+                  </label>
+                </div>
+              </div>
+            )}
+
+            {/* ==== Step 3: Review and Confirm ==== */}
+            {currentStep === 3 && (
+              <div className="form-section review-section">
+                <h2 className="section-title">Review Your Booking</h2>
+
+                {/* Sender Information */}
+                <h3 className="review-heading">Sender Information</h3>
+                <div className="review-row">
+                  <span className="review-label">Full name</span>
+                  <span className="review-colon">:</span>
+                  <span className="review-value">{formData.senderName}</span>
+                </div>
+                <div className="review-row">
+                  <span className="review-label">Email</span>
+                  <span className="review-colon">:</span>
+                  <span className="review-value">{formData.senderEmail}</span>
+                </div>
+                <div className="review-row">
+                  <span className="review-label">Phone number</span>
+                  <span className="review-colon">:</span>
+                  <span className="review-value">{formData.senderPhone}</span>
+                </div>
+                <div className="review-row">
+                  <span className="review-label">Pickup address</span>
+                  <span className="review-colon">:</span>
+                  <span className="review-value">{formData.pickupAddress}</span>
+                </div>
+
+                {/* Recipient */}
+                <h3 className="review-heading" style={{ marginTop: "28px" }}>
+                  Recipient’s Information
+                </h3>
+                <div className="review-row">
+                  <span className="review-label">Full name</span>
+                  <span className="review-colon">:</span>
+                  <span className="review-value">{formData.recipientName}</span>
+                </div>
+                <div className="review-row">
+                  <span className="review-label">Phone number</span>
+                  <span className="review-colon">:</span>
+                  <span className="review-value">
+                    {formData.recipientPhone}
+                  </span>
+                </div>
+                <div className="review-row">
+                  <span className="review-label">Delivery location</span>
+                  <span className="review-colon">:</span>
+                  <span className="review-value">
+                    {formData.deliveryAddress}
+                  </span>
+                </div>
+
+                {/* Package Details */}
+                <h3 className="review-heading" style={{ marginTop: "28px" }}>
+                  Package Details
+                </h3>
+                <div className="review-row">
+                  <span className="review-label">Package type</span>
+                  <span className="review-colon">:</span>
+                  <span className="review-value">{formData.packageType}</span>
+                </div>
+                <div className="review-row">
+                  <span className="review-label">Package size</span>
+                  <span className="review-colon">:</span>
+                  <span className="review-value">{formData.packageSize}</span>
+                </div>
+                <div className="review-row">
+                  <span className="review-label">Special instructions</span>
+                  <span className="review-colon">:</span>
+                  <span className="review-value">
+                    {formData.instructions || "Nil"}
+                  </span>
+                </div>
+
+                {/* Delivery Class */}
+                <h3 className="review-heading" style={{ marginTop: "28px" }}>
+                  Delivery Class
+                </h3>
+                <div className="review-row">
+                  <span className="review-label"></span>
+                  <span className="review-colon"></span>
+                  <span className="review-value">
+                    {formData.deliveryClass === "premium"
+                      ? "Premium class"
+                      : formData.deliveryClass === "standard"
+                      ? "Standard class"
+                      : ""}
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {/* ==== Step 4: Payment */}
             {currentStep === 4 && <div className="form-section"></div>}
 
             <div className="form-actions">

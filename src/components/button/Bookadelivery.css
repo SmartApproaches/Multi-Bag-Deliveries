@@ -178,6 +178,195 @@ textarea {
   resize: none;
 }
 
+.delivery-class-section {
+  margin-top: 30px;
+}
+
+/* Grid for 2 cards */
+.delivery-class-grid {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+/* Card style */
+.delivery-class-card {
+  width: 260px;
+  height: 140px;
+  padding: 20px;
+  border: 1.5px solid #d9d9d9;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+/* Hide radio input */
+.delivery-class-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Hover */
+.delivery-class-card:hover {
+  border-color: #008037;
+  background: #f7fffb;
+}
+
+/* Active / Selected */
+.delivery-class-card.selected {
+  border-color: #008037;
+  background: #effff7;
+}
+
+/* Icon circle */
+.icon-area {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #008037;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-shield {
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 4px;
+}
+
+/* Text */
+.text-area h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.text-area p {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #666;
+}
+
+.review-section {
+  margin-top: 10px;
+}
+
+.review-heading {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f3f16;
+  margin-bottom: 10px;
+}
+
+.review-row {
+  display: grid;
+  grid-template-columns: 180px 20px 1fr;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.review-label {
+  font-size: 14px;
+  color: #444;
+}
+
+.review-colon {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+.review-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #222;
+}
+
+.delivery-class-section {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.delivery-class-grid {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+/* The two cards */
+.delivery-class-card {
+  width: 260px;
+  border: 1px solid #e4e4e4;
+  border-radius: 10px;
+  padding: 20px;
+  background: #ffffff;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  cursor: pointer;
+  position: relative;
+}
+
+.delivery-class-card.selected {
+  border-color: #0c3a2d;
+  background: #f1fff4;
+}
+
+/* hide real radio */
+.delivery-class-card input[type="radio"] {
+  display: none;
+}
+
+/* custom radio */
+.custom-radio {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #0c3a2d;
+  border-radius: 50%;
+  position: absolute;
+  right: 18px;
+  top: 18px;
+}
+
+.delivery-class-card.selected .custom-radio {
+  background: #0c3a2d;
+}
+
+/* icon area */
+.icon-area {
+  width: 32px;
+  height: 32px;
+  background: #f3f3f3;
+  border-radius: 6px;
+}
+
+.icon-img {
+  width: 100%;
+  height: 100%;
+}
+
+/* text area */
+.delivery-class-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.delivery-class-sub {
+  font-size: 13px;
+  color: #777;
+  margin: 4px 0 0 0;
+}
+
+
+
 /* ===== BUTTONS ===== */
 .form-actions {
   display: flex;
