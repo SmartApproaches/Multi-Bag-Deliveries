@@ -10,267 +10,412 @@ import Premium from "../../assets/images/premium.png";
 import Standard from "../../assets/images/standard.png";
 import xIcon from "../../assets/images/x.png";
 import vector from "../../assets/images/vector.png";
-import "./Bookadelivery.css";
 
 const Bookadelivery = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState({
-    senderName: "",
-    senderEmail: "",
-    senderPhone: "",
-    pickupAddress: "",
-    recipientName: "",
-    recipientPhone: "",
-    deliveryAddress: "",
-    packageType: "",
-    packageSize: "",
-    instructions: "",
-  });
-
+  const [formData, setFormData] = useState({});
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const validateStep = (step) => {
-    if (step === 1) {
-      return (
-        formData.senderName.trim() &&
-        formData.senderEmail.trim() &&
-        formData.senderPhone.trim() &&
-        formData.pickupAddress.trim()
-      );
-    }
-    if (step === 2) {
-      return (
-        formData.recipientName.trim() &&
-        formData.recipientPhone.trim() &&
-        formData.deliveryAddress.trim()
-      );
-    }
-    if (step === 3) {
-      return formData.packageType.trim() && formData.packageSize.trim();
-    }
-    return true;
-  };
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleNext = (e) => {
     e.preventDefault();
-    if (validateStep(currentStep)) {
-      setCurrentStep((s) => Math.min(4, s + 1));
-    } else {
-      alert("Please fill in all required fields for this step.");
-    }
+    setCurrentStep((s) => Math.min(4, s + 1));
   };
-
-  const handleBack = () => setCurrentStep((s) => Math.max(1, s - 1));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateStep(3)) {
-      console.log("Booking submitted:", formData);
-      alert("Booking submitted (check console). Thanks!");
-    } else {
-      alert("Please complete the package details before submitting.");
-    }
+    alert("Booking submitted");
   };
 
   return (
-    <div className="book-delivery-page">
-      {/* ===== HEADER ===== */}
-      <header className="header">
-        <div className="header-logo">
-          <img src={logo} alt="MultiBag Deliveries" />
-        </div>
+    <div className="min-h-screen bg-[#EFF5F1] font-inter">
+      {/* HEADER */}
+      <header className="bg-white border-b px-6 py-4 flex items-center justify-between">
+        <img src={logo} alt="logo" className="h-10" />
 
-        <nav className={`header-nav ${menuOpen ? "open" : ""}`}>
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Services</a>
-          <a href="#">Contact</a>
+        <nav className="hidden md:flex gap-8 text-gray-700 font-medium">
+          <a href="#" className="hover:text-yellow-500">
+            Home
+          </a>
+          <a href="#" className="hover:text-yellow-500">
+            About
+          </a>
+          <a href="#" className="hover:text-yellow-500">
+            Services
+          </a>
+          <a href="#" className="hover:text-yellow-500">
+            Contact
+          </a>
         </nav>
 
-        <div className="header-buttons">
-          <button className="login-btn">Login</button>
-          <button className="signup-btn">Sign Up</button>
+        <div className="hidden md:flex gap-3">
+          <button className="px-4 py-2 border rounded-md text-green-700">
+            Login
+          </button>
+          <button className="px-4 py-2 bg-green-700 text-white rounded-md">
+            Sign Up
+          </button>
         </div>
 
-        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
           <img src={vector} alt="" />
         </button>
       </header>
 
-      {/* ===== MAIN FORM ===== */}
-      <div className="form-wrapper">
-        <div className="form-card">
-          <h1 className="form-title">Book a Delivery</h1>
-          <p className="form-subtitle">
+      {/* FORM */}
+      <div className="min-h-screen bg-gray-100 flex items-start justify-center px-4 py-12">
+        <div className="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-8">
+          <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">
+            Book a Delivery
+          </h1>
+
+          <p className="mt-2 text-sm md:text-base text-gray-500">
             Fill in the details below to book your parcel delivery.
           </p>
 
           {/* Progress Bar */}
-          <div className="progress-container" aria-hidden>
-            <div className={`step ${currentStep >= 1 ? "active" : ""}`}>
-              <div className="step-circle">1</div>
-              <div className="step-label">Delivery details</div>
+          <div aria-hidden className="flex items-center mb-8">
+            {/* Step 1 */}
+            <div className="flex flex-col items-center">
+              <div
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
+      ${
+        currentStep >= 1
+          ? "bg-[#FFA62B] text-white"
+          : "bg-gray-200 text-gray-500"
+      }`}
+              >
+                1
+              </div>
+              <span
+                className={`mt-2 text-xs text-center
+      ${currentStep >= 1 ? "text-[#FFA62B]" : "text-gray-400"}`}
+              >
+                Delivery details
+              </span>
             </div>
 
-            <div className={`step ${currentStep >= 2 ? "active" : ""}`}>
-              <div className="step-circle">2</div>
-              <div className="step-label">Delivery class</div>
+            {/* Dotted Line 1 */}
+            <div
+              className={`flex-1 border-t border-dashed mx-2
+    ${currentStep >= 2 ? "border-[#FFA62B]" : "border-gray-300"}`}
+            ></div>
+
+            {/* Step 2 */}
+            <div className="flex flex-col items-center">
+              <div
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
+      ${
+        currentStep >= 2
+          ? "bg-[#FFA62B] text-white"
+          : "bg-gray-200 text-gray-500"
+      }`}
+              >
+                2
+              </div>
+              <span
+                className={`mt-2 text-xs text-center
+      ${currentStep >= 2 ? "text-[#FFA62B]" : "text-gray-400"}`}
+              >
+                Delivery class
+              </span>
             </div>
 
-            <div className={`step ${currentStep >= 3 ? "active" : ""}`}>
-              <div className="step-circle">3</div>
-              <div className="step-label">Review and Confirm</div>
+            {/* Dotted Line 2 */}
+            <div
+              className={`flex-1 border-t border-dashed mx-2
+    ${currentStep >= 3 ? "border-[#FFA62B]" : "border-gray-300"}`}
+            ></div>
+
+            {/* Step 3 */}
+            <div className="flex flex-col items-center">
+              <div
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
+      ${
+        currentStep >= 3
+          ? "bg-[#FFA62B] text-white"
+          : "bg-gray-200 text-gray-500"
+      }`}
+              >
+                3
+              </div>
+              <span
+                className={`mt-2 text-xs text-center
+      ${currentStep >= 3 ? "text-[#FFA62B]" : "text-gray-400"}`}
+              >
+                Review & Confirm
+              </span>
             </div>
 
-            <div className={`step ${currentStep >= 4 ? "active" : ""}`}>
-              <div className="step-circle">4</div>
-              <div className="step-label">Payment</div>
+            {/* Dotted Line 3 */}
+            <div
+              className={`flex-1 border-t border-dashed mx-2
+    ${currentStep >= 4 ? "border-[#FFA62B]" : "border-gray-300"}`}
+            ></div>
+
+            {/* Step 4 */}
+            <div className="flex flex-col items-center">
+              <div
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
+      ${
+        currentStep >= 4
+          ? "bg-[#FFA62B] text-white"
+          : "bg-gray-200 text-gray-500"
+      }`}
+              >
+                4
+              </div>
+              <span
+                className={`mt-2 text-xs text-center
+      ${currentStep >= 4 ? "text-[#FFA62B]" : "text-gray-400"}`}
+              >
+                Payment
+              </span>
             </div>
           </div>
 
           <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
-            {/* ==== Step 1: Delivery Details - All Form Fields ==== */}
-            {currentStep === 1 && (
-              <div className="form-section">
-                <h2 className="section-title">Sender Information</h2>
+            {/* STEP 1 */}
+            <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
+              {currentStep === 1 && (
+                <div className="mt-8 space-y-6">
+                  {/* Sender Info */}
+                  <h2 className="text-lg font-semibold text-gray-800">
+                    Sender Information
+                  </h2>
 
-                <label htmlFor="senderName">Full name</label>
-                <input
-                  id="senderName"
-                  name="senderName"
-                  value={formData.senderName}
-                  onChange={handleChange}
-                  type="text"
-                  placeholder="Enter your full name"
-                  required
-                />
+                  <div>
+                    <label
+                      htmlFor="senderName"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Full name
+                    </label>
+                    <input
+                      id="senderName"
+                      name="senderName"
+                      value={formData.senderName}
+                      onChange={handleChange}
+                      type="text"
+                      placeholder="Enter your full name"
+                      required
+                      className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    />
+                  </div>
 
-                <label htmlFor="senderEmail">Email address</label>
-                <input
-                  id="senderEmail"
-                  name="senderEmail"
-                  value={formData.senderEmail}
-                  onChange={handleChange}
-                  type="email"
-                  placeholder="Enter your email address"
-                  required
-                />
+                  <div>
+                    <label
+                      htmlFor="senderEmail"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Email address
+                    </label>
+                    <input
+                      id="senderEmail"
+                      name="senderEmail"
+                      value={formData.senderEmail}
+                      onChange={handleChange}
+                      type="email"
+                      placeholder="Enter your email address"
+                      required
+                      className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    />
+                  </div>
 
-                <label htmlFor="senderPhone">Phone number</label>
-                <input
-                  id="senderPhone"
-                  name="senderPhone"
-                  value={formData.senderPhone}
-                  onChange={handleChange}
-                  type="text"
-                  placeholder="Enter your phone number"
-                  required
-                />
+                  <div>
+                    <label
+                      htmlFor="senderPhone"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Phone number
+                    </label>
+                    <input
+                      id="senderPhone"
+                      name="senderPhone"
+                      value={formData.senderPhone}
+                      onChange={handleChange}
+                      type="text"
+                      placeholder="Enter your phone number"
+                      required
+                      className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    />
+                  </div>
 
-                <label htmlFor="pickupAddress">Pickup address</label>
-                <input
-                  id="pickupAddress"
-                  name="pickupAddress"
-                  value={formData.pickupAddress}
-                  onChange={handleChange}
-                  type="text"
-                  placeholder="Enter your pickup address"
-                  required
-                />
+                  <div>
+                    <label
+                      htmlFor="pickupAddress"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Pickup address
+                    </label>
+                    <input
+                      id="pickupAddress"
+                      name="pickupAddress"
+                      value={formData.pickupAddress}
+                      onChange={handleChange}
+                      type="text"
+                      placeholder="Enter your pickup address"
+                      required
+                      className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    />
+                  </div>
 
-                <h2 className="section-title" style={{ marginTop: "24px" }}>
-                  Recipient's Information
-                </h2>
+                  {/* Recipient Info */}
+                  <h2 className="pt-6 text-lg font-semibold text-gray-800">
+                    Recipient's Information
+                  </h2>
 
-                <label htmlFor="recipientName">Full name</label>
-                <input
-                  id="recipientName"
-                  name="recipientName"
-                  value={formData.recipientName}
-                  onChange={handleChange}
-                  type="text"
-                  placeholder="Enter your full name"
-                  required
-                />
+                  <div>
+                    <label
+                      htmlFor="recipientName"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Full name
+                    </label>
+                    <input
+                      id="recipientName"
+                      name="recipientName"
+                      value={formData.recipientName}
+                      onChange={handleChange}
+                      type="text"
+                      placeholder="Enter your full name"
+                      required
+                      className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    />
+                  </div>
 
-                <label htmlFor="recipientPhone">Phone number</label>
-                <input
-                  id="recipientPhone"
-                  name="recipientPhone"
-                  value={formData.recipientPhone}
-                  onChange={handleChange}
-                  type="text"
-                  placeholder="Enter your phone number"
-                  required
-                />
+                  <div>
+                    <label
+                      htmlFor="recipientPhone"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Phone number
+                    </label>
+                    <input
+                      id="recipientPhone"
+                      name="recipientPhone"
+                      value={formData.recipientPhone}
+                      onChange={handleChange}
+                      type="text"
+                      placeholder="Enter your phone number"
+                      required
+                      className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    />
+                  </div>
 
-                <label htmlFor="deliveryAddress">Delivery address</label>
-                <input
-                  id="deliveryAddress"
-                  name="deliveryAddress"
-                  value={formData.deliveryAddress}
-                  onChange={handleChange}
-                  type="text"
-                  placeholder="Enter the drop-off address"
-                  required
-                />
+                  <div>
+                    <label
+                      htmlFor="deliveryAddress"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Delivery address
+                    </label>
+                    <input
+                      id="deliveryAddress"
+                      name="deliveryAddress"
+                      value={formData.deliveryAddress}
+                      onChange={handleChange}
+                      type="text"
+                      placeholder="Enter the drop-off address"
+                      required
+                      className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    />
+                  </div>
 
-                <h2 className="section-title" style={{ marginTop: "24px" }}>
-                  Package Details
-                </h2>
+                  {/* Package Details */}
+                  <h2 className="pt-6 text-lg font-semibold text-gray-800">
+                    Package Details
+                  </h2>
 
-                <label htmlFor="packageType">Package type</label>
-                <input
-                  id="packageType"
-                  name="packageType"
-                  value={formData.packageType}
-                  onChange={handleChange}
-                  type="text"
-                  placeholder="What type of package is it. Ex Food, Clothes, Gadgets, etc."
-                  required
-                ></input>
+                  <div>
+                    <label
+                      htmlFor="packageType"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Package type
+                    </label>
+                    <input
+                      id="packageType"
+                      name="packageType"
+                      value={formData.packageType}
+                      onChange={handleChange}
+                      type="text"
+                      placeholder="Food, Clothes, Gadgets, etc."
+                      required
+                      className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    />
+                  </div>
 
-                <label htmlFor="packageSize">Package size</label>
-                <select
-                  id="packageSize"
-                  name="packageSize"
-                  value={formData.packageSize}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="">Select package size</option>
-                  <option value="small">Small</option>
-                  <option value="medium">Medium</option>
-                  <option value="large">Large</option>
-                </select>
+                  <div>
+                    <label
+                      htmlFor="packageSize"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Package size
+                    </label>
+                    <select
+                      id="packageSize"
+                      name="packageSize"
+                      value={formData.packageSize}
+                      onChange={handleChange}
+                      required
+                      className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    >
+                      <option value="">Select package size</option>
+                      <option value="small">Small</option>
+                      <option value="medium">Medium</option>
+                      <option value="large">Large</option>
+                    </select>
+                  </div>
 
-                <label htmlFor="instructions">Special instructions</label>
-                <textarea
-                  id="instructions"
-                  name="instructions"
-                  value={formData.instructions}
-                  onChange={handleChange}
-                  placeholder="Add any additional instructions"
-                />
-              </div>
-            )}
+                  <div>
+                    <label
+                      htmlFor="instructions"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Special instructions
+                    </label>
+                    <textarea
+                      id="instructions"
+                      name="instructions"
+                      value={formData.instructions}
+                      onChange={handleChange}
+                      placeholder="Add any additional instructions"
+                      rows={4}
+                      className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm resize-none
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    />
+                  </div>
+                </div>
+              )}
+            </form>
 
-            {/* ==== Step 2: Empty for now ==== */}
             {currentStep === 2 && (
-              <div className="form-section delivery-class-section">
-                <h2 className="section-title">Select a Delivery Class</h2>
+              <div className="mt-8 space-y-6">
+                <h2 className="text-lg font-semibold text-gray-800">
+                  Select a Delivery Class
+                </h2>
 
-                <div className="delivery-class-grid">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Premium Class */}
                   <label
-                    className={`delivery-class-card ${
-                      formData.deliveryClass === "premium" ? "selected" : ""
-                    }`}
+                    className={`relative flex items-center gap-4 rounded-xl border p-5 cursor-pointer transition
+        ${
+          formData.deliveryClass === "premium"
+            ? "border-orange-500 bg-orange-50"
+            : "border-gray-300 hover:border-orange-400"
+        }`}
                   >
                     <input
                       type="radio"
@@ -278,27 +423,48 @@ const Bookadelivery = () => {
                       value="premium"
                       checked={formData.deliveryClass === "premium"}
                       onChange={handleChange}
+                      className="hidden"
                     />
 
-                    {/*  icon image */}
-                    <div className="icon-area">
-                      <img src={Premium} alt="" className="icon-img" />
+                    {/* icon image */}
+                    <div className="w-14 h-14 flex items-center justify-center rounded-lg bg-gray-100">
+                      <img
+                        src={Premium}
+                        alt=""
+                        className="w-8 h-8 object-contain"
+                      />
                     </div>
 
-                    <div className="text-area">
-                      <h3 className="delivery-class-title">Premium Class</h3>
-                      <p className="delivery-class-sub">Same-Day Delivery</p>
+                    <div className="flex-1">
+                      <h3 className="text-base font-semibold text-gray-800">
+                        Premium Class
+                      </h3>
+                      <p className="text-sm text-gray-500">Same-Day Delivery</p>
                     </div>
 
                     {/* Custom radio */}
-                    <span className="custom-radio"></span>
+                    <span
+                      className={`w-5 h-5 rounded-full border-2 flex items-center justify-center
+          ${
+            formData.deliveryClass === "premium"
+              ? "border-orange-500"
+              : "border-gray-300"
+          }`}
+                    >
+                      {formData.deliveryClass === "premium" && (
+                        <span className="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
+                      )}
+                    </span>
                   </label>
 
                   {/* Standard Class */}
                   <label
-                    className={`delivery-class-card ${
-                      formData.deliveryClass === "standard" ? "selected" : ""
-                    }`}
+                    className={`relative flex items-center gap-4 rounded-xl border p-5 cursor-pointer transition
+        ${
+          formData.deliveryClass === "standard"
+            ? "border-orange-500 bg-orange-50"
+            : "border-gray-300 hover:border-orange-400"
+        }`}
                   >
                     <input
                       type="radio"
@@ -306,109 +472,161 @@ const Bookadelivery = () => {
                       value="standard"
                       checked={formData.deliveryClass === "standard"}
                       onChange={handleChange}
+                      className="hidden"
                     />
 
                     {/* icon image */}
-                    <div className="icon-area">
-                      <img src={Standard} alt="" className="icon-img" />
+                    <div className="w-14 h-14 flex items-center justify-center rounded-lg bg-gray-100">
+                      <img
+                        src={Standard}
+                        alt=""
+                        className="w-8 h-8 object-contain"
+                      />
                     </div>
 
-                    <div className="text-area">
-                      <h3 className="delivery-class-title">Standard Class</h3>
-                      <p className="delivery-class-sub">
+                    <div className="flex-1">
+                      <h3 className="text-base font-semibold text-gray-800">
+                        Standard Class
+                      </h3>
+                      <p className="text-sm text-gray-500">
                         Up to 7 Days Delivery
                       </p>
                     </div>
 
                     {/* Custom radio */}
-                    <span className="custom-radio"></span>
+                    <span
+                      className={`w-5 h-5 rounded-full border-2 flex items-center justify-center
+          ${
+            formData.deliveryClass === "standard"
+              ? "border-orange-500"
+              : "border-gray-300"
+          }`}
+                    >
+                      {formData.deliveryClass === "standard" && (
+                        <span className="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
+                      )}
+                    </span>
                   </label>
                 </div>
               </div>
             )}
 
-            {/* ==== Step 3: Review and Confirm ==== */}
             {currentStep === 3 && (
-              <div className="form-section review-section">
-                <h2 className="section-title">Review Your Booking</h2>
+              <div className="space-y-8">
+                <h2 className="text-lg font-semibold text-gray-800">
+                  Review Your Booking
+                </h2>
 
                 {/* Sender Information */}
-                <h3 className="review-heading">Sender Information</h3>
-                <div className="review-row">
-                  <span className="review-label">Full name</span>
-                  <span className="review-colon">:</span>
-                  <span className="review-value">{formData.senderName}</span>
-                </div>
-                <div className="review-row">
-                  <span className="review-label">Email</span>
-                  <span className="review-colon">:</span>
-                  <span className="review-value">{formData.senderEmail}</span>
-                </div>
-                <div className="review-row">
-                  <span className="review-label">Phone number</span>
-                  <span className="review-colon">:</span>
-                  <span className="review-value">{formData.senderPhone}</span>
-                </div>
-                <div className="review-row">
-                  <span className="review-label">Pickup address</span>
-                  <span className="review-colon">:</span>
-                  <span className="review-value">{formData.pickupAddress}</span>
+                <h3 className="text-sm font-semibold text-green-900">
+                  Sender Information
+                </h3>
+
+                <div className="space-y-3">
+                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                    <span className="text-gray-600">Full name</span>
+                    <span className="text-gray-500">:</span>
+                    <span className="font-medium text-gray-800">
+                      {formData.senderName}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                    <span className="text-gray-600">Email</span>
+                    <span className="text-gray-500">:</span>
+                    <span className="font-medium text-gray-800">
+                      {formData.senderEmail}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                    <span className="text-gray-600">Phone number</span>
+                    <span className="text-gray-500">:</span>
+                    <span className="font-medium text-gray-800">
+                      {formData.senderPhone}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                    <span className="text-gray-600">Pickup address</span>
+                    <span className="text-gray-500">:</span>
+                    <span className="font-medium text-gray-800">
+                      {formData.pickupAddress}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Recipient */}
-                <h3 className="review-heading" style={{ marginTop: "28px" }}>
+                <h3 className="pt-6 text-sm font-semibold text-green-900">
                   Recipient’s Information
                 </h3>
-                <div className="review-row">
-                  <span className="review-label">Full name</span>
-                  <span className="review-colon">:</span>
-                  <span className="review-value">{formData.recipientName}</span>
-                </div>
-                <div className="review-row">
-                  <span className="review-label">Phone number</span>
-                  <span className="review-colon">:</span>
-                  <span className="review-value">
-                    {formData.recipientPhone}
-                  </span>
-                </div>
-                <div className="review-row">
-                  <span className="review-label">Delivery location</span>
-                  <span className="review-colon">:</span>
-                  <span className="review-value">
-                    {formData.deliveryAddress}
-                  </span>
+
+                <div className="space-y-3">
+                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                    <span className="text-gray-600">Full name</span>
+                    <span className="text-gray-500">:</span>
+                    <span className="font-medium text-gray-800">
+                      {formData.recipientName}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                    <span className="text-gray-600">Phone number</span>
+                    <span className="text-gray-500">:</span>
+                    <span className="font-medium text-gray-800">
+                      {formData.recipientPhone}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                    <span className="text-gray-600">Delivery location</span>
+                    <span className="text-gray-500">:</span>
+                    <span className="font-medium text-gray-800">
+                      {formData.deliveryAddress}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Package Details */}
-                <h3 className="review-heading" style={{ marginTop: "28px" }}>
+                <h3 className="pt-6 text-sm font-semibold text-green-900">
                   Package Details
                 </h3>
-                <div className="review-row">
-                  <span className="review-label">Package type</span>
-                  <span className="review-colon">:</span>
-                  <span className="review-value">{formData.packageType}</span>
-                </div>
-                <div className="review-row">
-                  <span className="review-label">Package size</span>
-                  <span className="review-colon">:</span>
-                  <span className="review-value">{formData.packageSize}</span>
-                </div>
-                <div className="review-row">
-                  <span className="review-label">Special instructions</span>
-                  <span className="review-colon">:</span>
-                  <span className="review-value">
-                    {formData.instructions || "Nil"}
-                  </span>
+
+                <div className="space-y-3">
+                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                    <span className="text-gray-600">Package type</span>
+                    <span className="text-gray-500">:</span>
+                    <span className="font-medium text-gray-800">
+                      {formData.packageType}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                    <span className="text-gray-600">Package size</span>
+                    <span className="text-gray-500">:</span>
+                    <span className="font-medium text-gray-800">
+                      {formData.packageSize}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                    <span className="text-gray-600">Special instructions</span>
+                    <span className="text-gray-500">:</span>
+                    <span className="font-medium text-gray-800">
+                      {formData.instructions || "Nil"}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Delivery Class */}
-                <h3 className="review-heading" style={{ marginTop: "28px" }}>
+                <h3 className="pt-6 text-sm font-semibold text-green-900">
                   Delivery Class
                 </h3>
-                <div className="review-row">
-                  <span className="review-label"></span>
-                  <span className="review-colon"></span>
-                  <span className="review-value">
+
+                <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                  <span className="text-gray-600"></span>
+                  <span className="text-gray-500"></span>
+                  <span className="font-medium text-gray-800">
                     {formData.deliveryClass === "premium"
                       ? "Premium class"
                       : formData.deliveryClass === "standard"
@@ -419,97 +637,109 @@ const Bookadelivery = () => {
               </div>
             )}
 
-            {/* ==== Step 4: Payment */}
-            {currentStep === 4 && <div className="form-section"></div>}
-
-            <div className="form-actions">
-              {currentStep > 1 && (
-                <button type="button" className="btn-back" onClick={handleBack}>
-                  Back
-                </button>
-              )}
-
-              <button type="submit" className="proceed-btn">
-                {currentStep === 4 ? "Confirm & Book" : "Proceed"}
+            {/* BUTTON */}
+            <div className="mt-8">
+              <button
+                type="submit"
+                className="w-full py-4 bg-green-700 text-white rounded-full font-semibold hover:bg-green-800 transition"
+              >
+                {currentStep < 3 && "Proceed"}
+                {currentStep === 3 && "Confirm & Pay"}
+                {currentStep === 4 && "Proceed with payment"}
               </button>
             </div>
           </form>
         </div>
       </div>
 
+      {/* FOOTER */}
       {/* ===== FOOTER ===== */}
-      <footer className="footer">
-        <div className="footer-main">
-          <div className="footer-brand-container">
-            <div className="footer-logo-row">
+      <footer className="bg-green-950 text-white">
+        <div className="container mx-auto max-w-7xl px-6 py-14">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-28">
+            {/* Brand */}
+            <div className="max-w-sm">
               <img
                 src={footerlogo}
                 alt="MultiBag Deliveries"
-                className="footer-logo"
+                className="h-10 mb-4"
               />
+
+              <p className="text-sm leading-relaxed text-gray-300">
+                Jorem ipsum dolor sit amet, consectet ur adipiscing elit. Nunc
+                vulputate libero et velit interdum, ac aliquet odio mattis.
+              </p>
             </div>
-            <p className="footer-desc">
-              Jorem ipsum dolor sit amet, consectet ur adipiscing elit. Nunc
-              vulputate libero et velit interdum, ac aliquet odio mattis.
-            </p>
-          </div>
-          <div className="footer-links">
-            <div>
-              <h4>Company</h4>
-              <a href="#">Services</a>
-              <a href="#">About Us</a>
-              <a href="#">FAQs</a>
-              <a href="#">Track my parcel</a>
-            </div>
-            <div className="footer-links2">
-              <h4>Contact Us</h4>
-              <div className="footer-contact-row">
-                <img
-                  src={destinationIcon}
-                  alt="Location"
-                  className="footer-contact-icon"
-                />{" "}
-                Ghana
-              </div>
-              <div className="footer-contact-row">
-                <img
-                  src={emailIcon}
-                  alt="Email"
-                  className="footer-contact-icon"
-                />{" "}
-                help@multibag.com
-              </div>
-              <div className="footer-contact-row">
-                <img
-                  src={clockIcon}
-                  alt="Hours"
-                  className="footer-contact-icon"
-                />{" "}
-                Mon - Fri 8:00am - 6:00pm
-              </div>
-              <div className="footer-socials">
-                <a
-                  href="#"
-                  aria-label="Facebook"
-                  className="footer-social-icon"
-                >
-                  <img src={facebookIcon} alt="Facebook" />
+
+            {/* Links */}
+            <div className="flex flex-col sm:flex-row gap-24 flex-1">
+              {/* Company */}
+              <div className="flex flex-col gap-3">
+                <h4 className="font-semibold text-base">Company</h4>
+                <a href="#" className="text-sm text-gray-300 hover:text-white">
+                  Services
                 </a>
-                <a
-                  href="#"
-                  aria-label="Instagram"
-                  className="footer-social-icon"
-                >
-                  <img src={instagramIcon} alt="Instagram" />
+                <a href="#" className="text-sm text-gray-300 hover:text-white">
+                  About Us
                 </a>
-                <a href="#" aria-label="X" className="footer-social-icon">
-                  <img src={xIcon} alt="X" />
+                <a href="#" className="text-sm text-gray-300 hover:text-white">
+                  FAQs
                 </a>
+                <a href="#" className="text-sm text-gray-300 hover:text-white">
+                  Track my parcel
+                </a>
+              </div>
+
+              {/* Contact */}
+              <div className="flex flex-col gap-4">
+                <h4 className="font-semibold text-base">Contact Us</h4>
+
+                <div className="flex items-center gap-3 text-sm text-gray-300">
+                  <img
+                    src={destinationIcon}
+                    alt="Location"
+                    className="w-4 h-4"
+                  />
+                  Ghana
+                </div>
+
+                <div className="flex items-center gap-3 text-sm text-gray-300">
+                  <img src={emailIcon} alt="Email" className="w-4 h-4" />
+                  help@multibag.com
+                </div>
+
+                <div className="flex items-center gap-3 text-sm text-gray-300">
+                  <img src={clockIcon} alt="Hours" className="w-4 h-4" />
+                  Mon - Fri 8:00am - 6:00pm
+                </div>
+
+                {/* Socials */}
+                <div className="flex items-center gap-4 mt-2">
+                  <a href="#" aria-label="Facebook">
+                    <img
+                      src={facebookIcon}
+                      alt="Facebook"
+                      className="w-5 h-5"
+                    />
+                  </a>
+                  <a href="#" aria-label="Instagram">
+                    <img
+                      src={instagramIcon}
+                      alt="Instagram"
+                      className="w-5 h-5"
+                    />
+                  </a>
+                  <a href="#" aria-label="X">
+                    <img src={xIcon} alt="X" className="w-5 h-5" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="footer-bottom">
+
+        {/* Bottom */}
+        <div className="border-t border-white/10 text-center py-4 text-sm text-gray-400">
           © MultiBag 2024, All Right Reserved.
         </div>
       </footer>
