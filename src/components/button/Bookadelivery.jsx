@@ -11,22 +11,70 @@ import Standard from "../../assets/images/standard.png";
 import xIcon from "../../assets/images/x.png";
 import vector from "../../assets/images/vector.png";
 
+
 const Bookadelivery = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    senderName: "",
+    senderEmail: "",
+    senderPhone: "",
+    pickupAddress: "",
+    recipientName: "",
+    recipientPhone: "",
+    deliveryAddress: "",
+    packageType: "",
+    packageSize: "",
+    instructions: "",
+  });
+
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const validateStep = (step) => {
+    if (step === 1) {
+      return (
+        formData.senderName.trim() &&
+        formData.senderEmail.trim() &&
+        formData.senderPhone.trim() &&
+        formData.pickupAddress.trim()
+      );
+    }
+    if (step === 2) {
+      return (
+        formData.recipientName.trim() &&
+        formData.recipientPhone.trim() &&
+        formData.deliveryAddress.trim()
+      );
+    }
+    if (step === 3) {
+      return formData.packageType.trim() && formData.packageSize.trim();
+    }
+    return true;
+  };
 
   const handleNext = (e) => {
     e.preventDefault();
-    setCurrentStep((s) => Math.min(4, s + 1));
+    if (validateStep(currentStep)) {
+      setCurrentStep((s) => Math.min(4, s + 1));
+    } else {
+      alert("Please fill in all required fields for this step.");
+    }
   };
+
+  const handleBack = () => setCurrentStep((s) => Math.max(1, s - 1));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Booking submitted");
+    if (validateStep(3)) {
+      console.log("Booking submitted:", formData);
+      alert("Booking submitted (check console). Thanks!");
+    } else {
+      alert("Please complete the package details before submitting.");
+    }
   };
 
   return (
@@ -51,7 +99,7 @@ const Bookadelivery = () => {
         </nav>
 
         <div className="hidden md:flex gap-3">
-          <button className="px-4 py-2 border rounded-md text-green-700">
+          <button className="px-4 py-2 border rounded-md text-green-700 hover:bg-gray-100">
             Login
           </button>
           <button
@@ -75,6 +123,35 @@ const Bookadelivery = () => {
           <img src={vector} alt="" />
         </button>
       </header>
+
+      {/* MOBILE MENU */}
+      {menuOpen && (
+        <div className="md:hidden bg-white border-b shadow-md">
+          <nav className="flex flex-col px-6 py-4 gap-4 text-gray-700 font-medium">
+            <a href="#" className="hover:text-yellow-500">
+              Home
+            </a>
+            <a href="#" className="hover:text-yellow-500">
+              About
+            </a>
+            <a href="#" className="hover:text-yellow-500">
+              Services
+            </a>
+            <a href="#" className="hover:text-yellow-500">
+              Contact
+            </a>
+
+            <div className="pt-4 flex flex-col gap-3 border-t">
+              <button className="px-4 py-2 border rounded-md text-green-700 hover:bg-gray-100">
+                Login
+              </button>
+              <button className="px-4 py-2 bg-[#00401A] text-white rounded-full hover:bg-[#003015] transition">
+                Sign Up
+              </button>
+            </div>
+          </nav>
+        </div>
+      )}
 
       {/* FORM */}
       <div className="min-h-screen bg-gray-100 flex items-start justify-center px-4 py-12">
@@ -190,7 +267,7 @@ const Bookadelivery = () => {
 
           <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
             {/* STEP 1 */}
-            <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
+            
               {currentStep === 1 && (
                 <div className="mt-8 space-y-6">
                   {/* Sender Info */}
@@ -411,7 +488,7 @@ const Bookadelivery = () => {
                   </div>
                 </div>
               )}
-            </form>
+           
 
             {currentStep === 2 && (
               <div className="mt-8 space-y-6">
@@ -680,7 +757,7 @@ const Bookadelivery = () => {
         <div className="container mx-auto max-w-7xl px-6 py-14">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-28">
             {/* Brand */}
-            <div className="max-w-sm">
+            <div className="max-w-sm bg-[#00401A]/20 rounded-xl p-6">
               <img
                 src={footerlogo}
                 alt="MultiBag Deliveries"
