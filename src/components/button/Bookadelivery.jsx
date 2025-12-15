@@ -54,7 +54,19 @@ const Bookadelivery = () => {
           <button className="px-4 py-2 border rounded-md text-green-700">
             Login
           </button>
-          <button className="px-4 py-2 bg-green-700 text-white rounded-md">
+          <button
+            className="
+    px-5
+    py-2
+    bg-[#00401A]
+    text-white
+    rounded-full
+    font-medium
+    transition
+    duration-200
+    hover:bg-[#003015]
+  "
+          >
             Sign Up
           </button>
         </div>
@@ -637,11 +649,21 @@ const Bookadelivery = () => {
               </div>
             )}
 
-            {/* BUTTON */}
             <div className="mt-8">
               <button
                 type="submit"
-                className="w-full py-4 bg-green-700 text-white rounded-full font-semibold hover:bg-green-800 transition"
+                className="
+      w-full
+      py-4
+      bg-[#00401A]
+      text-white
+      rounded-full
+      font-semibold
+      transition
+      duration-200
+      hover:bg-[#003015]
+      active:scale-[0.98]
+    "
               >
                 {currentStep < 3 && "Proceed"}
                 {currentStep === 3 && "Confirm & Pay"}
@@ -654,7 +676,7 @@ const Bookadelivery = () => {
 
       {/* FOOTER */}
       {/* ===== FOOTER ===== */}
-      <footer className="bg-green-950 text-white">
+      <footer className="bg-[#001A0A] text-white">
         <div className="container mx-auto max-w-7xl px-6 py-14">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-28">
             {/* Brand */}
@@ -672,7 +694,7 @@ const Bookadelivery = () => {
             </div>
 
             {/* Links */}
-            <div className="flex flex-col sm:flex-row gap-24 flex-1">
+            <div className="flex flex-col sm:flex-row gap-36 flex-1">
               {/* Company */}
               <div className="flex flex-col gap-3">
                 <h4 className="font-semibold text-base">Company</h4>
