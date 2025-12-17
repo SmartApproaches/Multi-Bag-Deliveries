@@ -1,17 +1,11 @@
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
-import Home from "./pages/home";
+import CreateAccount from "./components/CreateAccount";
 
-function App() {
+ function App () {
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Router>
+    <CreateAccount />
     </>
-  );
+  )
 }
 
 export default App;
