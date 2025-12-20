@@ -21,7 +21,7 @@ export default function CreateAccount() {
   };
 
   return (
-    <div className="min-h-screen  bg-[#eef3f0] flex items-center justify-center bg-gray-50 px-7">
+    <div className="min-h-screen  bg-[#d8e4dd] flex items-center justify-center bg-gray-50 px-7">
       <div className="w-full max-w-md lg:max-w-xl bg-white rounded-lg shadow-md p-6 sm:p-8 lg:p-12 ">
         <h1 className="lg:text-4xl font-bold text-gray-900"> Create an Account</h1>
 
