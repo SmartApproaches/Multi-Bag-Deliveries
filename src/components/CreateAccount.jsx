@@ -21,7 +21,7 @@ export default function CreateAccount() {
   };
 
   return (
-    <div className="min-h-screen  bg-[#d8e4dd] flex items-center justify-center bg-gray-50 px-7">
+    <div className="min-h-screen  bg-[#D9E8E0] flex items-center justify-center bg-gray-50 px-7">
       <div className="w-full max-w-md lg:max-w-xl bg-white rounded-lg shadow-md p-6 sm:p-8 lg:p-12 ">
         <h1 className="lg:text-4xl font-bold text-gray-900"> Create an Account</h1>
 
@@ -96,7 +96,7 @@ export default function CreateAccount() {
 
           </div>
 
-         <button type="submit" className="bg-primary bg-green-900 font-medium py-2 px-5 rounded-full mb-3 text-white"> Create Account</button>
+         <button type="submit" className="bg-primary bg-green-900 font-medium py-2 px-5 rounded-full mb-3 text-white "> Create Account</button>
         </form>
 
         <p className="text-sm text-gray-800 text-center mt-4">
