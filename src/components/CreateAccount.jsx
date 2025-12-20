@@ -95,9 +95,10 @@ export default function CreateAccount() {
           />
 
           </div>
-
-         <button type="submit" className="bg-primary bg-green-900 font-medium py-2 px-5 rounded-full mb-3 text-white "> Create Account</button>
         </form>
+
+
+        <button type="submit" className="mt-12 bg-green-900 font-medium py-2 px-5 rounded-full text-white"> Create Account</button>
 
         <p className="text-sm text-gray-800 text-center mt-4">
             By signing up, you agree to our {" "} 
