@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../../assets/images/delivery-logo.png";
 import footerlogo from "../../assets/images/footer-logo.png";
 import destinationIcon from "../../assets/images/destination.png";
@@ -77,6 +77,10 @@ const Bookadelivery = () => {
       alert("Please complete the package details before submitting.");
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#EFF5F1] font-inter">
@@ -169,7 +173,6 @@ const Bookadelivery = () => {
 
           {/* Progress Bar */}
           <div className="flex items-center w-full flex-wrap md:flex-nowrap gap-y-6">
-
             <div className="flex items-center w-full">
               {/* STEP 1 */}
               <div className="flex items-center flex-1">
