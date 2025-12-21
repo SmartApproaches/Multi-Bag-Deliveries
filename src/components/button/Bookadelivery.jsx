@@ -157,102 +157,102 @@ const Bookadelivery = () => {
       {/* FORM */}
       <div className="min-h-screen bg-gray-100 flex items-start justify-center px-4 py-12">
         <div className="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-8">
-          <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">
-            Book a Delivery
-          </h1>
+          <div className="text-center">
+            <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">
+              Book a Delivery
+            </h1>
 
-          <p className="mt-2 text-sm md:text-base text-gray-500">
-            Fill in the details below to book your parcel delivery.
-          </p>
+            <p className="mt-2 text-sm md:text-base text-gray-500">
+              Fill in the details below to book your parcel delivery.
+            </p>
+          </div>
 
           {/* Progress Bar */}
-          <div className="flex items-center mb-8">
-            {/* Step 1 */}
-            <div className="flex items-center">
-              <div className="flex flex-col items-center">
-                <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
-        ${
-          currentStep >= 1
-            ? "bg-[#FFA62B] text-white"
-            : "bg-gray-200 text-gray-500"
-        }`}
-                >
-                  1
+          <div className="flex items-center w-full flex-wrap md:flex-nowrap gap-y-6">
+
+            <div className="flex items-center w-full">
+              {/* STEP 1 */}
+              <div className="flex items-center flex-1">
+                <div className="flex flex-col items-center">
+                  <div
+                    className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
+          ${
+            currentStep >= 1
+              ? "bg-[#FFA62B] text-white"
+              : "bg-gray-200 text-gray-500"
+          }`}
+                  >
+                    1
+                  </div>
+                  <span
+                    className={`mt-2 text-xs text-center
+          ${currentStep >= 1 ? "text-[#FFA62B]" : "text-gray-400"}`}
+                  >
+                    Delivery details
+                  </span>
                 </div>
-                <span
-                  className={`mt-2 text-xs text-center
-        ${currentStep >= 1 ? "text-[#FFA62B]" : "text-gray-400"}`}
-                >
-                  Delivery details
-                </span>
-              </div>
-            </div>
 
-            {/* Line 1 */}
-            <div
-              className={`flex-1 h-0 border-t-2 border-dashed mx-3
-    ${currentStep >= 2 ? "border-[#FFA62B]" : "border-gray-300"}`}
-            />
-
-            {/* Step 2 */}
-            <div className="flex items-center">
-              <div className="flex flex-col items-center">
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
-        ${
-          currentStep >= 2
-            ? "bg-[#FFA62B] text-white"
-            : "bg-gray-200 text-gray-500"
-        }`}
-                >
-                  2
-                </div>
-                <span
-                  className={`mt-2 text-xs text-center
-        ${currentStep >= 2 ? "text-[#FFA62B]" : "text-gray-400"}`}
-                >
-                  Delivery class
-                </span>
+                  className={`flex-1 h-[2px] border-t border-dashed mx-2
+        ${currentStep >= 2 ? "border-[#FFA62B]" : "border-gray-300"}`}
+                ></div>
               </div>
-            </div>
 
-            {/* Line 2 */}
-            <div
-              className={`flex-1 h-0 border-t-2 border-dashed mx--6
-    ${currentStep >= 3 ? "border-[#FFA62B]" : "border-gray-300"}`}
-            />
+              {/* STEP 2 */}
+              <div className="flex items-center flex-1">
+                <div className="flex flex-col items-center">
+                  <div
+                    className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
+          ${
+            currentStep >= 2
+              ? "bg-[#FFA62B] text-white"
+              : "bg-gray-200 text-gray-500"
+          }`}
+                  >
+                    2
+                  </div>
+                  <span
+                    className={`mt-2 text-xs text-center
+          ${currentStep >= 2 ? "text-[#FFA62B]" : "text-gray-400"}`}
+                  >
+                    Delivery class
+                  </span>
+                </div>
 
-            {/* Step 3 */}
-            <div className="flex items-center">
-              <div className="flex flex-col items-center">
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
-        ${
-          currentStep >= 3
-            ? "bg-[#FFA62B] text-white"
-            : "bg-gray-200 text-gray-500"
-        }`}
-                >
-                  3
-                </div>
-                <span
-                  className={`mt-2 text-xs text-center
-        ${currentStep >= 3 ? "text-[#FFA62B]" : "text-gray-400"}`}
-                >
-                  Review & Confirm
-                </span>
+                  className={`flex-1 h-[2px] border-t border-dashed mx-2
+        ${currentStep >= 3 ? "border-[#FFA62B]" : "border-gray-300"}`}
+                ></div>
               </div>
-            </div>
 
-            {/* Line 3 */}
-            <div
-              className={`flex-1 h-0 border-t-2 border-dashed mx-3
-    ${currentStep >= 4 ? "border-[#FFA62B]" : "border-gray-300"}`}
-            />
+              {/* STEP 3 */}
+              <div className="flex items-center flex-1">
+                <div className="flex flex-col items-center">
+                  <div
+                    className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
+          ${
+            currentStep >= 3
+              ? "bg-[#FFA62B] text-white"
+              : "bg-gray-200 text-gray-500"
+          }`}
+                  >
+                    3
+                  </div>
+                  <span
+                    className={`mt-2 text-xs text-center
+          ${currentStep >= 3 ? "text-[#FFA62B]" : "text-gray-400"}`}
+                  >
+                    Review & Confirm
+                  </span>
+                </div>
 
-            {/* Step 4 */}
-            <div className="flex items-center">
+                <div
+                  className={`flex-1 h-[2px] border-t border-dashed mx-2
+        ${currentStep >= 4 ? "border-[#FFA62B]" : "border-gray-300"}`}
+                ></div>
+              </div>
+
+              {/* STEP 4 */}
               <div className="flex flex-col items-center">
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
@@ -504,13 +504,13 @@ const Bookadelivery = () => {
                   Select a Delivery Class
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
                   {/* Premium Class */}
                   <label
-                    className={`relative flex items-center gap-4 rounded-xl border p-5 cursor-pointer transition
+                    className={`relative w-full max-w-sm rounded-xl border p-6 cursor-pointer transition
         ${
           formData.deliveryClass === "premium"
-            ? "border-orange-500 bg-orange-50"
+            ? "border-orange-500"
             : "border-gray-300 hover:border-orange-400"
         }`}
                   >
@@ -523,25 +523,20 @@ const Bookadelivery = () => {
                       className="hidden"
                     />
 
-                    {/* icon image */}
-                    <div className="w-14 h-14 flex items-center justify-center rounded-lg bg-gray-100">
-                      <img
-                        src={Premium}
-                        alt=""
-                        className="w-8 h-8 object-contain"
-                      />
-                    </div>
+                    {/* ICON (no container) */}
+                    <img src={Premium} alt="Premium" className="w-8 h-8 mb-4" />
 
-                    <div className="flex-1">
-                      <h3 className="text-base font-semibold text-gray-800">
-                        Premium Class
-                      </h3>
-                      <p className="text-sm text-gray-500">Same-Day Delivery</p>
-                    </div>
+                    {/* TEXT */}
+                    <h3 className="text-base font-semibold text-gray-800">
+                      Premium Class
+                    </h3>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Same-Day Delivery
+                    </p>
 
-                    {/* Custom radio */}
+                    {/* RADIO */}
                     <span
-                      className={`w-5 h-5 rounded-full border-2 flex items-center justify-center
+                      className={`absolute top-6 right-6 w-5 h-5 rounded-full border-2 flex items-center justify-center
           ${
             formData.deliveryClass === "premium"
               ? "border-orange-500"
@@ -556,10 +551,10 @@ const Bookadelivery = () => {
 
                   {/* Standard Class */}
                   <label
-                    className={`relative flex items-center gap-4 rounded-xl border p-5 cursor-pointer transition
+                    className={`relative w-full max-w-sm rounded-xl border p-6 cursor-pointer transition
         ${
           formData.deliveryClass === "standard"
-            ? "border-orange-500 bg-orange-50"
+            ? "border-orange-500"
             : "border-gray-300 hover:border-orange-400"
         }`}
                   >
@@ -572,27 +567,24 @@ const Bookadelivery = () => {
                       className="hidden"
                     />
 
-                    {/* icon image */}
-                    <div className="w-14 h-14 flex items-center justify-center rounded-lg bg-gray-100">
-                      <img
-                        src={Standard}
-                        alt=""
-                        className="w-8 h-8 object-contain"
-                      />
-                    </div>
+                    {/* ICON (no container) */}
+                    <img
+                      src={Standard}
+                      alt="Standard"
+                      className="w-8 h-8 mb-4"
+                    />
 
-                    <div className="flex-1">
-                      <h3 className="text-base font-semibold text-gray-800">
-                        Standard Class
-                      </h3>
-                      <p className="text-sm text-gray-500">
-                        Up to 7 Days Delivery
-                      </p>
-                    </div>
+                    {/* TEXT */}
+                    <h3 className="text-base font-semibold text-gray-800">
+                      Standard Class
+                    </h3>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Up to 7 Days Delivery
+                    </p>
 
-                    {/* Custom radio */}
+                    {/* RADIO */}
                     <span
-                      className={`w-5 h-5 rounded-full border-2 flex items-center justify-center
+                      className={`absolute top-6 right-6 w-5 h-5 rounded-full border-2 flex items-center justify-center
           ${
             formData.deliveryClass === "standard"
               ? "border-orange-500"
@@ -716,21 +708,18 @@ const Bookadelivery = () => {
                 </div>
 
                 {/* Delivery Class */}
+                {/* Delivery Class */}
                 <h3 className="pt-6 text-sm font-semibold text-green-900">
                   Delivery Class
                 </h3>
 
-                <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
-                  <span className="text-gray-600"></span>
-                  <span className="text-gray-500"></span>
-                  <span className="font-medium text-gray-800">
-                    {formData.deliveryClass === "premium"
-                      ? "Premium class"
-                      : formData.deliveryClass === "standard"
-                      ? "Standard class"
-                      : ""}
-                  </span>
-                </div>
+                <p className="mt-2 text-sm font-medium text-gray-800">
+                  {formData.deliveryClass === "premium"
+                    ? "Premium Class"
+                    : formData.deliveryClass === "standard"
+                    ? "Standard Class"
+                    : "—"}
+                </p>
               </div>
             )}
 
@@ -739,7 +728,7 @@ const Bookadelivery = () => {
                 <h2 className="text-lg font-semibold text-gray-800">Payment</h2>
 
                 {/* Cost Breakdown */}
-                <div className="border rounded-lg p-4">
+                <div className="max-w-md border rounded-lg p-6">
                   <h3 className="font-medium text-green-900 mb-3">
                     Cost Breakdown
                   </h3>
