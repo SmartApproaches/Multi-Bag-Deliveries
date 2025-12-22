@@ -10,28 +10,28 @@ export default function LoginModal() {
 
   const [errors, setErrors] = useState({});
 
-  const validateEmail = (email) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newErrors = {};
-    if (!email) {
+
+    if (!email.trim()) {
       newErrors.email = "Email is required";
-    } else if (!validateEmail(email)) {
+    } else if (!validateEmail(email.trim())) {
       newErrors.email = "Enter a valid email address";
     }
 
     if (!password) {
       newErrors.password = "Password is required";
     } else if (password.length < 7) {
-        newErrors.password = "password must be at least 7 characters"
+      newErrors.password = "Password must be at least 7 characters";
     }
 
     setErrors(newErrors);
 
-    if (obeject.keys(newErrors).length === 0) {
+    if (object.keys(newErrors).length === 0) {
       alert("Login successful!");
       setOpen(false);
     }
@@ -66,10 +66,10 @@ export default function LoginModal() {
                 errors.email
                   ? "border border-red-500"
                   : "border border-gray-300"
-              }`} 
+              }`}
             />
             {errors.email && (
-                <p className="mt-1 text-xs text-red-500"> {errors.email} </p>
+              <p className="mt-1 text-xs text-red-500"> {errors.email} </p>
             )}
           </div>
 
@@ -84,22 +84,33 @@ export default function LoginModal() {
                 errors.password
                   ? "border border-red-500"
                   : "border border-gray-300"
-              }`} 
+              }`}
             />
-              {errors.password && (
-                <p className="mt-1 text-xs text-red-500"> {errors.password} </p>
+            {errors.password && (
+              <p className="mt-1 text-xs text-red-500"> {errors.password} </p>
             )}
           </div>
 
-          <button type="submit" className="mb-6 rounded-full bg-green-900 px-6 py-2 font-medium text-white hover:bg-green-800"> Login</button>
+          <button
+            type="submit"
+            className="mb-6 rounded-full bg-green-900 px-6 py-2 font-medium text-white hover:bg-green-800"
+          >
+            {" "}
+            Login
+          </button>
         </form>
 
         <h3 className="mb-3 font-medium">New Customer?</h3>
-          <div className="flex items-center gap-3 mt-4">
-            <span className="font-medium text-green-900"> <a href="#"> Continue as Guest</a></span>
-            <button className="rounded-full font-medium border border-green-900 px-5 py-2 text-m text-green-900 hover:bg-green-700"> Sign Up</button>
-          </div>
-      
+        <div className="flex items-center gap-3 mt-4">
+          <span className="font-medium text-green-900">
+            {" "}
+            <a href="#"> Continue as Guest</a>
+          </span>
+          <button className="rounded-full font-medium border border-green-900 px-5 py-2 text-m text-green-900 hover:bg-green-700">
+            {" "}
+            Sign Up
+          </button>
+        </div>
 
         <p className="mt-4 text-sm text-gray-700">
           {" "}
