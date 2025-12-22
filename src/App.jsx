@@ -1,15 +1,10 @@
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
-import Home from "./pages/home";
+import Payment from "./components/Payment";
+
 
 function App() {
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Router>
+     <Payment />
     </>
   );
 }
