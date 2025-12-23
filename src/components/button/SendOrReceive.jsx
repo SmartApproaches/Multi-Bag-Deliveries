@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function SendOrReceive() {
   return (
-    <div className="flex gap-[50px] flex-wrap pt-[60px] flex-row-reverse justify-center">
+    <div className="flex gap-[50px] flex-wrap pt-[60px] flex-row-reverse justify-center p-4">
       <div className="gap-[60px] pt-[60px] max-w-[450px]">
         <h2 className="text-4xl text-[#001A0A] font-semibold pb-[30px]">
           Delivering Convenience with Every Parcel
@@ -24,7 +24,7 @@ function SendOrReceive() {
           className="min-w-[300px]"
         />
 
-        <div className="bg-[#FFFFFF] flex flex-wrap gap-[20px] relative bottom-10 p-4 rounded mx-[30px] left-14 shadow-md shadow-[#0013081A] justify-center ">
+        <div className="bg-[#FFFFFF] flex flex-wrap gap-[20px] relative bottom-10 p-4 rounded mx-[30px] left-14 shadow-md shadow-[#0013081A] justify-center">
           <div className="gap-[10px] text-[#00401A] text-[14px] pt-[2px] font-[500]">
             <img src={IMAGES.fast_delivery} alt="fast_delivery"/>
             Fast delivery
