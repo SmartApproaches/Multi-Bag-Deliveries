@@ -6,7 +6,12 @@ import DeliveryOptions from "./components/button/DeliveryOptions";
 function App() {
   return (
     <>
-      <DeliveryOptions />
+      <Router>
+        <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
+        </Routes>
+        <DeliveryOptions />
+      </Router>
     </>
   );
 }

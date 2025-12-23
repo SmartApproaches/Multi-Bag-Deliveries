@@ -21,7 +21,7 @@ function DeliveryOptions() {
           <Button variant="primary">Book now</Button>
         </div>
 
-        <div className="shadow-md shadow-[#0013081A] rounded-[4px] p-6">
+        <div className="shadow-md shadow-[#0013081A] rounded-[4px] p-4">
           <img src={IMAGES.standard_class} alt="standard_class" className="pb-[30px]" />
           <h2 className="font-[600] text-[#1E1E1E] text-[24px] pb-[20px]">Standard Class Delivery</h2>
           <p className="text-[#3B3B3B] text-[18px] font-[400] pb-[30px] max-w-[450px]">
