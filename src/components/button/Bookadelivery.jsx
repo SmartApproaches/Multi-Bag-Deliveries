@@ -711,7 +711,6 @@ const Bookadelivery = () => {
                 </div>
 
                 {/* Delivery Class */}
-                {/* Delivery Class */}
                 <h3 className="pt-6 text-sm font-semibold text-green-900">
                   Delivery Class
                 </h3>
