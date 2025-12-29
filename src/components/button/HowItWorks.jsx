@@ -4,7 +4,7 @@ import { IMAGES } from "../../constants";
 function HowItWorks() {
   return (
     <div className="flex flex-wrap justify-center min-w-[280px]">
-      <div className="bg-gradient-to-br from-[#E6ECE8] to-[#E6ECE842] px-6 py-6 mt-7 mb-7">
+      <div className="bg-gradient-to-r from-[#E6ECE8] to-[#E6ECE800] px-6 py-6 mt-7 mb-7">
         <h2 className="font-semibold text-[#001A0A] text-[30px] font-[600] pb-[10px]">
           How It Works
         </h2>
