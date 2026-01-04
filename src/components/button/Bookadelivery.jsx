@@ -218,7 +218,7 @@ const Bookadelivery = () => {
             {currentStep === 1 && (
               <div className="mt-8 space-y-6">
                 {/* Sender Info */}
-                <h2 className="text-lg font-semibold  text-gray-800">
+                <h2 className="text-lg font-semibold text-[#00401A]">
                   Sender Information
                 </h2>
 
@@ -303,7 +303,7 @@ const Bookadelivery = () => {
                 </div>
 
                 {/* Recipient Info */}
-                <h2 className="pt-6 text-lg font-semibold text-gray-800">
+                <h2 className="pt-6 text-lg font-semibold text-[#00401A]">
                   Recipient's Information
                 </h2>
 
@@ -368,7 +368,7 @@ const Bookadelivery = () => {
                 </div>
 
                 {/* Package Details */}
-                <h2 className="pt-6 text-lg font-semibold text-gray-800">
+                <h2 className="pt-6 text-lg font-semibold text-[#00401A]">
                   Package Details
                 </h2>
 
