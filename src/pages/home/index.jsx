@@ -4,13 +4,13 @@ import Footer from "../../components/footer/Footer";
 import { IMAGES } from "../../constants";
 const Home = () => {
   return (
-    <div className="w-full min-h-screen flex items-center bg-gray-900">
+    <div className="w-full min-h-screen flex flex-col bg-gray-900">
       <img
         src={IMAGES.logo}
         alt="Logo"
         className="absolute top-0 left-0 w-32 h-32"
       />
-      <div className="max-w-6xl mx-auto px-6 py-20 text-white">
+      <div className="flex-1 max-w-6xl mx-auto px-6 py-20 text-white flex items-center">
         <h1 className="font-bold text-4xl md:text-5xl leading-tight max-w-3xl">
           Your Delivery Partner for{" "}
           <span className="text-[#FFA62B]">Fast and</span>{" "}
