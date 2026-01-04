@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+ import React, { useState, useEffect } from "react";
 import logo from "../../assets/images/delivery-logo.png";
 import footerlogo from "../../assets/images/footer-logo.png";
 import destinationIcon from "../../assets/images/destination.png";
@@ -167,111 +167,60 @@ const Bookadelivery = () => {
             </p>
           </div>
 
-          {/* Progress Bar */}
-          <div className="flex items-center w-full flex-wrap md:flex-nowrap gap-y-6">
-            <div className="flex items-center w-full">
-              {/* STEP 1 */}
-              <div className="flex items-center flex-1">
-                <div className="flex flex-col items-center">
-                  <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
-          ${
-            currentStep >= 1
-              ? "bg-[#FFA62B] text-white"
-              : "bg-gray-200 text-gray-500"
-          }`}
-                  >
-                    1
-                  </div>
-                  <span
-                    className={`mt-2 text-xs text-center
-          ${currentStep >= 1 ? "text-[#FFA62B]" : "text-gray-400"}`}
-                  >
-                    Delivery details
-                  </span>
-                </div>
+          {/* ===== PROGRESS BAR ===== */}
+<div className="w-full mt-10">
+  {/* Match the mobile screenshot: dots smaller, connectors visible and dashed, labels under dots */}
+  <div className="flex items-center gap-2 w-full">
+    {/* Step 1 */}
+    <div className="flex flex-col items-center">
+      <div
+        className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-sm font-semibold
+        ${currentStep >= 1 ? "bg-[#FFA62B] text-white" : "bg-gray-200 text-gray-500"}`}>
+        1
+      </div>
+      <span className={`mt-2 text-xs text-center ${currentStep >= 1 ? "text-[#FFA62B]" : "text-gray-400"}`}>Delivery details</span>
+    </div>
 
-                <div
-                  className={`flex-1 h-[2px] border-t border-dashed mx-2
-        ${currentStep >= 2 ? "border-[#FFA62B]" : "border-gray-300"}`}
-                ></div>
-              </div>
+    {/* Connector */}
+    <div className={`flex-1 h-[2px] border-t-2 border-dashed ${currentStep >= 2 ? "border-[#FFA62B]" : "border-gray-300"}`} />
 
-              {/* STEP 2 */}
-              <div className="flex items-center flex-1">
-                <div className="flex flex-col items-center">
-                  <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
-          ${
-            currentStep >= 2
-              ? "bg-[#FFA62B] text-white"
-              : "bg-gray-200 text-gray-500"
-          }`}
-                  >
-                    2
-                  </div>
-                  <span
-                    className={`mt-2 text-xs text-center
-          ${currentStep >= 2 ? "text-[#FFA62B]" : "text-gray-400"}`}
-                  >
-                    Delivery class
-                  </span>
-                </div>
+    {/* Step 2 */}
+    <div className="flex flex-col items-center">
+      <div
+        className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-sm font-semibold
+        ${currentStep >= 2 ? "bg-[#FFA62B] text-white" : "bg-gray-200 text-gray-500"}`}>
+        2
+      </div>
+      <span className={`mt-2 text-xs text-center ${currentStep >= 2 ? "text-[#FFA62B]" : "text-gray-400"}`}>Delivery class</span>
+    </div>
 
-                <div
-                  className={`flex-1 h-[2px] border-t border-dashed mx-2
-        ${currentStep >= 3 ? "border-[#FFA62B]" : "border-gray-300"}`}
-                ></div>
-              </div>
+    {/* Connector */}
+    <div className={`flex-1 h-[2px] border-t-2 border-dashed ${currentStep >= 3 ? "border-[#FFA62B]" : "border-gray-300"}`} />
 
-              {/* STEP 3 */}
-              <div className="flex items-center flex-1">
-                <div className="flex flex-col items-center">
-                  <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
-          ${
-            currentStep >= 3
-              ? "bg-[#FFA62B] text-white"
-              : "bg-gray-200 text-gray-500"
-          }`}
-                  >
-                    3
-                  </div>
-                  <span
-                    className={`mt-2 text-xs text-center
-          ${currentStep >= 3 ? "text-[#FFA62B]" : "text-gray-400"}`}
-                  >
-                    Review & Confirm
-                  </span>
-                </div>
+    {/* Step 3 */}
+    <div className="flex flex-col items-center">
+      <div
+        className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-sm font-semibold
+        ${currentStep >= 3 ? "bg-[#FFA62B] text-white" : "bg-gray-200 text-gray-500"}`}>
+        3
+      </div>
+      <span className={`mt-2 text-xs text-center ${currentStep >= 3 ? "text-[#FFA62B]" : "text-gray-400"}`}>Review & Confirm</span>
+    </div>
 
-                <div
-                  className={`flex-1 h-[2px] border-t border-dashed mx-2
-        ${currentStep >= 4 ? "border-[#FFA62B]" : "border-gray-300"}`}
-                ></div>
-              </div>
+    {/* Connector */}
+    <div className={`flex-1 h-[2px] border-t-2 border-dashed ${currentStep >= 4 ? "border-[#FFA62B]" : "border-gray-300"}`} />
 
-              {/* STEP 4 */}
-              <div className="flex flex-col items-center">
-                <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
-        ${
-          currentStep >= 4
-            ? "bg-[#FFA62B] text-white"
-            : "bg-gray-200 text-gray-500"
-        }`}
-                >
-                  4
-                </div>
-                <span
-                  className={`mt-2 text-xs text-center
-        ${currentStep >= 4 ? "text-[#FFA62B]" : "text-gray-400"}`}
-                >
-                  Payment
-                </span>
-              </div>
-            </div>
-          </div>
+    {/* Step 4 */}
+    <div className="flex flex-col items-center">
+      <div
+        className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-sm font-semibold
+        ${currentStep >= 4 ? "bg-[#FFA62B] text-white" : "bg-gray-200 text-gray-500"}`}>
+        4
+      </div>
+      <span className={`mt-2 text-xs text-center ${currentStep >= 4 ? "text-[#FFA62B]" : "text-gray-400"}`}>Payment</span>
+    </div>
+  </div>
+</div>
 
           <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
             {/* STEP 1 */}
