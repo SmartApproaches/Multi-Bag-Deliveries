@@ -214,6 +214,7 @@ const Bookadelivery = () => {
               </div>
             </div>
           </div>
+          <br />
 
           <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
             
@@ -229,33 +230,33 @@ const Bookadelivery = () => {
                 </h3>
 
                 <div className="space-y-3">
-                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
                     <span className="text-gray-600">Full name</span>
-                    <span className="text-gray-500">:</span>
+                    <span className="text-gray-500 hidden sm:inline">:</span>
                     <span className="font-medium text-gray-800">
                       {formData.senderName}
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
                     <span className="text-gray-600">Email</span>
-                    <span className="text-gray-500">:</span>
+                    <span className="text-gray-500 hidden sm:inline">:</span>
                     <span className="font-medium text-gray-800">
                       {formData.senderEmail}
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
                     <span className="text-gray-600">Phone number</span>
-                    <span className="text-gray-500">:</span>
+                    <span className="text-gray-500 hidden sm:inline">:</span>
                     <span className="font-medium text-gray-800">
                       {formData.senderPhone}
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
                     <span className="text-gray-600">Pickup address</span>
-                    <span className="text-gray-500">:</span>
+                    <span className="text-gray-500 hidden sm:inline">:</span>
                     <span className="font-medium text-gray-800">
                       {formData.pickupAddress}
                     </span>
@@ -268,25 +269,25 @@ const Bookadelivery = () => {
                 </h3>
 
                 <div className="space-y-3">
-                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
                     <span className="text-gray-600">Full name</span>
-                    <span className="text-gray-500">:</span>
+                    <span className="text-gray-500 hidden sm:inline">:</span>
                     <span className="font-medium text-gray-800">
                       {formData.recipientName}
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
                     <span className="text-gray-600">Phone number</span>
-                    <span className="text-gray-500">:</span>
+                    <span className="text-gray-500 hidden sm:inline">:</span>
                     <span className="font-medium text-gray-800">
                       {formData.recipientPhone}
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
                     <span className="text-gray-600">Delivery location</span>
-                    <span className="text-gray-500">:</span>
+                    <span className="text-gray-500 hidden sm:inline">:</span>
                     <span className="font-medium text-gray-800">
                       {formData.deliveryAddress}
                     </span>
@@ -299,25 +300,25 @@ const Bookadelivery = () => {
                 </h3>
 
                 <div className="space-y-3">
-                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
                     <span className="text-gray-600">Package type</span>
-                    <span className="text-gray-500">:</span>
+                    <span className="text-gray-500 hidden sm:inline">:</span>
                     <span className="font-medium text-gray-800">
                       {formData.packageType}
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
                     <span className="text-gray-600">Package size</span>
-                    <span className="text-gray-500">:</span>
+                    <span className="text-gray-500 hidden sm:inline">:</span>
                     <span className="font-medium text-gray-800">
                       {formData.packageSize}
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-[140px_10px_1fr] items-center text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
                     <span className="text-gray-600">Special instructions</span>
-                    <span className="text-gray-500">:</span>
+                    <span className="text-gray-500 hidden sm:inline">:</span>
                     <span className="font-medium text-gray-800">
                       {formData.instructions || "Nil"}
                     </span>
