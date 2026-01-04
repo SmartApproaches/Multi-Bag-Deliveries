@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../../components/button";
+import Footer from "../../components/footer/Footer";
 import { IMAGES } from "../../constants";
 const Home = () => {
   return (
@@ -26,6 +27,7 @@ const Home = () => {
           <Button variant="outline">Track My Parcel</Button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
