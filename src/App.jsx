@@ -1,10 +1,10 @@
 import React from "react";
-import Bookadelivery from "./components/button/Bookadelivery";
+import Testimonials from "./components/testimonials/Testimonials";
 
 function App() {
   return (
     <div className="App">
-      <Bookadelivery />
+      <Testimonials />
     </div>
   );
 }
