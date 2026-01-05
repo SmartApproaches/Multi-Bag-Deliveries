@@ -3,6 +3,7 @@ import Button from "../../components/button";
 import { IMAGES } from "../../constants";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { RiMenu4Line } from "react-icons/ri";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Header = () => {
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="flex flex-1 items-center sm:items-stretch sm:justify-start">
-              <div className="flex shrink-0 items-center">
+              <div className="shrink-0 items-center">
                 <img
                   src={IMAGES.logo}
                   alt="Logo"
@@ -22,8 +23,8 @@ const Header = () => {
               </div>
               <div className="hidden sm:ml-6 sm:block"></div>
             </div>
-            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <div className="flex space-x-4 gap-[150px] hidden lg:flex">
+            <div className="absolute inset-y-0 right-0 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="flex space-x-4 gap-[70px] hidden lg:flex">
                 <div className="pt-[23px]">
                   <Link
                     to={"/"}
@@ -76,9 +77,9 @@ const Header = () => {
                 </div>
               </div>
               <i
-                className="bx bx-menu lg:hidden block text-5xl cursor-pointer"
+                className="lg:hidden block text-5xl cursor-pointer text-[#00401A]"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-              ></i>
+              ><RiMenu4Line /></i>
 
               <div
                 className={`absolute xl:hidden lg:hidden top-24 w-[110px] flex flex-col bg-[#FFFFFF99] py-5 transform transition-transform 
