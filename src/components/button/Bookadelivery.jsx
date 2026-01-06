@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import Premium from "../../assets/images/premium.jpg";
+import Standard from "../../assets/images/standard.jpg";
 
 
 const Bookadelivery = () => {
-  const [currentStep, setCurrentStep] = useState(3);
+  const [currentStep, setCurrentStep] = useState(2);
   const [formData, setFormData] = useState({
     senderName: "",
     senderEmail: "",
@@ -71,10 +73,12 @@ const Bookadelivery = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#EFF5F1] font-inter">
 
-      {/* FORM */}
-      <div className="min-h-screen bg-gray-100 flex items-start justify-center px-4 py-12">
+    <div className="min-h-screen bg-[#EFF5F1] font-inter">
+      
+
+       {/* FORM */}
+      <div className="bg-gray-100 flex items-start justify-center px-4 py-12 min-h-[60vh]">
         <div className="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-8">
           <div className="text-center">
             <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">
@@ -85,8 +89,6 @@ const Bookadelivery = () => {
               Fill in the details below to book your parcel delivery.
             </p>
           </div>
-
-         
           {/* ===== PROGRESS BAR ===== */}
           <div className="w-full mt-10">
             {/* Grid-based layout: step, connector, step, connector, ... so connectors always align with dots */}
@@ -214,149 +216,238 @@ const Bookadelivery = () => {
               </div>
             </div>
           </div>
-          <br />
 
           <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
-            
-            {currentStep === 3 && (
-              <div className="space-y-8">
-                <h2 className="text-lg font-semibold text-gray-800">
-                  Review Your Booking
+            {/* STEP 1 */}
+
+            {currentStep === 1 && (
+              <div className="mt-8 space-y-6">
+                {/* Sender Info */}
+                <h2 className="text-lg font-semibold text-[#00401A]">
+                  Sender Information
                 </h2>
 
-                {/* Sender Information */}
-                <h3 className="text-sm font-semibold text-green-900">
-                  Sender Information
-                </h3>
-
-                <div className="space-y-3">
-                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
-                    <span className="text-gray-600">Full name</span>
-                    <span className="text-gray-500 hidden sm:inline">:</span>
-                    <span className="font-medium text-gray-800">
-                      {formData.senderName}
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
-                    <span className="text-gray-600">Email</span>
-                    <span className="text-gray-500 hidden sm:inline">:</span>
-                    <span className="font-medium text-gray-800">
-                      {formData.senderEmail}
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
-                    <span className="text-gray-600">Phone number</span>
-                    <span className="text-gray-500 hidden sm:inline">:</span>
-                    <span className="font-medium text-gray-800">
-                      {formData.senderPhone}
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
-                    <span className="text-gray-600">Pickup address</span>
-                    <span className="text-gray-500 hidden sm:inline">:</span>
-                    <span className="font-medium text-gray-800">
-                      {formData.pickupAddress}
-                    </span>
-                  </div>
+                <div>
+                  <label
+                    htmlFor="senderName"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Full name
+                  </label>
+                  <input
+                    id="senderName"
+                    name="senderName"
+                    value={formData.senderName}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Enter your full name"
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
                 </div>
 
-                {/* Recipient */}
-                <h3 className="pt-6 text-sm font-semibold text-green-900">
-                  Recipient’s Information
-                </h3>
+                <div>
+                  <label
+                    htmlFor="senderEmail"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Email address
+                  </label>
+                  <input
+                    id="senderEmail"
+                    name="senderEmail"
+                    value={formData.senderEmail}
+                    onChange={handleChange}
+                    type="email"
+                    placeholder="Enter your email address"
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
+                </div>
 
-                <div className="space-y-3">
-                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
-                    <span className="text-gray-600">Full name</span>
-                    <span className="text-gray-500 hidden sm:inline">:</span>
-                    <span className="font-medium text-gray-800">
-                      {formData.recipientName}
-                    </span>
-                  </div>
+                <div>
+                  <label
+                    htmlFor="senderPhone"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Phone number
+                  </label>
+                  <input
+                    id="senderPhone"
+                    name="senderPhone"
+                    value={formData.senderPhone}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Enter your phone number"
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
+                </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
-                    <span className="text-gray-600">Phone number</span>
-                    <span className="text-gray-500 hidden sm:inline">:</span>
-                    <span className="font-medium text-gray-800">
-                      {formData.recipientPhone}
-                    </span>
-                  </div>
+                <div>
+                  <label
+                    htmlFor="pickupAddress"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Pickup address
+                  </label>
+                  <input
+                    id="pickupAddress"
+                    name="pickupAddress"
+                    value={formData.pickupAddress}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Enter your pickup address"
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
+                </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
-                    <span className="text-gray-600">Delivery location</span>
-                    <span className="text-gray-500 hidden sm:inline">:</span>
-                    <span className="font-medium text-gray-800">
-                      {formData.deliveryAddress}
-                    </span>
-                  </div>
+                {/* Recipient Info */}
+                <h2 className="pt-6 text-lg font-semibold text-[#00401A]">
+                  Recipient's Information
+                </h2>
+
+                <div>
+                  <label
+                    htmlFor="recipientName"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Full name
+                  </label>
+                  <input
+                    id="recipientName"
+                    name="recipientName"
+                    value={formData.recipientName}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Enter your full name"
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="recipientPhone"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Phone number
+                  </label>
+                  <input
+                    id="recipientPhone"
+                    name="recipientPhone"
+                    value={formData.recipientPhone}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Enter your phone number"
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="deliveryAddress"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Delivery address
+                  </label>
+                  <input
+                    id="deliveryAddress"
+                    name="deliveryAddress"
+                    value={formData.deliveryAddress}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Enter the drop-off address"
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
                 </div>
 
                 {/* Package Details */}
-                <h3 className="pt-6 text-sm font-semibold text-green-900">
+                <h2 className="pt-6 text-lg font-semibold text-[#00401A]">
                   Package Details
-                </h3>
+                </h2>
 
-                <div className="space-y-3">
-                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
-                    <span className="text-gray-600">Package type</span>
-                    <span className="text-gray-500 hidden sm:inline">:</span>
-                    <span className="font-medium text-gray-800">
-                      {formData.packageType}
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
-                    <span className="text-gray-600">Package size</span>
-                    <span className="text-gray-500 hidden sm:inline">:</span>
-                    <span className="font-medium text-gray-800">
-                      {formData.packageSize}
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-[140px_10px_1fr] items-start sm:items-center text-sm gap-y-1">
-                    <span className="text-gray-600">Special instructions</span>
-                    <span className="text-gray-500 hidden sm:inline">:</span>
-                    <span className="font-medium text-gray-800">
-                      {formData.instructions || "Nil"}
-                    </span>
-                  </div>
+                <div>
+                  <label
+                    htmlFor="packageType"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Package type
+                  </label>
+                  <input
+                    id="packageType"
+                    name="packageType"
+                    value={formData.packageType}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Food, Clothes, Gadgets, etc."
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
                 </div>
 
-                {/* Delivery Class */}
-                <h3 className="pt-6 text-sm font-semibold text-green-900">
-                  Delivery Class
-                </h3>
+                <div>
+                  <label
+                    htmlFor="packageSize"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Package size
+                  </label>
+                  <select
+                    id="packageSize"
+                    name="packageSize"
+                    value={formData.packageSize}
+                    onChange={handleChange}
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  >
+                    <option value="">Select package size</option>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                  </select>
+                </div>
 
-                <p className="mt-2 text-sm font-medium text-gray-800">
-                  {formData.deliveryClass === "premium"
-                    ? "Premium Class"
-                    : formData.deliveryClass === "standard"
-                    ? "Standard Class"
-                    : "—"}
-                </p>
+            {/* Labels row - same grid so labels align under the dots */}
+            <div
+              className="grid mt-2 text-xs gap-2 text-center"
+              style={{ gridTemplateColumns: "auto 1fr auto 1fr auto 1fr auto" }}
+            >
+              <div
+                className={`text-center ${
+                  currentStep >= 1 ? "text-[#FFA62B]" : "text-gray-400"
+                }`}
+              >
+                Delivery details
               </div>
             )}
 
-            
+            <div className="mt-8 flex gap-3 flex-col md:flex-row">
+              {currentStep > 1 && (
+                <button
+                  type="button"
+                  onClick={handleBack}
+                  className="w-full md:w-40 py-3 border border-gray-300 rounded-full text-gray-700 bg-white hover:bg-gray-100"
+                >
+                  Back
+                </button>
+              )}
 
-            <div className="mt-8">
               <button
                 type="submit"
-                className="
-      w-full
-      py-4
-      bg-[#00401A]
-      text-white
-      rounded-full
-      font-semibold
-      transition
-      duration-200
-      hover:bg-[#003015]
-      active:scale-[0.98]
-    "
+                className="w-full md:flex-1 py-4 bg-[#00401A] text-white rounded-full font-semibold transition duration-200 hover:bg-[#003015] active:scale-[0.98]"
               >
                 {currentStep < 3 && "Proceed"}
                 {currentStep === 3 && "Confirm & Pay"}
@@ -367,7 +458,6 @@ const Bookadelivery = () => {
         </div>
       </div>
 
-           
     </div>
   );
 };
