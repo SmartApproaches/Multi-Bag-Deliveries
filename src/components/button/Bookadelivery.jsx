@@ -73,13 +73,12 @@ const Bookadelivery = () => {
   }, []);
 
   return (
+
     <div className="min-h-screen bg-[#EFF5F1] font-inter">
       
 
-    
-
-      {/* FORM */}
-      <div className="min-h-screen bg-gray-100 flex items-start justify-center px-4 py-12">
+       {/* FORM */}
+      <div className="bg-gray-100 flex items-start justify-center px-4 py-12 min-h-[60vh]">
         <div className="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-8">
           <div className="text-center">
             <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">
@@ -90,8 +89,6 @@ const Bookadelivery = () => {
               Fill in the details below to book your parcel delivery.
             </p>
           </div>
-
-          
           {/* ===== PROGRESS BAR ===== */}
           <div className="w-full mt-10">
             {/* Grid-based layout: step, connector, step, connector, ... so connectors always align with dots */}
@@ -221,127 +218,243 @@ const Bookadelivery = () => {
           </div>
 
           <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
-            
+            {/* STEP 1 */}
 
-            {currentStep === 2 && (
+            {currentStep === 1 && (
               <div className="mt-8 space-y-6">
-                <h2 className="text-lg font-semibold text-gray-800">
-                  Select a Delivery Class
+                {/* Sender Info */}
+                <h2 className="text-lg font-semibold text-[#00401A]">
+                  Sender Information
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
-                  {/* Premium Class */}
+                <div>
                   <label
-                    className={`relative w-full max-w-sm rounded-xl border p-6 cursor-pointer transition
-        ${
-          formData.deliveryClass === "premium"
-            ? "border-orange-500"
-            : "border-gray-300 hover:border-orange-400"
-        }`}
+                    htmlFor="senderName"
+                    className="block text-sm font-medium text-gray-700"
                   >
-                    <input
-                      type="radio"
-                      name="deliveryClass"
-                      value="premium"
-                      checked={formData.deliveryClass === "premium"}
-                      onChange={handleChange}
-                      className="hidden"
-                    />
-
-                    {/* ICON (no container) */}
-                    <img src={Premium} alt="Premium" className="w-8 h-8 mb-4" />
-
-                    {/* TEXT */}
-                    <h3 className="text-base font-semibold text-gray-800">
-                      Premium Class
-                    </h3>
-                    <p className="text-sm text-gray-500 mt-1">
-                      Same-Day Delivery
-                    </p>
-
-                    {/* RADIO */}
-                    <span
-                      className={`absolute top-6 right-6 w-5 h-5 rounded-full border-2 flex items-center justify-center
-          ${
-            formData.deliveryClass === "premium"
-              ? "border-orange-500"
-              : "border-gray-300"
-          }`}
-                    >
-                      {formData.deliveryClass === "premium" && (
-                        <span className="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
-                      )}
-                    </span>
+                    Full name
                   </label>
+                  <input
+                    id="senderName"
+                    name="senderName"
+                    value={formData.senderName}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Enter your full name"
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
+                </div>
 
-                  {/* Standard Class */}
+                <div>
                   <label
-                    className={`relative w-full max-w-sm rounded-xl border p-6 cursor-pointer transition
-        ${
-          formData.deliveryClass === "standard"
-            ? "border-orange-500"
-            : "border-gray-300 hover:border-orange-400"
-        }`}
+                    htmlFor="senderEmail"
+                    className="block text-sm font-medium text-gray-700"
                   >
-                    <input
-                      type="radio"
-                      name="deliveryClass"
-                      value="standard"
-                      checked={formData.deliveryClass === "standard"}
-                      onChange={handleChange}
-                      className="hidden"
-                    />
-
-                    {/* ICON (no container) */}
-                    <img
-                      src={Standard}
-                      alt="Standard"
-                      className="w-8 h-8 mb-4"
-                    />
-
-                    {/* TEXT */}
-                    <h3 className="text-base font-semibold text-gray-800">
-                      Standard Class
-                    </h3>
-                    <p className="text-sm text-gray-500 mt-1">
-                      Up to 7 Days Delivery
-                    </p>
-
-                    {/* RADIO */}
-                    <span
-                      className={`absolute top-6 right-6 w-5 h-5 rounded-full border-2 flex items-center justify-center
-          ${
-            formData.deliveryClass === "standard"
-              ? "border-orange-500"
-              : "border-gray-300"
-          }`}
-                    >
-                      {formData.deliveryClass === "standard" && (
-                        <span className="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
-                      )}
-                    </span>
+                    Email address
                   </label>
+                  <input
+                    id="senderEmail"
+                    name="senderEmail"
+                    value={formData.senderEmail}
+                    onChange={handleChange}
+                    type="email"
+                    placeholder="Enter your email address"
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="senderPhone"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Phone number
+                  </label>
+                  <input
+                    id="senderPhone"
+                    name="senderPhone"
+                    value={formData.senderPhone}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Enter your phone number"
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="pickupAddress"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Pickup address
+                  </label>
+                  <input
+                    id="pickupAddress"
+                    name="pickupAddress"
+                    value={formData.pickupAddress}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Enter your pickup address"
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
+                </div>
+
+                {/* Recipient Info */}
+                <h2 className="pt-6 text-lg font-semibold text-[#00401A]">
+                  Recipient's Information
+                </h2>
+
+                <div>
+                  <label
+                    htmlFor="recipientName"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Full name
+                  </label>
+                  <input
+                    id="recipientName"
+                    name="recipientName"
+                    value={formData.recipientName}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Enter your full name"
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="recipientPhone"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Phone number
+                  </label>
+                  <input
+                    id="recipientPhone"
+                    name="recipientPhone"
+                    value={formData.recipientPhone}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Enter your phone number"
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="deliveryAddress"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Delivery address
+                  </label>
+                  <input
+                    id="deliveryAddress"
+                    name="deliveryAddress"
+                    value={formData.deliveryAddress}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Enter the drop-off address"
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
+                </div>
+
+                {/* Package Details */}
+                <h2 className="pt-6 text-lg font-semibold text-[#00401A]">
+                  Package Details
+                </h2>
+
+                <div>
+                  <label
+                    htmlFor="packageType"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Package type
+                  </label>
+                  <input
+                    id="packageType"
+                    name="packageType"
+                    value={formData.packageType}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Food, Clothes, Gadgets, etc."
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="packageSize"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Package size
+                  </label>
+                  <select
+                    id="packageSize"
+                    name="packageSize"
+                    value={formData.packageSize}
+                    onChange={handleChange}
+                    required
+                    className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  >
+                    <option value="">Select package size</option>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="instructions"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Special instructions
+                  </label>
+                  <textarea
+                    id="instructions"
+                    name="instructions"
+                    value={formData.instructions}
+                    onChange={handleChange}
+                    placeholder="Add any additional instructions"
+                    rows={4}
+                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm resize-none
+          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  />
                 </div>
               </div>
             )}
 
-           
+            <div className="mt-8 flex gap-3 flex-col md:flex-row">
+              {currentStep > 1 && (
+                <button
+                  type="button"
+                  onClick={handleBack}
+                  className="w-full md:w-40 py-3 border border-gray-300 rounded-full text-gray-700 bg-white hover:bg-gray-100"
+                >
+                  Back
+                </button>
+              )}
 
-            <div className="mt-8">
               <button
                 type="submit"
-                className="
-      w-full
-      py-4
-      bg-[#00401A]
-      text-white
-      rounded-full
-      font-semibold
-      transition
-      duration-200
-      hover:bg-[#003015]
-      active:scale-[0.98]
-    "
+                className="w-full md:flex-1 py-4 bg-[#00401A] text-white rounded-full font-semibold transition duration-200 hover:bg-[#003015] active:scale-[0.98]"
               >
                 {currentStep < 3 && "Proceed"}
                 {currentStep === 3 && "Confirm & Pay"}
@@ -352,7 +465,6 @@ const Bookadelivery = () => {
         </div>
       </div>
 
-      
     </div>
   );
 };
