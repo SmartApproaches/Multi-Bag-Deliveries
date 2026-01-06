@@ -1,3 +1,4 @@
+import Payment from "./components/Payment";
 import PaymentSuccess from "./components/PaymentSuccess";
 import LoginModal from './components/LoginModal';
 import CreateAccount from "./components/CreateAccount";
@@ -12,10 +13,13 @@ import SendOrReceive from "./components/button/SendOrReceive";
  function App () {
   return (
     <>
+
       
       <Router>
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
+         <Payment />
+
           <PaymentSuccess />
     <LoginModal />
         <DeliveryOptions />
