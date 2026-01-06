@@ -1,15 +1,9 @@
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
-import Home from "./pages/home";
+import Parcel from './components/Parcel';
 
 function App() {
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Router>
+     <Parcel />
     </>
   );
 }
