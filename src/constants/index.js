@@ -1,4 +1,9 @@
 import logo from "../assets/logo.svg";
+import background2 from "./assets/background2.svg"
+
+export const IMAGES = {
+  logo: logo,
+  background2: background2,
 import premium_class from "../assets/premium_class.svg";
 import standard_class from "../assets/standard_class.svg";
 
