@@ -7,6 +7,7 @@ import CreateAccount from "./components/CreateAccount";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import Home from "./pages/home";
+import HowItWorks from "./components/button/HowItWorks";
 import About from "./pages/about";
 import Services from "./pages/services";
 import Contact from "./pages/contact";
@@ -23,6 +24,7 @@ import SendOrReceive from "./components/button/SendOrReceive";
     <>
       <Router>
         <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
@@ -41,6 +43,7 @@ import SendOrReceive from "./components/button/SendOrReceive";
       <MakeWorkEasier/>
       <SendOrReceive />
         </Routes>
+        <HowItWorks />
       </Router>
 
     </>
