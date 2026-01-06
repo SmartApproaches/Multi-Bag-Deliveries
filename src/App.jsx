@@ -1,3 +1,4 @@
+import LoginModal from './components/LoginModal';
 import CreateAccount from "./components/CreateAccount";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
@@ -10,10 +11,11 @@ import SendOrReceive from "./components/button/SendOrReceive";
  function App () {
   return (
     <>
+      
       <Router>
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
-    
+    <LoginModal />
         <DeliveryOptions />
         <CreateAccount />
       <MakeWorkEasier/>
