@@ -1,3 +1,4 @@
+import PaymentSuccess from "./components/PaymentSuccess";
 import LoginModal from './components/LoginModal';
 import CreateAccount from "./components/CreateAccount";
 import "./App.css";
@@ -15,6 +16,7 @@ import SendOrReceive from "./components/button/SendOrReceive";
       <Router>
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
+          <PaymentSuccess />
     <LoginModal />
         <DeliveryOptions />
         <CreateAccount />
