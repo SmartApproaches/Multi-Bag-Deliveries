@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import Premium from "../../assets/images/premium.jpg";
+import Standard from "../../assets/images/standard.jpg";
+
 
 const Bookadelivery = () => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(2);
   const [formData, setFormData] = useState({
     senderName: "",
     senderEmail: "",
@@ -70,8 +73,11 @@ const Bookadelivery = () => {
   }, []);
 
   return (
-    <div>
-      {/* FORM */}
+
+    <div className="min-h-screen bg-[#EFF5F1] font-inter">
+      
+
+       {/* FORM */}
       <div className="bg-gray-100 flex items-start justify-center px-4 py-12 min-h-[60vh]">
         <div className="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-8">
           <div className="text-center">
@@ -83,7 +89,6 @@ const Bookadelivery = () => {
               Fill in the details below to book your parcel delivery.
             </p>
           </div>
-
           {/* ===== PROGRESS BAR ===== */}
           <div className="w-full mt-10">
             {/* Grid-based layout: step, connector, step, connector, ... so connectors always align with dots */}
@@ -459,6 +464,7 @@ const Bookadelivery = () => {
           </form>
         </div>
       </div>
+
     </div>
   );
 };
