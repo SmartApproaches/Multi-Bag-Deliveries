@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { RiMenu4Line } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
@@ -16,14 +16,19 @@ const navLinks = [
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const drawerId = useId();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // ✅ Prevent "open on load" flash (FOUC) on mobile
   const [hasMounted, setHasMounted] = useState(false);
-  useEffect(() => setHasMounted(true), []);
 
   const closeMenu = () => setIsMenuOpen(false);
+  const toggleMenu = () => setIsMenuOpen((v) => !v);
+
+  // ✅ Prevent any weird "open on initial render" state
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setHasMounted(true);
+  }, []);
 
   // Close menu on route change
   useEffect(() => {
@@ -39,7 +44,7 @@ const Header = () => {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  // ✅ Lock body scroll when menu is open
+  // Lock body scroll when menu is open
   useEffect(() => {
     if (!hasMounted) return;
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
@@ -97,9 +102,10 @@ const Header = () => {
             <button
               type="button"
               className="lg:hidden inline-flex items-center justify-center rounded-md p-2 text-[#00401A]"
-              onClick={() => setIsMenuOpen((v) => !v)}
+              onClick={toggleMenu}
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
+              aria-controls={drawerId}
             >
               {isMenuOpen ? (
                 <IoClose className="text-4xl" />
@@ -110,29 +116,26 @@ const Header = () => {
           </div>
         </div>
 
-        {/* ✅ Only render overlay/drawer after mount to prevent flash */}
+        {/* Mobile UI (only after mount to avoid FOUC) */}
         {hasMounted && (
           <>
-            {/* Mobile overlay */}
+            {/* Overlay */}
             <div
               className={[
-                "lg:hidden fixed inset-0 z-40 transition-opacity duration-300",
+                "lg:hidden fixed inset-0 z-40 bg-black/30 transition-opacity duration-300",
                 isMenuOpen
                   ? "opacity-100 pointer-events-auto"
                   : "opacity-0 pointer-events-none",
               ].join(" ")}
               onClick={closeMenu}
-            >
-              <div className="absolute inset-0 bg-black/30" />
-            </div>
+            />
 
-            {/* Mobile drawer */}
-            <div
+            {/* Drawer */}
+            <aside
+              id={drawerId}
               className={[
-                // ✅ closed by default even before state updates
-                "lg:hidden fixed top-[83px] right-0 z-50 w-[85%] max-w-sm bg-white shadow-xl",
-                "transform -translate-x-0 translate-x-full", // base safety (Tailwind always has a transform)
-                "transition-transform duration-300",
+                "lg:hidden fixed top-[83px] right-0 z-50 w-[85%] max-w-sm bg-white shadow-2xl",
+                "transform transition-transform duration-300 ease-out",
                 isMenuOpen ? "translate-x-0" : "translate-x-full",
               ].join(" ")}
             >
@@ -142,7 +145,7 @@ const Header = () => {
                     <Link
                       key={item.to}
                       to={item.to}
-                      onClick={closeMenu} // ✅ close on click
+                      onClick={closeMenu}
                       className={[
                         "rounded-md px-4 py-3 text-[18px] font-medium transition-colors",
                         isActive(item.to)
@@ -176,7 +179,7 @@ const Header = () => {
                   </Button>
                 </div>
               </div>
-            </div>
+            </aside>
           </>
         )}
       </nav>
