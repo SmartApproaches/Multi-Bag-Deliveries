@@ -46,8 +46,6 @@ function Home() {
 }
 
 export default Home;
-
-              <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button
                   variant="primary"
                   onClick={() => navigate("/book-a-delivery")}
@@ -62,12 +60,8 @@ export default Home;
             </div>
           </div>
         </div>
-<<<<<<< HEAD
-      </div>
-      <Footer />
-=======
       </main>
->>>>>>> 0d230ae4bcf7de893ce4753dc45ef3fbfb1ef759
+      <Footer />
     </div>
   );
 }
