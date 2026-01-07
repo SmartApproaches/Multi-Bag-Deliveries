@@ -25,6 +25,7 @@ import SendOrReceive from "./components/button/SendOrReceive";
 import HowItWorks from "./components/button/HowItWorks";
 
 
+
 function App() {
   return (
     <>
@@ -50,7 +51,7 @@ function App() {
         <SendOrReceive />
         <HowItWorks />
 
-        <Footer />
+        
       </Router>
     </>
   );
