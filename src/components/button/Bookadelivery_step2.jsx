@@ -357,4 +357,4 @@ const Bookadelivery= () => {
   );
 };
 
-export default Bookadelivery_step2;
+export default Bookadelivery;
