@@ -1,5 +1,5 @@
 import React from "react";
-import Bookadeliverystep2 from "./components/button/Bookadelivery_step2";
+import Bookadelivery_step2 from "./components/button/Bookadelivery_step2";
 import Payment from "./components/Payment";
 import PaymentSuccess from "./components/PaymentSuccess";
 import LoginModal from './components/LoginModal';

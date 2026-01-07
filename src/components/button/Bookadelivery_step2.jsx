@@ -3,7 +3,7 @@ import Premium from "../../assets/images/premium.jpg";
 import Standard from "../../assets/images/standard.jpg";
 
 
-const Bookadelivery = () => {
+const Bookadelivery= () => {
   const [currentStep, setCurrentStep] = useState(2);
   const [formData, setFormData] = useState({
     senderName: "",
@@ -357,4 +357,4 @@ const Bookadelivery = () => {
   );
 };
 
-export default Bookadelivery;
+export default Bookadelivery_step2;
