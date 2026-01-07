@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Premium from "../../assets/images/premium.jpg";
-import Standard from "../../assets/images/standard.jpg";
-
+// import Premium from "../../assets/images/premium.jpg";
+// import Standard from "../../assets/images/standard.jpg";
 
 const Bookadelivery = () => {
   const [currentStep, setCurrentStep] = useState(2);
@@ -73,11 +72,8 @@ const Bookadelivery = () => {
   }, []);
 
   return (
-
     <div className="min-h-screen bg-[#EFF5F1] font-inter">
-      
-
-       {/* FORM */}
+      {/* FORM */}
       <div className="bg-gray-100 flex items-start justify-center px-4 py-12 min-h-[60vh]">
         <div className="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-8">
           <div className="text-center">
@@ -464,7 +460,6 @@ const Bookadelivery = () => {
           </form>
         </div>
       </div>
-
     </div>
   );
 };

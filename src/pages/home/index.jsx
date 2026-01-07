@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/button";
 import Footer from "../../components/footer/Footer";
 import { IMAGES } from "../../constants";
@@ -16,29 +17,19 @@ const Home = () => {
           <span className="text-[#FFA62B]">Reliable</span> Service
         </h1>
 
-          <p className="mt-6 text-gray-300 max-w-2xl text-lg">
-            From small packages to bulk deliveries, we handle your <br />
-            parcels with care and ensure they reach their destination <br />
-            on time.
-          </p>
+              <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Button
+                  variant="primary"
+                  onClick={() => navigate("/book-a-delivery")}
+                >
+                  Book a Delivery
+                </Button>
 
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Button
-              variant="primary"
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              Book a Delivery
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              Track My Parcel
-            </Button>
+                <Button variant="outline" onClick={() => navigate("/track")}>
+                  Track My Parcel
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
