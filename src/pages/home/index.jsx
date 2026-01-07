@@ -1,48 +1,73 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/button";
-import Footer from "../../components/footer/Footer";
-import { IMAGES } from "../../constants";
-const Home = () => {
+import background from "../../assets/background.svg"; // used for hero background
+
+function Home() {
+  const navigate = useNavigate();
+
   return (
-    <div className="w-full min-h-screen flex flex-col bg-gray-900">
-      <img
-        src={IMAGES.logo}
-        alt="Logo"
-        className="absolute top-0 left-0 w-32 h-32"
-      />
-      <div className="flex-1 max-w-6xl mx-auto px-6 py-20 text-white flex items-center">
-        <h1 className="font-bold text-4xl md:text-5xl leading-tight max-w-3xl">
-          Your Delivery Partner for{" "}
-          <span className="text-[#FFA62B]">Fast and</span>{" "}
-          <span className="text-[#FFA62B]">Reliable</span> Service
-        </h1>
+    <div className="w-full min-h-screen">
+      <main
+        className="min-h-[calc(100vh-83px)] bg-no-repeat bg-top bg-cover"
+        style={{ backgroundImage: `url(${background})` }}
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="pt-16 sm:pt-20 lg:pt-28 pb-10">
+            <div className="max-w-2xl text-white">
+              <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight">
+                Your Delivery <br />
+                Partner for <span className="text-[#FFA62B]">Fast and</span> <br />
+                <span className="text-[#FFA62B]">Reliable</span> Service
+              </h1>
 
-          <p className="mt-6 text-gray-300 max-w-2xl text-lg">
-            From small packages to bulk deliveries, we handle your <br />
-            parcels with care and ensure they reach their destination <br />
-            on time.
-          </p>
+              <p className="mt-6 text-white/80 text-base sm:text-lg leading-relaxed">
+                From small packages to bulk deliveries, we handle your parcels
+                with care and ensure they reach their destination on time.
+              </p>
 
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Button
-              variant="primary"
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              Book a Delivery
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              Track My Parcel
-            </Button>
+              <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Button
+                  variant="primary"
+                  onClick={() => navigate("/book-a-delivery")}
+                >
+                  Book a Delivery
+                </Button>
+
+                <Button variant="outline" onClick={() => navigate("/track")}>
+                  Track My Parcel
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
+      </main>
+    </div>
+  );
+}
+
+export default Home;
+
+              <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Button
+                  variant="primary"
+                  onClick={() => navigate("/book-a-delivery")}
+                >
+                  Book a Delivery
+                </Button>
+
+                <Button variant="outline" onClick={() => navigate("/track")}>
+                  Track My Parcel
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+<<<<<<< HEAD
       </div>
       <Footer />
+=======
+      </main>
+>>>>>>> 0d230ae4bcf7de893ce4753dc45ef3fbfb1ef759
     </div>
   );
 }

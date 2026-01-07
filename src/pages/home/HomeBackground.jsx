@@ -1,4 +1,5 @@
 import Button from "../../components/button";
+import { IMAGES } from "../../constants";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
 
