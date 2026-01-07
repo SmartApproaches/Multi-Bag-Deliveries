@@ -23,7 +23,7 @@ import DeliveryOptions from "./components/button/DeliveryOptions";
 import MakeWorkEasier from "./components/button/MakeWorkEasier";
 import SendOrReceive from "./components/button/SendOrReceive";
 import HowItWorks from "./components/button/HowItWorks";
-import Footer from "./components/footer/Footer";
+
 
 function App() {
   return (

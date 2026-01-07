@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import cardIcon from "../../assets/images/cardicon.jpg";
-import bankIcon from "../../assets/images/bankicon.jpg";
+import cardIcon from "../../assets/images/card.png";
+import bankIcon from "../../assets/images/bank.png";
 
 const Bookadelivery = () => {
   const [currentStep, setCurrentStep] = useState(4);
