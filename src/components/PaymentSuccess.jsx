@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import successIcon from "../assets/Images/success.png";
+
 
 export default function PaymentSuccess() {
   const [isOpen, setIsOpen] = useState(false);
