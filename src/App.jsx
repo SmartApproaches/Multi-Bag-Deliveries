@@ -1,3 +1,4 @@
+import Parcel from './components/Parcel';
 import React from "react";
 import Bookadelivery from "./components/button/Bookadelivery";
 import Payment from "./components/Payment";
@@ -21,6 +22,9 @@ import LandingPage from "./pages/landing";
 function App() {
   return (
     <>
+
+
+
       <Router>
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
@@ -34,7 +38,7 @@ function App() {
           {/* <Bookadelivery />
 
           <Payment />
-
+     <Parcel />
           <PaymentSuccess />
           <LoginModal />
           <DeliveryOptions />
@@ -45,6 +49,7 @@ function App() {
         <HowItWorks /> */}
         </Routes>
       </Router>
+
     </>
   );
 }
