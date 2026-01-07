@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import avatar1 from "../assets/images/avatar1.png";
-import avatar2 from "../assets/images/avatar2.png";
-import avatar3 from "../assets/images/avatar3.png";
-import Upqoute from "../assets/images/up_quote.png";
-import Downquote from "../assets/images/down_quote.png";
+import avatar1 from "../assets/Images/avatar1.png";
+import avatar2 from "../assets/Images/avatar2.png";
+import avatar3 from "../assets/Images/avatar3.png";
+import Upqoute from "../assets/Images/up_quote.png";
+import Downquote from "../assets/Images/down_quote.png";
 
 const testimonials = [
   {
