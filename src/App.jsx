@@ -1,5 +1,5 @@
 import React from "react";
-import Bookadelivery from "./components/button/Bookadelivery";
+import Bookadeliverystep3 from "./components/button/Bookadelivery_step3";
 import Payment from "./components/Payment";
 import PaymentSuccess from "./components/PaymentSuccess";
 import LoginModal from './components/LoginModal';
@@ -32,7 +32,7 @@ import SendOrReceive from "./components/button/SendOrReceive";
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           {/* <Route path="/" element={<Home />} /> */}
-         <Bookadelivery />
+         <Bookadelivery_step3 />
 
          <Payment />
 
