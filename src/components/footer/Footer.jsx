@@ -25,7 +25,7 @@ export default function Footer() {
             </div>
 
             {/* Links */}
-            <div className="flex flex-col sm:flex-row gap-12 flex-1">
+            <div className="flex flex-col sm:flex-row gap-12 sm:gap-20 lg:gap-28 flex-1">
               {/* Company */}
               <div className="flex flex-col gap-3">
                 <h4 className="font-semibold text-base">Company</h4>
