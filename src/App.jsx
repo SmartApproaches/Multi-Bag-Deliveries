@@ -13,7 +13,7 @@ import Signup from "./pages/auth/signup";
 import Login from "./pages/auth/login";
 
 // Global UI / modals
-import Bookadelivery_step3 from "./components/button/Bookadelivery_step3";
+import BookadeliveryStep3 from "./components/button/Bookadelivery_step3";
 import Payment from "./components/Payment";
 import Parcel from "./components/Parcel";
 import PaymentSuccess from "./components/PaymentSuccess";
@@ -23,7 +23,7 @@ import DeliveryOptions from "./components/button/DeliveryOptions";
 import MakeWorkEasier from "./components/button/MakeWorkEasier";
 import SendOrReceive from "./components/button/SendOrReceive";
 import HowItWorks from "./components/button/HowItWorks";
-import Footer from "./components/footer/Footer";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -40,7 +40,7 @@ function App() {
         </Routes>
 
         {/* Global components (modals, floating UI, sections) */}
-        <Bookadelivery_step3 />
+        <BookadeliveryStep3 />
         <Payment />
         <PaymentSuccess />
         <LoginModal />

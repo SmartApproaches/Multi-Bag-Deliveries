@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const Bookadelivery = () => {
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(3);
   const [formData, setFormData] = useState({
     senderName: "",
     senderEmail: "",
@@ -213,6 +213,7 @@ const Bookadelivery = () => {
               </div>
             </div>
           </div>
+          <br />
 
           <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
            
@@ -260,6 +261,7 @@ const Bookadelivery = () => {
                     </span>
                   </div>
                 </div>
+                
 
                 {/* Recipient */}
                 <h3 className="pt-6 text-sm font-semibold text-green-900">
@@ -339,15 +341,7 @@ const Bookadelivery = () => {
             )}
 
             <div className="mt-8 flex gap-3 flex-col md:flex-row">
-              {currentStep > 1 && (
-                <button
-                  type="button"
-                  onClick={handleBack}
-                  className="w-full md:w-40 py-3 border border-gray-300 rounded-full text-gray-700 bg-white hover:bg-gray-100"
-                >
-                  Back
-                </button>
-              )}
+              
 
               <button
                 type="submit"
@@ -366,4 +360,4 @@ const Bookadelivery = () => {
   );
 };
 
-export default Bookadelivery_step3;
+export default Bookadelivery;
