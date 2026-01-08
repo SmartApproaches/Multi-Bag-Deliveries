@@ -1,11 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/button";
-import Header from "./header";
+import background from "../../assets/background.svg"; // used for hero background
 
-// ✅ If you're using Tailwind + Vite/CRA, importing the asset is more reliable than bg-[url(...)]
-import background from "../../assets/background.svg"; // adjust path to where it actually is
-
-function Home() {
+const Home = () => {
   const navigate = useNavigate();
 
   return (
@@ -19,10 +16,7 @@ function Home() {
             <div className="max-w-2xl text-white">
               <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight">
                 Your Delivery <br />
-                Partner for <span className="text-[#FFA62B]">
-                  Fast and
-                </span>{" "}
-                <br />
+                Partner for <span className="text-[#FFA62B]">Fast and</span> <br />
                 <span className="text-[#FFA62B]">Reliable</span> Service
               </h1>
 
@@ -39,7 +33,8 @@ function Home() {
                   Book a Delivery
                 </Button>
 
-                <Button variant="outline" onClick={() => navigate("/track")}>
+                <Button variant="outline" onClick={() => navigate("/track")}
+                >
                   Track My Parcel
                 </Button>
               </div>
@@ -49,6 +44,8 @@ function Home() {
       </main>
     </div>
   );
-}
+};
 
 export default Home;
+
+
