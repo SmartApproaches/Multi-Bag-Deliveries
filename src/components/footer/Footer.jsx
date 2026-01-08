@@ -1,10 +1,10 @@
 import React from 'react';
-import ClockImg from '../../assets/images/images/clock.png';
-import DestinationImg from '../../assets/images/images/destination.png';
-import FacebookImg from '../../assets/images/images/facebook.png';
-import FooterLogoImg from '../../assets/images/images/footer-logo.png';
-import InstagramImg from '../../assets/images/images/instagram.png';
-import XImg from '../../assets/images/images/x.png';
+import ClockImg from '../../assets/Images/images/clock.png';
+import DestinationImg from '../../assets/Images/images/destination.png';
+import FacebookImg from '../../assets/Images/images/facebook.png';
+import FooterLogoImg from '../../assets/Images/images/footer-logo.png';
+import InstagramImg from '../../assets/Images/images/instagram.png';
+import XImg from '../../assets/Images/images/x.png';
 
 export default function Footer() {
   return (
