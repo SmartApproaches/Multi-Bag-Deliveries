@@ -1,3 +1,4 @@
+import Parcel from './components/Parcel';
 import React from "react";
 import BookadeliveryStep1 from "./components/button/Bookadelivery_step1";
 import Payment from "./components/Payment";
@@ -11,11 +12,10 @@ import Home from "./pages/home";
 import DeliveryOptions from "./components/button/DeliveryOptions";
 import MakeWorkEasier from "./components/button/MakeWorkEasier";
 import SendOrReceive from "./components/button/SendOrReceive";
+import LandingPage from "./pages/landing";
 
-
- function App () {
+function App() {
   return (
-
     <>
       <Router>
         <Routes>
@@ -36,8 +36,11 @@ import SendOrReceive from "./components/button/SendOrReceive";
        
       </Router>
 
+        <Footer />
+      </Router>
     </>
-  )
+  );
 }
 
 export default App;
+
