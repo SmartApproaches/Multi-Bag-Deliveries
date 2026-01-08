@@ -1,7 +1,7 @@
-import Parcel from './components/Parcel';
+import Parcel from "./components/Parcel";
 import React from "react";
-import Footer from "./components/footer/Footer";
-import Bookadelivery from "./components/button/Bookadelivery";
+import Testimonials from "./components/Testimonials";
+
 import Payment from "./components/Payment";
 import PaymentSuccess from "./components/PaymentSuccess";
 import LoginModal from './components/LoginModal';
@@ -31,20 +31,23 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          {/* <Route path="/" element={<Home />} /> */}
+          {/* <Bookadelivery />
+
+          <Payment />
+          <Parcel />
+          
+          <PaymentSuccess />
+          <LoginModal />
+          <DeliveryOptions />
+          <CreateAccount />
+          <MakeWorkEasier />
+          <SendOrReceive />
+          
+        <HowItWorks /> 
+        <Testimonials />*/}
+        
         </Routes>
-
-        {/* Global components / modals / sections that are not part of routing */}
-        <Bookadelivery />
-        <Payment />
-        <PaymentSuccess />
-        <LoginModal />
-        <DeliveryOptions />
-        <CreateAccount />
-        <MakeWorkEasier />
-        <SendOrReceive />
-        <HowItWorks />
-
-        <Footer />
       </Router>
     </>
   );
