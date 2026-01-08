@@ -7,6 +7,7 @@ import DeliveryOptions from "../../components/button/DeliveryOptions";
 import HowItWorks from "../../components/button/HowItWorks";
 import Parcel from "../../components/Parcel";
 import Testimonials from "../../components/Testimonials";
+import Footer from "../../components/footer/Footer";
 
 const LandingPage = () => {
   return (
@@ -19,7 +20,7 @@ const LandingPage = () => {
       <HowItWorks />
       <Testimonials />
       <Parcel />
-      
+      <Footer />
     </div>
   );
 };
