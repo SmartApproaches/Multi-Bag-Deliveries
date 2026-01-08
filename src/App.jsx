@@ -1,9 +1,13 @@
+import Parcel from "./components/Parcel";
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Testimonials from "./components/Testimonials";
 
+import Payment from "./components/Payment";
+import PaymentSuccess from "./components/PaymentSuccess";
+import LoginModal from './components/LoginModal';
+import CreateAccount from "./components/CreateAccount";
 import "./App.css";
-
-// Pages
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import LandingPage from "./pages/landing";
 import About from "./pages/about";
@@ -31,30 +35,33 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-        </Routes>
+          {/* <Route path="/" element={<Home />} /> */}
+          {/* <Bookadelivery />
 
-        {/* Global components (modals, floating UI, sections) */}
-        <Bookadelivery_step4 />
-        <Payment />
-        <PaymentSuccess />
-        <LoginModal />
-        <DeliveryOptions />
-        <CreateAccount />
-        <MakeWorkEasier />
-        <SendOrReceive />
-        <HowItWorks />
-
+          <Payment />
+          <Parcel />
+          
+          <PaymentSuccess />
+          <LoginModal />
+          <DeliveryOptions />
+          <CreateAccount />
+          <MakeWorkEasier />
+          <SendOrReceive />
+          
+        <HowItWorks /> 
+        <Testimonials />*/}
         
+        </Routes>
       </Router>
     </>
   );
 }
 
 export default App;
+
