@@ -2,25 +2,11 @@ import React, { useState, useEffect } from "react";
 import cardIcon from "../../assets/images/card.png";
 import bankIcon from "../../assets/images/bank.png";
 
-<<<<<<<< HEAD:src/components/button/Bookadelivery_step2.jsx
-const Bookadelivery= () => {
+
+const Bookadeliverytwo= () => {
   const [currentStep, setCurrentStep] = useState(2);
-========
-const Bookadelivery = () => {
-  const [currentStep, setCurrentStep] = useState(4);
->>>>>>>> main:src/components/button/Bookadelivery_step4.jsx
-  const [formData, setFormData] = useState({
-    senderName: "",
-    senderEmail: "",
-    senderPhone: "",
-    pickupAddress: "",
-    recipientName: "",
-    recipientPhone: "",
-    deliveryAddress: "",
-    packageType: "",
-    packageSize: "",
-    instructions: "",
-  });
+
+
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -309,4 +295,4 @@ const Bookadelivery = () => {
   );
 };
 
-export default Bookadelivery;
+export default Bookadeliverytwo;

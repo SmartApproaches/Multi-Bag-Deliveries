@@ -1,20 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-const Bookadelivery = () => {
+const Bookadeliverythree = () => {
   const [currentStep, setCurrentStep] = useState(3);
-  const [formData, setFormData] = useState({
-    senderName: "",
-    senderEmail: "",
-    senderPhone: "",
-    pickupAddress: "",
-    recipientName: "",
-    recipientPhone: "",
-    deliveryAddress: "",
-    packageType: "",
-    packageSize: "",
-    instructions: "",
-  });
-
+  
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleChange = (e) => {
@@ -360,4 +348,4 @@ const Bookadelivery = () => {
   );
 };
 
-export default Bookadelivery;
+export default Bookadeliverythree;
