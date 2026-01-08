@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-// import Premium from "../../assets/images/premium.jpg";
-// import Standard from "../../assets/images/standard.jpg";
+import ProgressBar from "../bookadelivery_step1/ProgressBar";
+import FormHeader from "../bookadelivery_step1/FormHeader";
+import FormButtons from "../bookadelivery_step1/FormButtons";
 
-const Bookadelivery = () => {
-  const [currentStep, setCurrentStep] = useState(2);
+const Bookadelivery= () => {
+  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     senderName: "",
     senderEmail: "",
@@ -17,7 +18,7 @@ const Bookadelivery = () => {
     instructions: "",
   });
 
-  const [menuOpen, setMenuOpen] = useState(false);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -72,146 +73,15 @@ const Bookadelivery = () => {
   }, []);
 
   return (
+
     <div className="min-h-screen bg-[#EFF5F1] font-inter">
-      {/* FORM */}
+      
+
+       {/* FORM */}
       <div className="bg-gray-100 flex items-start justify-center px-4 py-12 min-h-[60vh]">
         <div className="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-8">
-          <div className="text-center">
-            <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">
-              Book a Delivery
-            </h1>
-
-            <p className="mt-2 text-sm md:text-base text-gray-500">
-              Fill in the details below to book your parcel delivery.
-            </p>
-          </div>
-          {/* ===== PROGRESS BAR ===== */}
-          <div className="w-full mt-10">
-            {/* Grid-based layout: step, connector, step, connector, ... so connectors always align with dots */}
-            <div
-              className="grid items-center gap-2"
-              style={{ gridTemplateColumns: "auto 1fr auto 1fr auto 1fr auto" }}
-            >
-              {/* Step 1 */}
-              <div className="flex items-center justify-center">
-                <div
-                  className={`w-6 h-6 md:w-10 md:h-10 rounded-full flex items-center justify-center text-sm font-semibold
-                  ${
-                    currentStep >= 1
-                      ? "bg-[#FFA62B] text-white"
-                      : "bg-gray-200 text-gray-500"
-                  }`}
-                  aria-hidden
-                >
-                  1
-                </div>
-              </div>
-
-              {/* Connector 1 */}
-              <div
-                className={`h-[2px] border-t-2 border-dashed ${
-                  currentStep >= 2 ? "border-[#FFA62B]" : "border-gray-300"
-                }`}
-              />
-
-              {/* Step 2 */}
-              <div className="flex items-center justify-center">
-                <div
-                  className={`w-6 h-6 md:w-10 md:h-10 rounded-full flex items-center justify-center text-sm font-semibold
-                  ${
-                    currentStep >= 2
-                      ? "bg-[#FFA62B] text-white"
-                      : "bg-gray-200 text-gray-500"
-                  }`}
-                  aria-hidden
-                >
-                  2
-                </div>
-              </div>
-
-              {/* Connector 2 */}
-              <div
-                className={`h-[2px] border-t-2 border-dashed ${
-                  currentStep >= 3 ? "border-[#FFA62B]" : "border-gray-300"
-                }`}
-              />
-
-              {/* Step 3 */}
-              <div className="flex items-center justify-center">
-                <div
-                  className={`w-6 h-6 md:w-10 md:h-10 rounded-full flex items-center justify-center text-sm font-semibold
-                  ${
-                    currentStep >= 3
-                      ? "bg-[#FFA62B] text-white"
-                      : "bg-gray-200 text-gray-500"
-                  }`}
-                  aria-hidden
-                >
-                  3
-                </div>
-              </div>
-
-              {/* Connector 3 */}
-              <div
-                className={`h-[2px] border-t-2 border-dashed ${
-                  currentStep >= 4 ? "border-[#FFA62B]" : "border-gray-300"
-                }`}
-              />
-
-              {/* Step 4 */}
-              <div className="flex items-center justify-center">
-                <div
-                  className={`w-6 h-6 md:w-10 md:h-10 rounded-full flex items-center justify-center text-sm font-semibold
-                  ${
-                    currentStep >= 4
-                      ? "bg-[#FFA62B] text-white"
-                      : "bg-gray-200 text-gray-500"
-                  }`}
-                  aria-hidden
-                >
-                  4
-                </div>
-              </div>
-            </div>
-
-            {/* Labels row - same grid so labels align under the dots */}
-            <div
-              className="grid mt-2 text-xs gap-2 text-center"
-              style={{ gridTemplateColumns: "auto 1fr auto 1fr auto 1fr auto" }}
-            >
-              <div
-                className={`text-center ${
-                  currentStep >= 1 ? "text-[#FFA62B]" : "text-gray-400"
-                }`}
-              >
-                Delivery details
-              </div>
-              <div />
-              <div
-                className={`text-center ${
-                  currentStep >= 2 ? "text-[#FFA62B]" : "text-gray-400"
-                }`}
-              >
-                Delivery class
-              </div>
-              <div />
-              <div
-                className={`text-center ${
-                  currentStep >= 3 ? "text-[#FFA62B]" : "text-gray-400"
-                }`}
-              >
-                Review & Confirm
-              </div>
-              <div />
-              <div
-                className={`text-center ${
-                  currentStep >= 4 ? "text-[#FFA62B]" : "text-gray-400"
-                }`}
-              >
-                Payment
-              </div>
-            </div>
-          </div>
+          <FormHeader />
+          <ProgressBar currentStep={currentStep} />
 
           <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
             {/* STEP 1 */}
@@ -437,29 +307,11 @@ const Bookadelivery = () => {
               </div>
             )}
 
-            <div className="mt-8 flex gap-3 flex-col md:flex-row">
-              {currentStep > 1 && (
-                <button
-                  type="button"
-                  onClick={handleBack}
-                  className="w-full md:w-40 py-3 border border-gray-300 rounded-full text-gray-700 bg-white hover:bg-gray-100"
-                >
-                  Back
-                </button>
-              )}
-
-              <button
-                type="submit"
-                className="w-full md:flex-1 py-4 bg-[#00401A] text-white rounded-full font-semibold transition duration-200 hover:bg-[#003015] active:scale-[0.98]"
-              >
-                {currentStep < 3 && "Proceed"}
-                {currentStep === 3 && "Confirm & Pay"}
-                {currentStep === 4 && "Proceed with payment"}
-              </button>
-            </div>
+            <FormButtons currentStep={currentStep} />
           </form>
         </div>
       </div>
+
     </div>
   );
 };
