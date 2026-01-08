@@ -1,5 +1,6 @@
 import Parcel from './components/Parcel';
 import React from "react";
+import Footer from "./components/footer/Footer";
 import Bookadelivery from "./components/button/Bookadelivery";
 import Payment from "./components/Payment";
 import PaymentSuccess from "./components/PaymentSuccess";
@@ -17,7 +18,7 @@ import Login from "./pages/auth/login";
 import DeliveryOptions from "./components/button/DeliveryOptions";
 import MakeWorkEasier from "./components/button/MakeWorkEasier";
 import SendOrReceive from "./components/button/SendOrReceive";
-import Footer from "./components/footer/Footer";
+import LandingPage from "./pages/landing";
 
 function App() {
   return (

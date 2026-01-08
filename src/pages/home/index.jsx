@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/button";
 import background from "../../assets/background.svg"; // used for hero background
 
-function Home() {
+const Home = () => {
   const navigate = useNavigate();
 
   return (
@@ -33,27 +33,8 @@ function Home() {
                   Book a Delivery
                 </Button>
 
-                <Button variant="outline" onClick={() => navigate("/track")}>
-                  Track My Parcel
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-  );
-}
-
-export default Home;
-                <Button
-                  variant="primary"
-                  onClick={() => navigate("/book-a-delivery")}
+                <Button variant="outline" onClick={() => navigate("/track")}
                 >
-                  Book a Delivery
-                </Button>
-
-                <Button variant="outline" onClick={() => navigate("/track")}>
                   Track My Parcel
                 </Button>
               </div>
@@ -61,9 +42,10 @@ export default Home;
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
-}
+};
 
 export default Home;
+
+
