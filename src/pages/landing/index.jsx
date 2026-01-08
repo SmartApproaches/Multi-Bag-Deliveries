@@ -12,7 +12,6 @@ import Footer from "../../components/footer/Footer";
 const LandingPage = () => {
   return (
     <div>
-      <Header />
       <Home />
       <SendOrReceive />
       <MakeWorkEasier />
@@ -20,7 +19,6 @@ const LandingPage = () => {
       <HowItWorks />
       <Testimonials />
       <Parcel />
-      <Footer />
     </div>
   );
 };

@@ -1,62 +1,35 @@
-import Parcel from "./components/Parcel";
 import React from "react";
-import Testimonials from "./components/Testimonials";
-
-import Payment from "./components/Payment";
-import PaymentSuccess from "./components/PaymentSuccess";
-import LoginModal from "./components/LoginModal";
-import CreateAccount from "./components/CreateAccount";
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/home";
+
+import MainLayout from "./layout";
+
+// Pages
 import LandingPage from "./pages/landing";
 import About from "./pages/about";
 import Services from "./pages/services";
 import Contact from "./pages/contact";
-import Signup from "./pages/auth/signup";
+import CreateAccount from "./components/CreateAccount";
 import Login from "./pages/auth/login";
-
-// Global UI / modals
-// import Bookadelivery_step4 from "./components/button/Bookadelivery_step4";
-// import Payment from "./components/Payment";
-// import Parcel from "./components/Parcel";
-// import PaymentSuccess from "./components/PaymentSuccess";
-// import LoginModal from "./components/LoginModal";
-// import CreateAccount from "./components/CreateAccount";
-// import DeliveryOptions from "./components/button/DeliveryOptions";
-// import MakeWorkEasier from "./components/button/MakeWorkEasier";
-// import SendOrReceive from "./components/button/SendOrReceive";
-// import HowItWorks from "./components/button/HowItWorks";
+import Bookadelivery from "./components/button/Bookadelivery_step4";
 
 function App() {
   return (
-    <>
-      <Router>
-        <Routes>
+    <Router>
+      <Routes>
+        {/* Routes WITH header & footer */}
+        <Route element={<MainLayout />}>
           <Route path="/" element={<LandingPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/signup" element={<CreateAccount />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/" element={<Home />} /> */}
-          {/* <Bookadelivery />
+          <Route path="/book-a-delivery" element={<Bookadelivery />} />
+        </Route>
 
-          <Payment />
-          <Parcel />
-          
-          <PaymentSuccess />
-          <LoginModal />
-          <DeliveryOptions />
-          <CreateAccount />
-          <MakeWorkEasier />
-          <SendOrReceive />
-          
-        <HowItWorks /> 
-        <Testimonials />*/}
-        </Routes>
-      </Router>
-    </>
+        {/* Routes WITHOUT header & footer */}
+      </Routes>
+    </Router>
   );
 }
 
