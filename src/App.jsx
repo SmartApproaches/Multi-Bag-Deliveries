@@ -1,36 +1,54 @@
+import Parcel from './components/Parcel';
 import React from "react";
+import Footer from "./components/footer/Footer";
+import Bookadelivery from "./components/button/Bookadelivery";
+import Payment from "./components/Payment";
+import PaymentSuccess from "./components/PaymentSuccess";
+import LoginModal from './components/LoginModal';
+import CreateAccount from "./components/CreateAccount";
+import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import MainLayout from "./layout";
-
-// Pages
-import LandingPage from "./pages/landing";
+import Home from "./pages/home";
+import HowItWorks from "./components/button/HowItWorks";
 import About from "./pages/about";
 import Services from "./pages/services";
 import Contact from "./pages/contact";
-import CreateAccount from "./components/CreateAccount";
+import Signup from "./pages/auth/signup"; 
 import Login from "./pages/auth/login";
-import Bookadelivery from "./components/button/Bookadelivery_step4";
+import DeliveryOptions from "./components/button/DeliveryOptions";
+import MakeWorkEasier from "./components/button/MakeWorkEasier";
+import SendOrReceive from "./components/button/SendOrReceive";
+import LandingPage from "./pages/landing";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Routes WITH header & footer */}
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<LandingPage />} />
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/signup" element={<CreateAccount />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/book-a-delivery" element={<Bookadelivery />} />
-        </Route>
+        </Routes>
 
-        {/* Routes WITHOUT header & footer */}
-      </Routes>
-    </Router>
+        {/* Global components / modals / sections that are not part of routing */}
+        <Bookadelivery />
+        <Payment />
+        <PaymentSuccess />
+        <LoginModal />
+        <DeliveryOptions />
+        <CreateAccount />
+        <MakeWorkEasier />
+        <SendOrReceive />
+        <HowItWorks />
+
+        <Footer />
+      </Router>
+    </>
   );
 }
 
 export default App;
+
