@@ -4,10 +4,10 @@ import Testimonials from "./components/Testimonials";
 
 import Payment from "./components/Payment";
 import PaymentSuccess from "./components/PaymentSuccess";
-import LoginModal from "./components/LoginModal";
+import LoginModal from './components/LoginModal';
 import CreateAccount from "./components/CreateAccount";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import HowItWorks from "./components/button/HowItWorks";
 import About from "./pages/about";
@@ -25,8 +25,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
@@ -55,3 +54,4 @@ function App() {
 }
 
 export default App;
+
