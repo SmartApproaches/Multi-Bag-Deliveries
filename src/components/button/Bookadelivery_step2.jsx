@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Premium from "../../assets/images/premium.jpg";
-import Standard from "../../assets/images/standard.jpg";
+import cardIcon from "../../assets/images/card.png";
+import bankIcon from "../../assets/images/bank.png";
 
-
+<<<<<<<< HEAD:src/components/button/Bookadelivery_step2.jsx
 const Bookadelivery= () => {
   const [currentStep, setCurrentStep] = useState(2);
+========
+const Bookadelivery = () => {
+  const [currentStep, setCurrentStep] = useState(4);
+>>>>>>>> main:src/components/button/Bookadelivery_step4.jsx
   const [formData, setFormData] = useState({
     senderName: "",
     senderEmail: "",
@@ -76,8 +80,6 @@ const Bookadelivery= () => {
     <div className="min-h-screen bg-[#EFF5F1] font-inter">
       
 
-    
-
       {/* FORM */}
       <div className="min-h-screen bg-gray-100 flex items-start justify-center px-4 py-12">
         <div className="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-8">
@@ -91,7 +93,7 @@ const Bookadelivery= () => {
             </p>
           </div>
 
-          
+         
           {/* ===== PROGRESS BAR ===== */}
           <div className="w-full mt-10">
             {/* Grid-based layout: step, connector, step, connector, ... so connectors always align with dots */}
@@ -220,112 +222,63 @@ const Bookadelivery= () => {
             </div>
           </div>
 
+
           <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
-            
+          
 
-            {currentStep === 2 && (
+            {currentStep === 4 && (
               <div className="mt-8 space-y-6">
-                <h2 className="text-lg font-semibold text-gray-800">
-                  Select a Delivery Class
-                </h2>
+                <h2 className="text-lg font-semibold text-gray-800">Payment</h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
-                  {/* Premium Class */}
-                  <label
-                    className={`relative w-full max-w-sm rounded-xl border p-6 cursor-pointer transition
-        ${
-          formData.deliveryClass === "premium"
-            ? "border-orange-500"
-            : "border-gray-300 hover:border-orange-400"
-        }`}
-                  >
-                    <input
-                      type="radio"
-                      name="deliveryClass"
-                      value="premium"
-                      checked={formData.deliveryClass === "premium"}
-                      onChange={handleChange}
-                      className="hidden"
-                    />
+                {/* Cost Breakdown */}
+                <div className="max-w-md border rounded-lg p-6">
+                  <h3 className="font-medium text-green-900 mb-3">
+                    Cost Breakdown
+                  </h3>
 
-                    {/* ICON (no container) */}
-                    <img src={Premium} alt="Premium" className="w-8 h-8 mb-4" />
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>Delivery fee</span>
+                    <span>GHC 400</span>
+                  </div>
 
-                    {/* TEXT */}
-                    <h3 className="text-base font-semibold text-gray-800">
-                      Premium Class
-                    </h3>
-                    <p className="text-sm text-gray-500 mt-1">
-                      Same-Day Delivery
-                    </p>
+                  <div className="flex justify-between text-sm text-gray-600 mt-2">
+                    <span>Service charge</span>
+                    <span>GHC 50</span>
+                  </div>
 
-                    {/* RADIO */}
-                    <span
-                      className={`absolute top-6 right-6 w-5 h-5 rounded-full border-2 flex items-center justify-center
-          ${
-            formData.deliveryClass === "premium"
-              ? "border-orange-500"
-              : "border-gray-300"
-          }`}
-                    >
-                      {formData.deliveryClass === "premium" && (
-                        <span className="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
-                      )}
-                    </span>
+                  <div className="border-t mt-3 pt-3 flex justify-between font-semibold text-green-900">
+                    <span>Total</span>
+                    <span>GHC 450</span>
+                  </div>
+                </div>
+
+                {/* Payment Method */}
+                <div className="space-y-4">
+                  <h3 className="font-medium text-gray-800">
+                    Select Payment Method
+                  </h3>
+                  <label className="flex items-center justify-between border p-4 rounded-lg cursor-pointer">
+                    <div className="flex items-center gap-3">
+                      <input type="radio" name="paymentMethod" />
+                      <span>Pay with card</span>
+                    </div>
+
+                    {/* ICON HERE */}
+                    <img src={cardIcon} alt="Card" className="w-5 h-5" />
                   </label>
 
-                  {/* Standard Class */}
-                  <label
-                    className={`relative w-full max-w-sm rounded-xl border p-6 cursor-pointer transition
-        ${
-          formData.deliveryClass === "standard"
-            ? "border-orange-500"
-            : "border-gray-300 hover:border-orange-400"
-        }`}
-                  >
-                    <input
-                      type="radio"
-                      name="deliveryClass"
-                      value="standard"
-                      checked={formData.deliveryClass === "standard"}
-                      onChange={handleChange}
-                      className="hidden"
-                    />
+                  <label className="flex items-center justify-between border p-4 rounded-lg cursor-pointer">
+                    <div className="flex items-center gap-3">
+                      <input type="radio" name="paymentMethod" />
+                      <span>Pay with bank transfer</span>
+                    </div>
 
-                    {/* ICON (no container) */}
-                    <img
-                      src={Standard}
-                      alt="Standard"
-                      className="w-8 h-8 mb-4"
-                    />
-
-                    {/* TEXT */}
-                    <h3 className="text-base font-semibold text-gray-800">
-                      Standard Class
-                    </h3>
-                    <p className="text-sm text-gray-500 mt-1">
-                      Up to 7 Days Delivery
-                    </p>
-
-                    {/* RADIO */}
-                    <span
-                      className={`absolute top-6 right-6 w-5 h-5 rounded-full border-2 flex items-center justify-center
-          ${
-            formData.deliveryClass === "standard"
-              ? "border-orange-500"
-              : "border-gray-300"
-          }`}
-                    >
-                      {formData.deliveryClass === "standard" && (
-                        <span className="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
-                      )}
-                    </span>
+                    {/* ICON HERE */}
+                    <img src={bankIcon} alt="Bank" className="w-5 h-5" />
                   </label>
                 </div>
               </div>
             )}
-
-           
 
             <div className="mt-8">
               <button
@@ -352,7 +305,6 @@ const Bookadelivery= () => {
         </div>
       </div>
 
-      
     </div>
   );
 };
