@@ -1,66 +1,6 @@
-import React, { useState, useEffect } from "react";
-import cardIcon from "../../assets/images/card.png";
-import bankIcon from "../../assets/images/bank.png";
+import React from "react";
 
-
-const Bookadeliverytwo= () => {
-  const [currentStep, setCurrentStep] = useState(2);
-
-
-
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const validateStep = (step) => {
-    if (step === 1) {
-      return (
-        formData.senderName.trim() &&
-        formData.senderEmail.trim() &&
-        formData.senderPhone.trim() &&
-        formData.pickupAddress.trim()
-      );
-    }
-    if (step === 2) {
-      return (
-        formData.recipientName.trim() &&
-        formData.recipientPhone.trim() &&
-        formData.deliveryAddress.trim()
-      );
-    }
-    if (step === 3) {
-      return formData.packageType.trim() && formData.packageSize.trim();
-    }
-    return true;
-  };
-
-  const handleNext = (e) => {
-    e.preventDefault();
-    if (validateStep(currentStep)) {
-      setCurrentStep((s) => Math.min(4, s + 1));
-    } else {
-      alert("Please fill in all required fields for this step.");
-    }
-  };
-
-  const handleBack = () => setCurrentStep((s) => Math.max(1, s - 1));
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateStep(3)) {
-      console.log("Booking submitted:", formData);
-      alert("Booking submitted (check console). Thanks!");
-    } else {
-      alert("Please complete the package details before submitting.");
-    }
-  };
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+const Bookadelivery_step2 = ({ formData, handleChange, handleNext, handleBack, currentStep }) => {
 
   return (
     <div className="min-h-screen bg-[#EFF5F1] font-inter">
@@ -212,79 +152,63 @@ const Bookadeliverytwo= () => {
           <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
           
 
-            {currentStep === 4 && (
+            {currentStep === 2 && (
               <div className="mt-8 space-y-6">
-                <h2 className="text-lg font-semibold text-gray-800">Payment</h2>
+                <h2 className="text-lg font-semibold text-gray-800">Delivery Class</h2>
 
-                {/* Cost Breakdown */}
-                <div className="max-w-md border rounded-lg p-6">
-                  <h3 className="font-medium text-green-900 mb-3">
-                    Cost Breakdown
-                  </h3>
-
-                  <div className="flex justify-between text-sm text-gray-600">
-                    <span>Delivery fee</span>
-                    <span>GHC 400</span>
-                  </div>
-
-                  <div className="flex justify-between text-sm text-gray-600 mt-2">
-                    <span>Service charge</span>
-                    <span>GHC 50</span>
-                  </div>
-
-                  <div className="border-t mt-3 pt-3 flex justify-between font-semibold text-green-900">
-                    <span>Total</span>
-                    <span>GHC 450</span>
-                  </div>
-                </div>
-
-                {/* Payment Method */}
+                {/* Premium vs Standard */}
                 <div className="space-y-4">
-                  <h3 className="font-medium text-gray-800">
-                    Select Payment Method
-                  </h3>
-                  <label className="flex items-center justify-between border p-4 rounded-lg cursor-pointer">
+                  <label className="flex items-center justify-between border p-4 rounded-lg cursor-pointer hover:bg-gray-50">
                     <div className="flex items-center gap-3">
-                      <input type="radio" name="paymentMethod" />
-                      <span>Pay with card</span>
+                      <input
+                        type="radio"
+                        name="deliveryClass"
+                        value="premium"
+                        checked={formData.deliveryClass === "premium"}
+                        onChange={handleChange}
+                      />
+                      <div>
+                        <span className="font-medium">Premium Class</span>
+                        <p className="text-sm text-gray-600">Faster delivery (Same day)</p>
+                      </div>
                     </div>
-
-                    {/* ICON HERE */}
-                    <img src={cardIcon} alt="Card" className="w-5 h-5" />
+                    <span className="font-semibold text-[#FFA62B]">GHC 600</span>
                   </label>
 
-                  <label className="flex items-center justify-between border p-4 rounded-lg cursor-pointer">
+                  <label className="flex items-center justify-between border p-4 rounded-lg cursor-pointer hover:bg-gray-50">
                     <div className="flex items-center gap-3">
-                      <input type="radio" name="paymentMethod" />
-                      <span>Pay with bank transfer</span>
+                      <input
+                        type="radio"
+                        name="deliveryClass"
+                        value="standard"
+                        checked={formData.deliveryClass === "standard"}
+                        onChange={handleChange}
+                      />
+                      <div>
+                        <span className="font-medium">Standard Class</span>
+                        <p className="text-sm text-gray-600">Regular delivery (1-2 days)</p>
+                      </div>
                     </div>
-
-                    {/* ICON HERE */}
-                    <img src={bankIcon} alt="Bank" className="w-5 h-5" />
+                    <span className="font-semibold text-[#FFA62B]">GHC 400</span>
                   </label>
                 </div>
               </div>
             )}
 
-            <div className="mt-8">
+            <div className="mt-8 flex gap-3">
+              <button
+                type="button"
+                onClick={handleBack}
+                className="w-full md:flex-1 py-4 border border-gray-300 text-gray-700 rounded-full font-semibold transition duration-200 hover:bg-gray-50"
+              >
+                Back
+              </button>
+
               <button
                 type="submit"
-                className="
-      w-full
-      py-4
-      bg-[#00401A]
-      text-white
-      rounded-full
-      font-semibold
-      transition
-      duration-200
-      hover:bg-[#003015]
-      active:scale-[0.98]
-    "
+                className="w-full md:flex-1 py-4 bg-[#00401A] text-white rounded-full font-semibold transition duration-200 hover:bg-[#003015] active:scale-[0.98]"
               >
-                {currentStep < 3 && "Proceed"}
-                {currentStep === 3 && "Confirm & Pay"}
-                {currentStep === 4 && "Proceed with payment"}
+                Next
               </button>
             </div>
           </form>
@@ -295,4 +219,4 @@ const Bookadeliverytwo= () => {
   );
 };
 
-export default Bookadeliverytwo;
+export default Bookadelivery_step2;

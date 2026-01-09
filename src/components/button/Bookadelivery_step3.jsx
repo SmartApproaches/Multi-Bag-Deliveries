@@ -1,61 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const Bookadeliverythree = () => {
-  const [currentStep, setCurrentStep] = useState(3);
-  
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const validateStep = (step) => {
-    if (step === 1) {
-      return (
-        formData.senderName.trim() &&
-        formData.senderEmail.trim() &&
-        formData.senderPhone.trim() &&
-        formData.pickupAddress.trim()
-      );
-    }
-    if (step === 2) {
-      return (
-        formData.recipientName.trim() &&
-        formData.recipientPhone.trim() &&
-        formData.deliveryAddress.trim()
-      );
-    }
-    if (step === 3) {
-      return formData.packageType.trim() && formData.packageSize.trim();
-    }
-    return true;
-  };
-
-  const handleNext = (e) => {
-    e.preventDefault();
-    if (validateStep(currentStep)) {
-      setCurrentStep((s) => Math.min(4, s + 1));
-    } else {
-      alert("Please fill in all required fields for this step.");
-    }
-  };
-
-  const handleBack = () => setCurrentStep((s) => Math.max(1, s - 1));
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateStep(3)) {
-      console.log("Booking submitted:", formData);
-      alert("Booking submitted (check console). Thanks!");
-    } else {
-      alert("Please complete the package details before submitting.");
-    }
-  };
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+const Bookadelivery_step3 = ({ formData, handleNext, handleBack, currentStep }) => {
 
   return (
 
@@ -329,15 +274,19 @@ const Bookadeliverythree = () => {
             )}
 
             <div className="mt-8 flex gap-3 flex-col md:flex-row">
-              
+              <button
+                type="button"
+                onClick={handleBack}
+                className="w-full md:flex-1 py-4 border border-gray-300 text-gray-700 rounded-full font-semibold transition duration-200 hover:bg-gray-50"
+              >
+                Back
+              </button>
 
               <button
                 type="submit"
                 className="w-full md:flex-1 py-4 bg-[#00401A] text-white rounded-full font-semibold transition duration-200 hover:bg-[#003015] active:scale-[0.98]"
               >
-                {currentStep < 3 && "Proceed"}
-                {currentStep === 3 && "Confirm & Pay"}
-                {currentStep === 4 && "Proceed with payment"}
+                Confirm & Pay
               </button>
             </div>
           </form>
@@ -348,4 +297,4 @@ const Bookadeliverythree = () => {
   );
 };
 
-export default Bookadeliverythree;
+export default Bookadelivery_step3;

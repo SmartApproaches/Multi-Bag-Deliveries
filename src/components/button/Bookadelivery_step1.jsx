@@ -1,76 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ProgressBar from "../bookadelivery_step1/ProgressBar";
 import FormHeader from "../bookadelivery_step1/FormHeader";
 import FormButtons from "../bookadelivery_step1/FormButtons";
 
-const Bookadeliveryone= () => {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState({
-    senderName: "",
-    senderEmail: "",
-    senderPhone: "",
-    pickupAddress: "",
-    recipientName: "",
-    recipientPhone: "",
-    deliveryAddress: "",
-    packageType: "",
-    packageSize: "",
-    instructions: "",
-  });
-
-
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const validateStep = (step) => {
-    if (step === 1) {
-      return (
-        formData.senderName.trim() &&
-        formData.senderEmail.trim() &&
-        formData.senderPhone.trim() &&
-        formData.pickupAddress.trim()
-      );
-    }
-    if (step === 2) {
-      return (
-        formData.recipientName.trim() &&
-        formData.recipientPhone.trim() &&
-        formData.deliveryAddress.trim()
-      );
-    }
-    if (step === 3) {
-      return formData.packageType.trim() && formData.packageSize.trim();
-    }
-    return true;
-  };
-
-  const handleNext = (e) => {
-    e.preventDefault();
-    if (validateStep(currentStep)) {
-      setCurrentStep((s) => Math.min(4, s + 1));
-    } else {
-      alert("Please fill in all required fields for this step.");
-    }
-  };
-
-  const handleBack = () => setCurrentStep((s) => Math.max(1, s - 1));
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateStep(3)) {
-      console.log("Booking submitted:", formData);
-      alert("Booking submitted (check console). Thanks!");
-    } else {
-      alert("Please complete the package details before submitting.");
-    }
-  };
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+const Bookadelivery_step1 = ({ formData, handleChange, handleNext, currentStep }) => {
 
   return (
 
@@ -317,4 +250,4 @@ const Bookadeliveryone= () => {
   );
 };
 
-export default Bookadeliveryone;
+export default Bookadelivery_step1;

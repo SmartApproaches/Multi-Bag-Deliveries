@@ -10,7 +10,7 @@ import Services from "./pages/services";
 import Contact from "./pages/contact";
 import CreateAccount from "./components/CreateAccount";
 import Login from "./pages/auth/login";
-import Bookadeliverytwo from "./components/button/Bookadelivery_step2";
+import BookingFlow from "./components/BookingFlow/BookingFlow";
 
 function App() {
   return (
@@ -24,10 +24,10 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/signup" element={<CreateAccount />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/book-a-delivery" element={<Bookadelivery />} />
+          <Route path="/book-a-delivery" element={<BookingFlow />} />
         </Route>
-        <Bookadelivery_step2 />
 
+        
         {/* Routes WITHOUT header & footer */}
       </Routes>
     </Router>
