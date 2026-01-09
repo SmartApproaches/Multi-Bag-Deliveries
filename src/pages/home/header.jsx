@@ -8,9 +8,9 @@ import { IMAGES } from "../../constants";
 
 const navLinks = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
-  { label: "Services", to: "/services" },
-  { label: "Contact", to: "/contact" },
+  { label: "About", to: "/" },
+  { label: "Services", to: "/" },
+  { label: "Contact", to: "/" },
 ];
 
 const Header = () => {
