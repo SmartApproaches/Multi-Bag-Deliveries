@@ -1,25 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
+import Premium from "../../assets/Images/premium.png";
+import Standard from "../../assets/Images/standard.png";
 
-const Bookadelivery_step2 = ({ formData, handleChange, handleNext, handleBack, currentStep }) => {
+const Bookadelivery_step2 = ({
+  formData = {},
+  handleNext,
+  handleBack,
+  currentStep = 2,
+  handleChange, // optional parent handler
+}) => {
+  const [deliveryClass, setDeliveryClass] = useState(formData.deliveryClass || "");
+
+  React.useEffect(() => {
+    if (formData.deliveryClass) setDeliveryClass(formData.deliveryClass);
+  }, [formData.deliveryClass]);
+
+  const onSelect = (value) => {
+    setDeliveryClass(value);
+    if (typeof handleChange === "function") {
+      // emulate event shape expected by parent handler
+      handleChange({ target: { name: "deliveryClass", value } });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!deliveryClass) return;
+    // ensure parent has the latest value
+    if (typeof handleChange === "function") {
+      handleChange({ target: { name: "deliveryClass", value: deliveryClass } });
+    }
+    // force next to avoid race with parent state update
+    handleNext(null, true); // move to step 3
+  };
 
   return (
-    <div className="min-h-screen bg-[#EFF5F1] font-inter">
-      
-
-      {/* FORM */}
-      <div className="min-h-screen bg-gray-100 flex items-start justify-center px-4 py-12">
-        <div className="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-8">
-          <div className="text-center">
-            <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">
+    <div className="min-h-screen bg-[#EFF5F1] px-4 sm:px-6 font-inter">
+      {/* MAIN */}
+      <div className="flex justify-center py-8 sm:py-12">
+        <div
+          className="
+            w-full
+            max-w-[680px]
+            lg:max-w-3xl
+            bg-white
+            rounded-2xl
+            shadow-lg
+            p-5
+            sm:p-8
+          "
+        >
+          {/* TITLE */}
+          <div className="text-left sm:text-center">
+            <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900">
               Book a Delivery
             </h1>
 
-            <p className="mt-2 text-sm md:text-base text-gray-500">
+            <p className="mt-2 text-sm sm:text-base text-gray-500">
               Fill in the details below to book your parcel delivery.
             </p>
           </div>
 
-         
           {/* ===== PROGRESS BAR ===== */}
           <div className="w-full mt-10">
             {/* Grid-based layout: step, connector, step, connector, ... so connectors always align with dots */}
@@ -149,72 +190,131 @@ const Bookadelivery_step2 = ({ formData, handleChange, handleNext, handleBack, c
           </div>
 
 
-          <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
-          
+            
+           {/* ================= SELECT DELIVERY CLASS ================= */}
+<form onSubmit={handleSubmit} className="mt-10">
+  <h2 className="text-xl sm:text-1xl font-semibold text-green-900 mb-6">
+    Select a Delivery Class
+  </h2>
 
-            {currentStep === 2 && (
-              <div className="mt-8 space-y-6">
-                <h2 className="text-lg font-semibold text-gray-800">Delivery Class</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-[600px] mx-auto">
+    {/* PREMIUM */}
+    <label
+      className={`relative border rounded-2xl p-6 cursor-pointer transition
+        ${
+          deliveryClass === "premium"
+            ? "border-[#FFA62B]"
+            : "border-gray-300 hover:border-[#FFA62B]"
+        }
+      `}
+      onClick={() => onSelect("premium")}
+    >
+      <input
+        type="radio"
+        name="deliveryClass"
+        value="premium"
+        checked={deliveryClass === "premium"}
+        onChange={(e) => onSelect(e.target.value)}
+        className="hidden"
+      />
 
-                {/* Premium vs Standard */}
-                <div className="space-y-4">
-                  <label className="flex items-center justify-between border p-4 rounded-lg cursor-pointer hover:bg-gray-50">
-                    <div className="flex items-center gap-3">
-                      <input
-                        type="radio"
-                        name="deliveryClass"
-                        value="premium"
-                        checked={formData.deliveryClass === "premium"}
-                        onChange={handleChange}
-                      />
-                      <div>
-                        <span className="font-medium">Premium Class</span>
-                        <p className="text-sm text-gray-600">Faster delivery (Same day)</p>
-                      </div>
-                    </div>
-                    <span className="font-semibold text-[#FFA62B]">GHC 600</span>
-                  </label>
+      {/* ICON */}
+      <img src={Premium} alt="Premium" className="w-8 h-8 mb-4" />
 
-                  <label className="flex items-center justify-between border p-4 rounded-lg cursor-pointer hover:bg-gray-50">
-                    <div className="flex items-center gap-3">
-                      <input
-                        type="radio"
-                        name="deliveryClass"
-                        value="standard"
-                        checked={formData.deliveryClass === "standard"}
-                        onChange={handleChange}
-                      />
-                      <div>
-                        <span className="font-medium">Standard Class</span>
-                        <p className="text-sm text-gray-600">Regular delivery (1-2 days)</p>
-                      </div>
-                    </div>
-                    <span className="font-semibold text-[#FFA62B]">GHC 400</span>
-                  </label>
-                </div>
-              </div>
-            )}
+      {/* TEXT */}
+      <h3 className="text-base font-semibold text-gray-900">
+        Premium Class
+      </h3>
+      <p className="text-sm sm:text-base text-gray-500 mt-1">
+        Same-Day Delivery
+      </p>
 
-            <div className="mt-8 flex gap-3">
-              <button
-                type="button"
-                onClick={handleBack}
-                className="w-full md:flex-1 py-4 border border-gray-300 text-gray-700 rounded-full font-semibold transition duration-200 hover:bg-gray-50"
-              >
-                Back
-              </button>
+      {/* RADIO INDICATOR */}
+      <span
+        className={`absolute top-5 right-5 w-6 h-6 rounded-full border-2 flex items-center justify-center
+          ${
+            deliveryClass === "premium"
+              ? "border-[#FFA62B]"
+              : "border-gray-300"
+          }
+        `}
+      >
+        {deliveryClass === "premium" && (
+          <span className="w-3 h-3 rounded-full bg-[#FFA62B]" />
+        )}
+      </span>
+    </label>
 
-              <button
-                type="submit"
-                className="w-full md:flex-1 py-4 bg-[#00401A] text-white rounded-full font-semibold transition duration-200 hover:bg-[#003015] active:scale-[0.98]"
-              >
-                Next
-              </button>
-            </div>
-          </form>
+    {/* STANDARD */}
+    <label
+      className={`relative border rounded-2xl p-6 cursor-pointer transition
+        ${
+          deliveryClass === "standard"
+            ? "border-[#FFA62B]"
+            : "border-gray-300 hover:border-[#FFA62B]"
+        }
+      `}
+      onClick={() => onSelect("standard")}
+    >
+      <input
+        type="radio"
+        name="deliveryClass"
+        value="standard"
+        checked={deliveryClass === "standard"}
+        onChange={(e) => onSelect(e.target.value)}
+        className="hidden"
+      />
+
+      {/* ICON */}
+      <img src={Standard} alt="Standard" className="w-8 h-8 mb-4" />
+
+      {/* TEXT */}
+      <h3 className="text-base font-semibold text-gray-900">
+        Standard Class
+      </h3>
+      <p className="text-sm sm:text-base text-gray-500 mt-1">
+        Up to 7 Days Delivery
+      </p>
+
+      {/* RADIO INDICATOR */}
+      <span
+        className={`absolute top-5 right-5 w-6 h-6 rounded-full border-2 flex items-center justify-center
+          ${
+            deliveryClass === "standard"
+              ? "border-[#FFA62B]"
+              : "border-gray-300"
+          }
+        `}
+      >
+        {deliveryClass === "standard" && (
+          <span className="w-3 h-3 rounded-full bg-[#FFA62B]" />
+        )}
+      </span>
+    </label>
+  </div>
+
+  {/* ================= BUTTON ================= */}
+  <button
+    type="submit"
+    disabled={!deliveryClass}
+    className="
+      w-full
+      mt-20
+      py-4
+      bg-[#00401A]
+      text-white
+      rounded-full
+      font-semibold
+      transition
+      hover:bg-[#003015]
+      disabled:opacity-50
+    "
+  >
+    Proceed
+  </button>
+</form>
         </div>
       </div>
-
     </div>
   );
 };

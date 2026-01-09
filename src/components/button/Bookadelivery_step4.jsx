@@ -1,6 +1,6 @@
 import React from "react";
-import cardIcon from "../../assets/images/card.png";
-import bankIcon from "../../assets/images/bank.png";
+import cardIcon from "../../assets/Images/card.png";
+import bankIcon from "../../assets/Images/bank.png";
 
 const Bookadelivery_step4 = ({ formData, handleSubmit, handleBack, currentStep }) => {
 
@@ -151,7 +151,7 @@ const Bookadelivery_step4 = ({ formData, handleSubmit, handleBack, currentStep }
           </div>
 
 
-          <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
+          <form onSubmit={handleSubmit}>
           
 
             {currentStep === 4 && (
@@ -209,13 +209,7 @@ const Bookadelivery_step4 = ({ formData, handleSubmit, handleBack, currentStep }
             )}
 
             <div className="mt-8 flex gap-3 flex-col md:flex-row">
-              <button
-                type="button"
-                onClick={handleBack}
-                className="w-full md:flex-1 py-4 border border-gray-300 text-gray-700 rounded-full font-semibold transition duration-200 hover:bg-gray-50"
-              >
-                Back
-              </button>
+             
 
               <button
                 type="submit"

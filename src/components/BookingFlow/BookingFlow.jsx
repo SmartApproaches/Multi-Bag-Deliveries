@@ -43,9 +43,9 @@ const BookingFlow = () => {
     return true;
   };
 
-  const handleNext = (e) => {
-    e.preventDefault();
-    if (validateStep(currentStep)) {
+  const handleNext = (e, force = false) => {
+    if (e && typeof e.preventDefault === "function") e.preventDefault();
+    if (force || validateStep(currentStep)) {
       setCurrentStep((s) => Math.min(4, s + 1));
     } else {
       alert("Please fill in all required fields for this step.");

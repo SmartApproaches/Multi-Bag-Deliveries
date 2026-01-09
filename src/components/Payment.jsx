@@ -1,6 +1,6 @@
 import { useState } from "react";
-import cardIcon from "../assets/images/card.png";
-import bankIcon from "../assets/images/bank.png";
+import cardIcon from "../assets/Images/card.png";
+import bankIcon from "../assets/Images/bank.png";
 
 export default function Payment() {
   const [method, setMethod] = useState("card");

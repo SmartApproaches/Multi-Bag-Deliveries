@@ -16,7 +16,7 @@ const Bookadelivery_step1 = ({ formData, handleChange, handleNext, currentStep }
           <FormHeader />
           <ProgressBar currentStep={currentStep} />
 
-          <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
+          <form onSubmit={handleNext}>
             {/* STEP 1 */}
 
             {currentStep === 1 && (

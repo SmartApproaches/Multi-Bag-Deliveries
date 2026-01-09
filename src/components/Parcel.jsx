@@ -1,4 +1,4 @@
-import parcelImage from "../assets/images/parcel.png";
+import parcelImage from "../assets/Images/parcel.png";
 
 const Parcel = () => {
   return (
