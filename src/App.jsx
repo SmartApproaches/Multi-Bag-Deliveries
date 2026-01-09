@@ -10,7 +10,7 @@ import Services from "./pages/services";
 import Contact from "./pages/contact";
 import CreateAccount from "./components/CreateAccount";
 import Login from "./pages/auth/login";
-import Bookadelivery from "./components/button/Bookadelivery_step1";
+import Bookadeliverytwo from "./components/button/Bookadelivery_step2";
 
 function App() {
   return (
@@ -26,6 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/book-a-delivery" element={<Bookadelivery />} />
         </Route>
+        <Bookadelivery_step2 />
 
         {/* Routes WITHOUT header & footer */}
       </Routes>

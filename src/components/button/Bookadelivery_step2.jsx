@@ -3,8 +3,9 @@ import cardIcon from "../../assets/images/card.png";
 import bankIcon from "../../assets/images/bank.png";
 
 
-const Bookadeliveryfour = () => {
-  const [currentStep, setCurrentStep] = useState(4);
+const Bookadeliverytwo= () => {
+  const [currentStep, setCurrentStep] = useState(2);
+
 
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -294,4 +295,4 @@ const Bookadeliveryfour = () => {
   );
 };
 
-export default Bookadeliveryfour;
+export default Bookadeliverytwo;
