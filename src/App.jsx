@@ -27,10 +27,8 @@ function App() {
           <Route path="/signup" element={<CreateAccount />} />
           <Route path="/login" element={<Login />} />
           <Route path="/book-a-delivery" element={<BookingFlow />} />
+          <Route path="/payment" element={<Payment />} />
         </Route>
-
-        {/* Routes WITHOUT header & footer */}
-        <Route path="/payment" element={<Payment />} />
       </Routes>
     </Router>
   );
