@@ -31,7 +31,6 @@ function App() {
 
         {/* Routes WITHOUT header & footer */}
         <Route path="/payment" element={<Payment />} />
-        <Route path="/payment-success" element={<PaymentSuccess />} />
       </Routes>
     </Router>
   );

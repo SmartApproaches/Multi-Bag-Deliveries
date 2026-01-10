@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import cardIcon from "../assets/Images/card_icon.png";
 import bankIcon from "../assets/Images/bank_icon.png";
-
+import PaymentSuccess from "./PaymentSuccess";
 export default function Payment() {
+  const [showSuccess, setShowSuccess] = useState(false);
   const navigate = useNavigate();
   const [method, setMethod] = useState("card");
   const [card, setCard] = useState({
@@ -79,7 +80,7 @@ export default function Payment() {
               <span className="mt-2 text-gray-400"> Service charge:</span>
               <span> GH₵ 50</span>
             </div>
-            <hr className="mt-2"/>
+            <hr className="mt-2" />
             <div className="flex justify-between">
               <span className="mt-3 text-gray-400"> Total:</span>
               <span className="mt-3 font-bold"> GH₵ 450</span>
@@ -181,21 +182,27 @@ export default function Payment() {
               />
             </label>
           </div>
-
           <button
             disabled={method === "card" && !isCardValid}
-            onClick={() => navigate("/payment-success")}
-            className={`mt-6 w-full py-3 rounded-full text-white font-medium ${ 
+            onClick={() => setShowSuccess(true)}
+            className={`mt-6 w-full py-3 rounded-full text-white font-medium ${
               method === "card" && !isCardValid
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-green-900 hover:bg-green-800"
             }`}
           >
-            {" "}
             Proceed with Payment
           </button>
         </div>
       </div>
+      <PaymentSuccess
+        open={showSuccess}
+        onClose={() => setShowSuccess(false)}
+        onBookAgain={() => {
+          setShowSuccess(false);
+          navigate("/book-a-delivery");
+        }}
+      />
     </div>
   );
 }
