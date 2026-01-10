@@ -2,7 +2,7 @@ import { useEffect, useId, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { RiMenu4Line } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
-
+import LoginModal from "../../components/LoginModal";
 import Button from "../../components/button";
 import { IMAGES } from "../../constants";
 
@@ -16,6 +16,8 @@ const navLinks = [
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
   const drawerId = useId();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -89,9 +91,10 @@ const Header = () => {
               </div>
 
               <div className="flex items-center gap-3">
-                <Button variant="login" onClick={() => navigate("/login")}>
+                <Button variant="login" onClick={() => setIsLoginOpen(true)}>
                   Login
                 </Button>
+
                 <Button variant="signup" onClick={() => navigate("/signup")}>
                   Sign Up
                 </Button>
@@ -163,11 +166,12 @@ const Header = () => {
                     variant="login"
                     onClick={() => {
                       closeMenu();
-                      navigate("/login");
+                      setIsLoginOpen(true);
                     }}
                   >
                     Login
                   </Button>
+
                   <Button
                     variant="signup"
                     onClick={() => {
@@ -183,6 +187,7 @@ const Header = () => {
           </>
         )}
       </nav>
+      <LoginModal open={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
     </header>
   );
 };

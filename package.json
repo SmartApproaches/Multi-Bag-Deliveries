@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "vite build && cd ./dist && mv index.html 200.html && surge ./ https://multi-bag-deliveries.surge.sh/"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
