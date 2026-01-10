@@ -11,6 +11,8 @@ import Contact from "./pages/contact";
 import CreateAccount from "./components/CreateAccount";
 import Login from "./pages/auth/login";
 import BookingFlow from "./components/BookingFlow/BookingFlow";
+import Payment from "./components/Payment";
+import PaymentSuccess from "./components/PaymentSuccess";
 
 function App() {
   return (
@@ -27,8 +29,9 @@ function App() {
           <Route path="/book-a-delivery" element={<BookingFlow />} />
         </Route>
 
-        
         {/* Routes WITHOUT header & footer */}
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
       </Routes>
     </Router>
   );

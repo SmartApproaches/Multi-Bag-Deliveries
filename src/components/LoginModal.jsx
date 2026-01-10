@@ -31,7 +31,7 @@ export default function LoginModal() {
 
     setErrors(newErrors);
 
-    if (object.keys(newErrors).length === 0) {
+    if (Object.keys(newErrors).length === 0) {
       alert("Login successful!");
       setOpen(false);
     }

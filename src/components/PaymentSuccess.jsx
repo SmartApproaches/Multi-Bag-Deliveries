@@ -1,25 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 7421c6e5232e330203051ed742cf433ac610490c
->>>>>>> main
+import successIcon from "../assets/Images/success.png";
 
 export default function PaymentSuccess() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handlePayment = () => {
-    const isValid = true;
-
-    if (isValid) {
-      setIsOpen(true);
-    }
-  };
+  const [isOpen, setIsOpen] = useState(true);
+  const navigate = useNavigate();
 
   const closeButton = () => {
     setIsOpen(false);
@@ -27,17 +14,7 @@ export default function PaymentSuccess() {
 
   return (
     <>
-      <div className=" flex items-center bg-[#D9E8E0] justify-center bg-gray-100 p-4">
-        <button
-         type="button"
-          onClick={handlePayment}
-          className="bg-green-700 text-white px-6 py-3 rounded-md hover:bg-green-800"
-        >
-          {" "}
-          Pay Now
-        </button>
-      </div>
-      { isOpen && (
+      {isOpen && (
       <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/50" onClick={closeButton}>
         <div className="relative bg-white w-full max-w-lg rounded-xl p-6 sm:p-8 text-center"  onClick={(e) => e.stopPropagation()}>
           <button
@@ -64,7 +41,9 @@ export default function PaymentSuccess() {
             email with more information.
           </p>
 
-          <button className=" bg-green-900 mt-6 text-white rounded-full px-6 py-3 hover:bg-green-700"> 
+          <button 
+            onClick={() => navigate("/book-a-delivery")}
+            className=" bg-green-900 mt-6 text-white rounded-full px-6 py-3 hover:bg-green-700"> 
             Book Again</button>
         </div>
       </div>

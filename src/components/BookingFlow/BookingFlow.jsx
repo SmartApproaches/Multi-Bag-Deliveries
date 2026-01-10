@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Bookadelivery_step1 from "../button/Bookadelivery_step1";
 import Bookadelivery_step2 from "../button/Bookadelivery_step2";
 import Bookadelivery_step3 from "../button/Bookadelivery_step3";
 import Bookadelivery_step4 from "../button/Bookadelivery_step4";
 
 const BookingFlow = () => {
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     senderName: "",
@@ -59,7 +61,7 @@ const BookingFlow = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Booking submitted:", formData);
-    alert("Booking submitted! Check console for details. Thanks!");
+    navigate("/payment");
   };
 
   const handleChange = (e) => {
@@ -106,6 +108,7 @@ const BookingFlow = () => {
           handleSubmit={handleSubmit}
           handleBack={handleBack}
           currentStep={currentStep}
+          navigate={navigate}
         />
       )}
     </div>

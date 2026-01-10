@@ -1,5 +1,7 @@
 import { IMAGES } from "../../constants";
 import Button from "../../components/button";
+import Premium_class from "../../assets/premium_class.svg";
+import Standard_class from "../../assets/standard_class.svg";
 
 function DeliveryOptions() {
   return (
