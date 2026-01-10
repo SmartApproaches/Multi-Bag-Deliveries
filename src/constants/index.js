@@ -11,13 +11,9 @@
 // export const IMAGES = {
 //   logo: logo,
 //   background2: background2,
-// import premium_class from "../assets/premium_class.svg";
-// import standard_class from "../assets/standard_class.svg";
 
 // export const IMAGES = {
 //   logo: logo,
-//   premium_class: premium_class,
-//   standard_class: standard_class,
 
 // import img1 from "../assets/img1.svg";
 // import img2 from "../assets/img2.svg";
@@ -53,7 +49,8 @@
 
 // Core images
 import logo from "../assets/logo.svg";
-
+import premium_class from "../assets/premium_class.svg";
+import standard_class from "../assets/standard_class.svg";
 import img1 from "../assets/img1.svg";
 import img2 from "../assets/img2.svg";
 import img3 from "../assets/img3.svg";
@@ -85,4 +82,6 @@ export const IMAGES = {
   delivery,
   react: reactLogo,
   how_it_works_img,
+  premium_class: premium_class,
+  standard_class: standard_class,
 };
