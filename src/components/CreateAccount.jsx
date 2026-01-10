@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateAccount() {
   const [form, setForm] = useState({
@@ -8,6 +9,8 @@ export default function CreateAccount() {
     password: "",
     confirmPassword: "",
   });
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,7 +19,28 @@ export default function CreateAccount() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  };
+    const newErrors = {};
+
+    if (!form.fullname.trim()) newErrors.fullname = "Full name is required";
+    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      newErrors.email = "Enter a valid email";
+    if (!form.phone.trim()) newErrors.phone = "Phone is required";
+    if (!form.password || form.password.length < 7)
+      newErrors.password = "Password must be at least 7 characters";
+    if (form.password !== form.confirmPassword)
+      newErrors.confirmPassword = "Passwords do not match";
+
+    if (Object.keys(newErrors).length) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
+    // Simulate account creation and navigate to login
+    alert("Account created successfully");
+    setForm({ fullname: "", email: "", phone: "", password: "", confirmPassword: "" });
+    navigate("/login");
+  }; 
 
   return (
     <>
@@ -46,6 +70,9 @@ export default function CreateAccount() {
                 onChange={handleChange}
                 className="w-full rounded-md px-4 py-3 text-m border"
               />
+              {errors.fullname && (
+                <p className="mt-1 text-xs text-red-500">{errors.fullname}</p>
+              )}
             </div>
 
             <div>
@@ -61,6 +88,9 @@ export default function CreateAccount() {
                 onChange={handleChange}
                 className="w-full rounded-md px-4 py-3 text-m border"
               />
+              {errors.email && (
+                <p className="mt-1 text-xs text-red-500">{errors.email}</p>
+              )}
             </div>
 
             <div>
@@ -76,6 +106,9 @@ export default function CreateAccount() {
                 onChange={handleChange}
                 className="w-full rounded-md px-4 py-3 text-m border"
               />
+              {errors.phone && (
+                <p className="mt-1 text-xs text-red-500">{errors.phone}</p>
+              )}
             </div>
 
             <div>
@@ -91,6 +124,9 @@ export default function CreateAccount() {
                 onChange={handleChange}
                 className="w-full rounded-md px-4 py-3 text-m border"
               />
+              {errors.password && (
+                <p className="mt-1 text-xs text-red-500">{errors.password}</p>
+              )}
             </div>
 
             <div>
@@ -106,16 +142,20 @@ export default function CreateAccount() {
                 onChange={handleChange}
                 className="w-full rounded-md px-4 py-3 text-m border"
               />
+              {errors.confirmPassword && (
+                <p className="mt-1 text-xs text-red-500">{errors.confirmPassword}</p>
+              )}
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                className="mt-6 w-full bg-green-900 font-medium py-3 px-5 rounded-full text-white"
+              >
+                Create Account
+              </button>
             </div>
           </form>
-
-          <button
-            type="submit"
-            className="mt-12 bg-green-900 font-medium py-2 px-5 rounded-full text-white"
-          >
-            {" "}
-            Create Account
-          </button>
 
           <p className="text-sm text-gray-800 text-center mt-4">
             By signing up, you agree to our{" "}

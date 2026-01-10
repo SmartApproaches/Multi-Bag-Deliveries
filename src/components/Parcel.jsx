@@ -1,6 +1,9 @@
-import parcelImage from "../assets/images/parcel.png";
+
+import { useNavigate } from "react-router-dom";
+import parcelImage from "../assets/Images/parcel.png";
 
 const Parcel = () => {
+  const navigate = useNavigate();
   return (
     <section className="w-full bg-white py-8">
       <div className="max-w-7xl mx-auto md:px-20 px-6">
@@ -14,7 +17,9 @@ const Parcel = () => {
               Experience seamless parcel deliveries with MBD.
             </p>
 
-            <button className="mt-6 bg-green-900 text-white px-6 py-3 rounded-full cursor-pointer hover:bg-green-800 transition">
+            <button 
+              onClick={() => navigate("/book-a-delivery")}
+              className="mt-6 bg-green-900 text-white px-6 py-3 rounded-full cursor-pointer hover:bg-green-800 transition">
               {" "}
               Get Started Now
             </button>

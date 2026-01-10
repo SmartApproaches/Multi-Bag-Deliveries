@@ -101,8 +101,7 @@ export default function LoginModal({ open, onClose }) {
           </button>
         </form>
 
-        {/* New customer */}
-        <h3 className="mb-3 font-medium text-gray-900 mt-6">New customer?</h3>
+        <h3 className="mb-3 mt-6 font-medium text-gray-900">New customer?</h3>
 
         <div className="mb-4 flex items-center gap-4">
           <button className="text-sm font-semibold text-green-900 hover:underline">

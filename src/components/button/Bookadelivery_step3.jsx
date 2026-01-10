@@ -148,7 +148,7 @@ const Bookadelivery_step3 = ({ formData, handleNext, handleBack, currentStep }) 
           </div>
           <br />
 
-          <form onSubmit={currentStep === 4 ? handleSubmit : handleNext}>
+          <form onSubmit={handleNext}>
            
             {currentStep === 3 && (
               <div className="space-y-8">
@@ -274,13 +274,7 @@ const Bookadelivery_step3 = ({ formData, handleNext, handleBack, currentStep }) 
             )}
 
             <div className="mt-8 flex gap-3 flex-col md:flex-row">
-              <button
-                type="button"
-                onClick={handleBack}
-                className="w-full md:flex-1 py-4 border border-gray-300 text-gray-700 rounded-full font-semibold transition duration-200 hover:bg-gray-50"
-              >
-                Back
-              </button>
+              
 
               <button
                 type="submit"

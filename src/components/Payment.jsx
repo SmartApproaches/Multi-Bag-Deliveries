@@ -1,8 +1,10 @@
 import { useState } from "react";
-import cardIcon from "../assets/images/card.png";
-import bankIcon from "../assets/images/bank.png";
+import { useNavigate } from "react-router-dom";
+import cardIcon from "../assets/Images/card_icon.png";
+import bankIcon from "../assets/Images/bank_icon.png";
 
 export default function Payment() {
+  const navigate = useNavigate();
   const [method, setMethod] = useState("card");
   const [card, setCard] = useState({
     number: "",
@@ -182,7 +184,8 @@ export default function Payment() {
 
           <button
             disabled={method === "card" && !isCardValid}
-            className={`mt-6 w-full py-3 rounded-full text-white font-medium ${
+            onClick={() => navigate("/payment-success")}
+            className={`mt-6 w-full py-3 rounded-full text-white font-medium ${ 
               method === "card" && !isCardValid
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-green-900 hover:bg-green-800"
