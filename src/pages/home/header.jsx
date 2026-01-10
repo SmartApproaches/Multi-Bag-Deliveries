@@ -4,6 +4,7 @@ import { RiMenu4Line } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 
 import Button from "../../components/button";
+import LoginModal from "../../components/LoginModal";
 import { IMAGES } from "../../constants";
 
 const navLinks = [
@@ -20,6 +21,7 @@ const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const closeMenu = () => setIsMenuOpen(false);
   const toggleMenu = () => setIsMenuOpen((v) => !v);
@@ -89,7 +91,7 @@ const Header = () => {
               </div>
 
               <div className="flex items-center gap-3">
-                <Button variant="login" onClick={() => navigate("/login")}>
+                <Button variant="login" onClick={() => setShowLoginModal(true)}>
                   Login
                 </Button>
                 <Button variant="signup" onClick={() => navigate("/signup")}>
@@ -163,7 +165,7 @@ const Header = () => {
                     variant="login"
                     onClick={() => {
                       closeMenu();
-                      navigate("/login");
+                      setShowLoginModal(true);
                     }}
                   >
                     Login
@@ -181,6 +183,9 @@ const Header = () => {
               </div>
             </aside>
           </>
+        )}
+        {showLoginModal && (
+          <LoginModal onClose={() => setShowLoginModal(false)} />
         )}
       </nav>
     </header>

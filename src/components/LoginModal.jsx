@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons"; 
 
-export default function LoginModal() {
+export default function LoginModal({ onClose }) {
   const [open, setOpen] = useState(true);
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,16 +36,18 @@ export default function LoginModal() {
     if (Object.keys(newErrors).length === 0) {
       alert("Login successful!");
       setOpen(false);
+      if (typeof onClose === "function") onClose();
+      navigate("/book-a-delivery");
     }
   };
 
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0  flex items-center justify-center px-4 bg-black/40">
-      <div className="relative w-full max-w-lg  rounded-lg bg-white p-6 shadow-lg sm:p-8">
+    <div className="fixed inset-0 z-50 grid place-items-center px-4 bg-black/40">
+      <div className="relative w-full max-w-lg mx-auto rounded-lg bg-white p-6 shadow-lg sm:p-8">
         <button
-          onClick={() => setOpen(false)}
+          onClick={() => { setOpen(false); if (typeof onClose === "function") onClose(); }}
           className="absolute right-4 top-4 text-gray-600 hover:text-black"
         >
           {" "}
@@ -106,7 +110,10 @@ export default function LoginModal() {
             {" "}
             <a href="#"> Continue as Guest</a>
           </span>
-          <button className="rounded-full font-medium border border-green-900 px-5 py-2 text-m text-green-900 hover:bg-green-700">
+          <button
+            onClick={() => { setOpen(false); if (typeof onClose === 'function') onClose(); navigate('/signup'); }}
+            className="rounded-full font-medium border border-green-900 px-5 py-2 text-m text-green-900 hover:bg-green-700"
+          >
             {" "}
             Sign Up
           </button>
